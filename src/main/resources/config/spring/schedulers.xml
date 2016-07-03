@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+    <task:annotation-driven executor="mainExecutor" scheduler="mainScheduler"/>
+    <task:executor id="mainExecutor" pool-size="5"/>
+    <task:scheduler id="mainScheduler" pool-size="10"/>
+
+    <!--<bean id="mediaSenderService" class="ru.formula.nio.MediaSenderService"/>-->
+    <!---->
+    <!--<task:scheduled-tasks>-->
+    <!--<task:scheduled ref="mediaSenderService" method="play" fixed-rate="3000"/>-->
+    <!--</task:scheduled-tasks>-->
+</beans>
