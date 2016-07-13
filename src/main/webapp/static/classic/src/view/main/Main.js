@@ -7,17 +7,5 @@ Ext.define('QrAdmin.view.main.Main', {
         'QrAdmin.view.main.MainController'
     ],
     controller: 'main',
-    layout: 'absolute',
-    items: [
-        {
-            xtype: 'boardView',
-            itemId: 'boardView',
-            hidden: true
-        },
-        {
-            xtype: 'loginView',
-            itemId: 'loginView',
-            hidden: true
-        }
-    ]
+    layout: 'absolute'
 });

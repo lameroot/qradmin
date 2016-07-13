@@ -3,18 +3,22 @@ Ext.define('QrAdmin.view.main.MainController', {
 
     alias: 'controller.main',
 
+    requires: [
+        'QrAdmin.util.SessionManager',
+        'QrAdmin.view.board.Board',
+        'QrAdmin.view.login.LoginView'
+    ],
+
     afterRender: function() {
         this.checkForLogin();
     },
 
     checkForLogin: function(){
-        var loggedIn = true;
-        if (loggedIn) {
-            this.getView().getComponent('loginView').show();
-            this.getView().getComponent('boardView').hide();
-        } else {
-            this.getView().getComponent('loginView').hide();
-            this.getView().getComponent('boardView').show();
-        }
+        var loggedIn = QrAdmin.util.SessionManager.isAuthenticated();
+        this.getView().removeAll();
+        var view = Ext.create({
+            xtype: loggedIn ? 'boardView' : 'loginView'
+        });
+        this.getView().add(view);
     }
 });
