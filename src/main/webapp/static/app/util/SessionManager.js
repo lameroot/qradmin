@@ -1,22 +1,30 @@
 Ext.define('QrAdmin.util.SessionManager', {
     singleton: true,
-    authenticated: true,
+    authenticated: false,
+    alternateClassName: 'SessionManager',
+    urls: {
+        loginUrl: '/api/security/login'
+    },
+    user: null,
 
     isAuthenticated: function () {
-        return this.authenticated;
+        return user != null;
     },
-    authenticate: function () {
+    login: function (login, password) {
         Ext.Ajax.request({
-            url: 'mvc/user/current',
-            callback: function (options, success, response) {
-                expired = !success;
-                if (success == true && Ext.JSON.decode(response.responseText).success == true && Ext.JSON.decode(response.responseText).changepassword == true) {
-                    manager.onChangePassword();
-                } else if (success == true && Ext.JSON.decode(response.responseText).success == true) {
-                    manager.onAuthenticated(Ext.JSON.decode(response.responseText, true));
-                } else {
-                    manager.onLogout();
-                }
+            url: this.urls.loginUrl,
+            jsonData:{
+                login: login,
+                password: password
+            },
+            success: function(response) {
+                var responseObject = Ext.decode(response.responseText);
+                this.user = responseObject.data;
+                //todo event logIn
+            },
+            failure: function(response) {
+                this.user = null;
+                //todo event logOut
             }
         });
     }
