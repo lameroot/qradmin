@@ -32,8 +32,7 @@ Ext.define('QrAdmin.view.login.LoginController', {
         var password = viewModel.get('password');
         SessionManager
             .login(login, password)
-            .then(function (a) {
-                console.log(a);
+            .then(function () {
                 if (SessionManager.isAuthenticated()) {
                     ths.redirectTo('board');
                 } else {

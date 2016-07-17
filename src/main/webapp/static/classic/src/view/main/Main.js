@@ -7,5 +7,5 @@ Ext.define('QrAdmin.view.main.Main', {
         'QrAdmin.view.main.MainController'
     ],
     controller: 'main',
-    layout: 'absolute'
+    layout: 'fit'
 });

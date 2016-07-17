@@ -85,5 +85,9 @@ Ext.define('QrAdmin.util.SessionManager', {
     getUserInfo: function() {
         console.log('getUserInfo');
         return this.userInfo;
+    },
+
+    hasRole: function() {
+
     }
 });

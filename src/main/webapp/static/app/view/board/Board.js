@@ -3,9 +3,6 @@ Ext.define('QrAdmin.view.board.Board', {
     xtype: 'boardView',
 
     requires: [
-        'Ext.plugin.Viewport',
-        'Ext.window.MessageBox',
-
         'QrAdmin.view.main.MainModel',
         'QrAdmin.view.main.List'
     ],
@@ -13,9 +10,7 @@ Ext.define('QrAdmin.view.board.Board', {
     viewModel: 'main',
 
     ui: 'navigation',
-
-    tabBarHeaderPosition: 1,
-    titleRotation: 0,
+    tabPosition: 'left',
     tabRotation: 0,
 
     header: {
@@ -29,41 +24,6 @@ Ext.define('QrAdmin.view.board.Board', {
             flex: 0
         },
         iconCls: 'fa-th-list'
-    },
-
-    tabBar: {
-        flex: 1,
-        layout: {
-            align: 'stretch',
-            overflowHandler: 'none'
-        }
-    },
-
-    responsiveConfig: {
-        tall: {
-            headerPosition: 'top'
-        },
-        wide: {
-            headerPosition: 'left'
-        }
-    },
-
-    defaults: {
-        bodyPadding: 20,
-        tabConfig: {
-            plugins: 'responsive',
-            responsiveConfig: {
-                wide: {
-                    iconAlign: 'left',
-                    textAlign: 'left'
-                },
-                tall: {
-                    iconAlign: 'top',
-                    textAlign: 'center',
-                    width: 120
-                }
-            }
-        }
     },
 
     items: [

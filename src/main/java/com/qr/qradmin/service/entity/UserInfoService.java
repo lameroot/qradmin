@@ -11,6 +11,7 @@ import java.util.LinkedList;
 public class UserInfoService {
     public UserInfo getCurrentUserInfo() {
         User currentUser = SecurityUtils.getCurrentUser();
+        if (currentUser == null) return null;
         UserInfo userInfo = new UserInfo();
         userInfo.setId(currentUser.getId());
         userInfo.setRoles(new LinkedList<>(currentUser.getAuthorities()));
