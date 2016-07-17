@@ -4,7 +4,8 @@ Ext.define('QrAdmin.view.board.Board', {
 
     requires: [
         'QrAdmin.view.main.MainModel',
-        'QrAdmin.view.main.List'
+        'QrAdmin.view.main.List',
+        'QrAdmin.view.users.UsersView'
     ],
 
     viewModel: 'main',
@@ -19,7 +20,7 @@ Ext.define('QrAdmin.view.board.Board', {
         },
         title: {
             bind: {
-                text: '{name}'
+                text: 'QR console'
             },
             flex: 0
         },
@@ -31,16 +32,20 @@ Ext.define('QrAdmin.view.board.Board', {
             title: 'Home',
             iconCls: 'fa-home',
             // The following grid shares a store with the classic version's grid as well!
-            items: [{
-                xtype: 'mainlist'
-            }]
+            items: [
+                {
+                    xtype: 'mainlist'
+                }
+            ]
         },
         {
             title: 'Users',
             iconCls: 'fa-user',
-            bind: {
-                html: '{loremIpsum}'
-            }
+            items: [
+                {
+                    xtype: 'usersView'
+                }
+            ]
         },
         {
             title: 'Groups',
