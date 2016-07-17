@@ -4,11 +4,44 @@ Ext.define('QrAdmin.view.login.LoginController', {
     alias: 'controller.login',
 
     requires: [
-        'QrAdmin.util.SessionManager'
+        'QrAdmin.util.SessionManager',
+        'QrAdmin.view.board.Board'
     ],
 
-    onLoginButtonClick: function(){
+    init: function () {
+        var ths = this;
+        SessionManager.on(
+            {
+                onLogin: function () {
+                    console.log('onLogin');
+                    ths.getView().destroy();
+                },
+                onLoginFailed: function () {
+                    console.log('onLoginFailed');
+                },
+                onLoginError: function () {
+                    console.log('onLoginError');
+                }
+            }
+        );
+    },
+    onLoginButtonClick: function () {
+        var ths = this;
         var viewModel = this.getView().getViewModel();
-        SessionManager.login(viewModel.get('login'), viewModel.get('password'));
+        var login = viewModel.get('login');
+        var password = viewModel.get('password');
+        SessionManager
+            .login(login, password)
+            .then(function (a) {
+                console.log(a);
+                if (SessionManager.isAuthenticated()) {
+                    ths.redirectTo('board');
+                } else {
+                    ths.redirectTo('login');
+                }
+            })
+            .catch(function () {
+                console.log('network error'); //TODO
+            });
     }
 });

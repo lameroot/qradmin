@@ -9,16 +9,44 @@ Ext.define('QrAdmin.view.main.MainController', {
         'QrAdmin.view.login.LoginView'
     ],
 
-    afterRender: function() {
-        this.checkForLogin();
+    routes: {
+        login: 'onLogin',
+        board: 'onBoard'
     },
 
-    checkForLogin: function(){
-        var loggedIn = QrAdmin.util.SessionManager.isAuthenticated();
-        this.getView().removeAll();
-        var view = Ext.create({
-            xtype: loggedIn ? 'boardView' : 'loginView'
-        });
-        this.getView().add(view);
+    onLogin: function () {
+        var view = this.getView();
+        view.removeAll();
+        view.add(
+            Ext.create({
+                xtype: 'loginView'
+            })
+        );
+    },
+
+    onBoard: function () {
+        var view = this.getView();
+        view.removeAll();
+        view.add(
+            Ext.create({
+                xtype: 'boardView'
+            })
+        );
+    },
+
+    afterRender: function () {
+        var ths = this;
+        SessionManager
+            .updateUserInfo()
+            .then(function () {
+                if (SessionManager.isAuthenticated()) {
+                    ths.redirectTo('board');
+                } else {
+                    ths.redirectTo('login');
+                }
+            })
+            .catch(function () {
+                console.log('network error'); //TODO
+            });
     }
 });

@@ -66,30 +66,35 @@ Ext.define('QrAdmin.view.board.Board', {
         }
     },
 
-    items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
-        items: [{
-            xtype: 'mainlist'
-        }]
-    }, {
-        title: 'Users',
-        iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
+    items: [
+        {
+            title: 'Home',
+            iconCls: 'fa-home',
+            // The following grid shares a store with the classic version's grid as well!
+            items: [{
+                xtype: 'mainlist'
+            }]
+        },
+        {
+            title: 'Users',
+            iconCls: 'fa-user',
+            bind: {
+                html: '{loremIpsum}'
+            }
+        },
+        {
+            title: 'Groups',
+            iconCls: 'fa-users',
+            bind: {
+                html: '{loremIpsum}'
+            }
+        },
+        {
+            title: 'Settings',
+            iconCls: 'fa-cog',
+            bind: {
+                html: '{loremIpsum}'
+            }
         }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }]
+    ]
 });

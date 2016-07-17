@@ -29,7 +29,7 @@ public class AuthenticationFailedHandler implements AuthenticationFailureHandler
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.getWriter().print(errorMessage);
     }
 }
