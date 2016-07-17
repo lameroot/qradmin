@@ -1,7 +1,6 @@
 Ext.define('QrAdmin.store.UserStore', {
     extend: 'Ext.data.Store',
     model: 'QrAdmin.model.User',
-    storeId: 'UserStore',
     alias: 'store.user',
 
     sorters: [
