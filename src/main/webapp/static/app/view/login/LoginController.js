@@ -8,23 +8,6 @@ Ext.define('QrAdmin.view.login.LoginController', {
         'QrAdmin.view.board.Board'
     ],
 
-    init: function () {
-        var ths = this;
-        SessionManager.on(
-            {
-                onLogin: function () {
-                    console.log('onLogin');
-                    ths.getView().destroy();
-                },
-                onLoginFailed: function () {
-                    console.log('onLoginFailed');
-                },
-                onLoginError: function () {
-                    console.log('onLoginError');
-                }
-            }
-        );
-    },
     onLoginButtonClick: function () {
         var ths = this;
         var viewModel = this.getView().getViewModel();

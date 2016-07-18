@@ -7,39 +7,14 @@ Ext.define('QrAdmin.model.User', {
 
     idProperty: 'id',
     fields: [
-        {
-            type: 'number',
-            persist: false,
-            name: 'id'
-        },
-        {
-            type: 'string',
-            name: 'userName'
-        },
-        {
-            type: 'string',
-            name: 'merchantName'
-        },
-        {
-            type: 'date',
-            name: 'createdDate'
-        },
-        {
-            type: 'boolean',
-            name: 'isEnabled'
-        },
-        {
-            type: 'boolean',
-            name: 'isExpired'
-        },
-        {
-            type: 'boolean',
-            name: 'isLocked'
-        },
-        {
-            // type: 'string',
-            name: 'roles'
-        }
+        {type: 'number',    name: 'id'},
+        {type: 'string',    name: 'userName'},
+        {type: 'string',    name: 'merchantName'},
+        {type: 'date',      name: 'createdDate'},
+        {type: 'boolean',   name: 'isEnabled'},
+        {type: 'boolean',   name: 'isExpired'},
+        {type: 'boolean',   name: 'isLocked'},
+        {type: 'string',    name: 'roles'}
     ],
 
 

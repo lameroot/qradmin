@@ -1,11 +1,12 @@
 Ext.define('QrAdmin.view.board.Board', {
     extend: 'Ext.tab.Panel',
     xtype: 'boardView',
+    controller: 'board',
 
     requires: [
-        'QrAdmin.view.main.MainModel',
-        'QrAdmin.view.main.List',
-        'QrAdmin.view.users.UsersView'
+        'QrAdmin.view.board.BoardController',
+        'QrAdmin.view.users.UsersView',
+        'QrAdmin.view.orders.OrdersView'
     ],
 
     viewModel: 'main',
@@ -25,22 +26,16 @@ Ext.define('QrAdmin.view.board.Board', {
         items: [
             {
                 xtype: 'button',
-                text: 'Logout'
+                text: 'Logout',
+                dock: 'right',
+                listeners: {
+                    click: 'onLogoutButtonClick'
+                }
             }
         ]
     },
 
     items: [
-        {
-            title: 'Home',
-            iconCls: 'fa-home',
-            // The following grid shares a store with the classic version's grid as well!
-            items: [
-                {
-                    xtype: 'mainlist'
-                }
-            ]
-        },
         {
             title: 'Users',
             iconCls: 'fa-user',
@@ -51,18 +46,13 @@ Ext.define('QrAdmin.view.board.Board', {
             ]
         },
         {
-            title: 'Groups',
+            title: 'Orders',
             iconCls: 'fa-users',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        },
-        {
-            title: 'Settings',
-            iconCls: 'fa-cog',
-            bind: {
-                html: '{loremIpsum}'
-            }
+            items: [
+                {
+                    xtype: 'ordersView'
+                }
+            ]
         }
     ]
 });

@@ -9,11 +9,11 @@ import org.springframework.validation.Validator;
 import ru.qrhandshake.qrpos.domain.User;
 
 @Service
-public class UserValidator implements Validator{
+public class UserDtoValidator implements Validator{
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return  User.class.isAssignableFrom(clazz);
+        return  UserDto.class.isAssignableFrom(clazz);
     }
 
     @Override

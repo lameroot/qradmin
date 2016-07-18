@@ -18,6 +18,7 @@
                 <bean class="com.qr.qradmin.converter.UserInfoToDtoConverter"/>
                 <bean class="com.qr.qradmin.converter.UserToDtoConverter"/>
                 <bean class="com.qr.qradmin.converter.UserToEntityConverter"/>
+                <bean class="com.qr.qradmin.converter.MerchantOrderToDtoConverter"/>
             </set>
         </property>
     </bean>
