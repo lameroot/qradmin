@@ -5,7 +5,7 @@ Ext.define('QrAdmin.view.main.MainController', {
 
     requires: [
         'QrAdmin.util.SessionManager',
-        'QrAdmin.view.board.Board',
+        'QrAdmin.view.board.BoardView',
         'QrAdmin.view.login.LoginView'
     ],
 

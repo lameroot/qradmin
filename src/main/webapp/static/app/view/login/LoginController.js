@@ -4,8 +4,7 @@ Ext.define('QrAdmin.view.login.LoginController', {
     alias: 'controller.login',
 
     requires: [
-        'QrAdmin.util.SessionManager',
-        'QrAdmin.view.board.Board'
+        'QrAdmin.util.SessionManager'
     ],
 
     onLoginButtonClick: function () {

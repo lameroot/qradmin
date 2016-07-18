@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.view.board.Board', {
+Ext.define('QrAdmin.view.board.BoardView', {
     extend: 'Ext.tab.Panel',
     xtype: 'boardView',
     controller: 'board',

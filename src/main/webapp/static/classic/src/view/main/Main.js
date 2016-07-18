@@ -3,7 +3,7 @@ Ext.define('QrAdmin.view.main.Main', {
     xtype: 'app-main',
     requires: [
         'QrAdmin.view.login.LoginView',
-        'QrAdmin.view.board.Board',
+        'QrAdmin.view.board.BoardView',
         'QrAdmin.view.main.MainController'
     ],
     controller: 'main',
