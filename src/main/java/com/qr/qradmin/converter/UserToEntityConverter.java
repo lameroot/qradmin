@@ -10,7 +10,7 @@ public class UserToEntityConverter implements Converter<UserDto, User> {
     public User convert(UserDto userDto) {
         if (userDto == null) return null;
         User user = new User();
-        user.setUsername(userDto.getUsername());
+        user.setUsername(userDto.getUserName());
         return user;
     }
 }

@@ -15,16 +15,19 @@ Ext.define('QrAdmin.view.board.Board', {
     tabRotation: 0,
 
     header: {
-        layout: {
-            align: 'stretchmax'
-        },
         title: {
             bind: {
                 text: 'QR console'
             },
             flex: 0
         },
-        iconCls: 'fa-th-list'
+        iconCls: 'fa-th-list',
+        items: [
+            {
+                xtype: 'button',
+                text: 'Logout'
+            }
+        ]
     },
 
     items: [
