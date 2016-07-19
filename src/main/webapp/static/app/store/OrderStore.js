@@ -1,27 +1,20 @@
 Ext.define('QrAdmin.store.OrderStore', {
-    extend: 'Ext.data.Store',
+    extend: 'Ext.data.BufferedStore',
     model: 'QrAdmin.model.Order',
     alias: 'store.order',
-
-    sorters: [
-        // {
-        //     property: 'id',
-        //     direction: 'ASC'
-        // }
-    ],
-
     autoLoad: true,
-
     proxy: {
         type: 'rest',
         url: 'api/order',
+        limitParam: 'size',
+        startParam: 'fromId',
         extraParams: {
-            size: 10,
             filter: {}
         },
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            totalProperty: 'total'
         }
     }
 });

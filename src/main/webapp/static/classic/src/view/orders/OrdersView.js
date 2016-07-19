@@ -20,19 +20,3 @@ Ext.define('QrAdmin.view.orders.OrdersView', {
         { text: 'deviceId', dataIndex: 'deviceId', flex: 1 }
     ]
 });
-//
-// private String orderId;
-// private Date createdDate;
-// private Date paymentDate;
-// private long amount;
-// private String description;
-// private String deviceId;
-// private long merchantId;
-// private long terminalId;
-// private Long clientId;
-// private IntegrationSupport integrationSupport;
-// private OrderStatus orderStatus = OrderStatus.REGISTERED;
-// private String sessionId;
-// private PaymentSecureType paymentSecureType;
-// private PaymentWay paymentWay;
-// private PaymentType paymentType;

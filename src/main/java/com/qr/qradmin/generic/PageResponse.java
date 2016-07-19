@@ -9,25 +9,23 @@ import java.util.List;
 public class PageResponse<EDto> extends Response {
     private List<EDto> data = new LinkedList<>();
     private boolean hasMore;
+    private long total;
 
-    public PageResponse(List<EDto> data, boolean hasMore) {
+    public PageResponse(List<EDto> data, boolean hasMore, long total) {
         this.data = data;
         this.hasMore = hasMore;
+        this.total = total;
     }
 
     public List<EDto> getData() {
         return data;
     }
 
-    public void setData(List<EDto> data) {
-        this.data = data;
-    }
-
     public boolean isHasMore() {
         return hasMore;
     }
 
-    public void setHasMore(boolean hasMore) {
-        this.hasMore = hasMore;
+    public long getTotal() {
+        return total;
     }
 }

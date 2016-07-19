@@ -33,13 +33,13 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
     }
 
     public PageResponse get(EFilterDto filterDto) {
-        PageRequest pageRequest = new PageRequest(0, filterDto.getSize(), Sort.Direction.DESC, "id");
+        PageRequest pageRequest = new PageRequest(0, filterDto.getSize(), Sort.Direction.ASC, "id");
         Page<E> entityPage = getEntityService().get(buildFilter(filterDto), pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
             dtos.add(conversionService.convert(e, getEDtoClass()));
         }
-        return new PageResponse(dtos, entityPage.getTotalElements() > dtos.size());
+        return new PageResponse(dtos, entityPage.getTotalElements() > dtos.size(), entityPage.getTotalElements());
     }
 
     public Response create(EDto dto) {

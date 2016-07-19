@@ -59,7 +59,7 @@ public abstract class GenericEntityService<E> {
     protected Predicate buildPredicate(Root root, CriteriaBuilder cb, EntityFilter filter) {
         Predicate predicate = cb.conjunction();
         if (filter.getFromId() != null) {
-            predicate.getExpressions().add(cb.lt(root.<Long>get("id"), filter.getFromId()));
+            predicate.getExpressions().add(cb.gt(root.<Long>get("id"), filter.getFromId()));
         }
         return predicate;
     }
