@@ -9,17 +9,13 @@ Ext.define('QrAdmin.view.board.BoardView', {
         'QrAdmin.view.orders.OrdersView'
     ],
 
-    viewModel: 'main',
-
     ui: 'navigation',
     tabPosition: 'left',
     tabRotation: 0,
 
     header: {
         title: {
-            bind: {
-                text: 'QR console'
-            },
+            text: 'QR console',
             flex: 0
         },
         iconCls: 'fa-th-list',
