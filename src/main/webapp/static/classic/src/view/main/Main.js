@@ -1,11 +1,75 @@
 Ext.define('QrAdmin.view.main.Main', {
-    extend: 'Ext.container.Viewport',
+    extend: 'Ext.tab.Panel',
     xtype: 'app-main',
+
     requires: [
-        'QrAdmin.view.login.LoginView',
-        'QrAdmin.view.board.BoardView',
+        'Ext.plugin.Viewport',
+        'Ext.window.MessageBox',
+
         'QrAdmin.view.main.MainController'
     ],
+
     controller: 'main',
-    layout: 'fit'
+
+    ui: 'navigation',
+
+    tabBarHeaderPosition: 1,
+    titleRotation: 0,
+    tabRotation: 0,
+
+    header: {
+        layout: {
+            align: 'stretchmax'
+        },
+        title: {
+            flex: 0
+        },
+        iconCls: 'fa-th-list'
+    },
+
+    tabBar: {
+        flex: 1,
+        layout: {
+            align: 'stretch',
+            overflowHandler: 'none'
+        }
+    },
+
+    responsiveConfig: {
+        tall: {
+            headerPosition: 'top'
+        },
+        wide: {
+            headerPosition: 'left'
+        }
+    },
+
+    defaults: {
+        bodyPadding: 20,
+        tabConfig: {
+            plugins: 'responsive',
+            responsiveConfig: {
+                wide: {
+                    iconAlign: 'left',
+                    textAlign: 'left'
+                },
+                tall: {
+                    iconAlign: 'top',
+                    textAlign: 'center',
+                    width: 120
+                }
+            }
+        }
+    },
+
+    items: [{
+        title: 'Users',
+        iconCls: 'fa-user'
+    }, {
+        title: 'Groups',
+        iconCls: 'fa-users'
+    }, {
+        title: 'Settings',
+        iconCls: 'fa-cog'
+    }]
 });
