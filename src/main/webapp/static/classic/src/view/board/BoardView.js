@@ -35,6 +35,7 @@ Ext.define('QrAdmin.view.board.BoardView', {
         {
             title: 'Users',
             iconCls: 'fa-user',
+            layout: 'fit',
             items: [
                 {
                     xtype: 'usersView'
@@ -44,6 +45,7 @@ Ext.define('QrAdmin.view.board.BoardView', {
         {
             title: 'Orders',
             iconCls: 'fa-users',
+            layout: 'fit',
             items: [
                 {
                     xtype: 'ordersView'
