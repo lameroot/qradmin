@@ -16,11 +16,11 @@ public class GenericPageableFilterDtoValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         PageableFilterDto t = (PageableFilterDto) target;
-        if (t.getSize() == null) {
-            errors.rejectValue("size", ErrorCode.VALIDATION_FAILED.getCode(), null, "filter.size.empty");       //TODO format ErrorCode.VALIDATION_FAILED.getMessage()
+        if (t.getLimit() == null) {
+            errors.rejectValue("limit", ErrorCode.VALIDATION_FAILED.getCode(), null, "filter.limit.empty");       //TODO format ErrorCode.VALIDATION_FAILED.getMessage()
         }
-        if (t.getSize() != null && t.getSize() == 0) {
-            errors.rejectValue("size", ErrorCode.VALIDATION_FAILED.getCode(), null, "filter.size.zero");        //TODO format ErrorCode.VALIDATION_FAILED.getMessage()
+        if (t.getPage() == null) {
+            errors.rejectValue("page", ErrorCode.VALIDATION_FAILED.getCode(), null, "filter.page.zero");        //TODO format ErrorCode.VALIDATION_FAILED.getMessage()
         }
     }
 }

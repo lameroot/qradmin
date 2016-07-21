@@ -54,13 +54,8 @@ public abstract class GenericEntityService<E> {
         return e;
     }
 
-    ;
-
     protected Predicate buildPredicate(Root root, CriteriaBuilder cb, EntityFilter filter) {
         Predicate predicate = cb.conjunction();
-        if (filter.getFromId() != null) {
-            predicate.getExpressions().add(cb.gt(root.<Long>get("id"), filter.getFromId()));
-        }
         return predicate;
     }
 }

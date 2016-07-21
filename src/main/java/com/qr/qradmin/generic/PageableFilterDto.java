@@ -7,22 +7,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PageableFilterDto {
-    private Long fromId;
-    private Integer size;
+    private Integer page;
+    private Integer limit;
 
-    public Long getFromId() {
-        return fromId;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setFromId(Long fromId) {
-        this.fromId = fromId;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 
-    public Integer getSize() {
-        return size;
+    public Integer getLimit() {
+        return limit;
     }
 
-    public void setSize(Integer size) {
-        this.size = size;
+    public void setLimit(Integer limit) {
+        this.limit = limit;
     }
 }

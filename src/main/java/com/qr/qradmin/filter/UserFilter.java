@@ -8,6 +8,5 @@ import com.qr.qradmin.generic.PageableFilterDto;
  */
 public class UserFilter extends EntityFilter {
     public UserFilter(PageableFilterDto pageableFilterDto) {
-        super(pageableFilterDto);
     }
 }

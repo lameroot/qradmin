@@ -8,6 +8,5 @@ import com.qr.qradmin.generic.PageableFilterDto;
  */
 public class MerchantOrderFilter extends EntityFilter {
     public MerchantOrderFilter(PageableFilterDto pageableFilterDto) {
-        super(pageableFilterDto);
     }
 }
