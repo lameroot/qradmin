@@ -1,14 +1,18 @@
 package com.qr.qradmin.generic;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Smirnov_Y on 18.06.2015.
@@ -33,7 +37,10 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
     }
 
     public PageResponse get(EFilterDto filterDto) {
-        PageRequest pageRequest = new PageRequest(filterDto.getPage() - 1, filterDto.getLimit(), Sort.Direction.DESC, "id");
+        Sort sort = Optional
+                .ofNullable(filterDto.getSort())
+                .orElse(new Sort(Sort.Direction.DESC, "id"));
+        PageRequest pageRequest = new PageRequest(filterDto.getPage() - 1, filterDto.getLimit(), sort);
         Page<E> entityPage = getEntityService().get(buildFilter(filterDto), pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
@@ -41,6 +48,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
         }
         return new PageResponse(dtos, entityPage.getTotalElements() > dtos.size(), entityPage.getTotalElements());
     }
+
 
     public Response create(EDto dto) {
         E e = conversionService.convert(dto, getEClass());
