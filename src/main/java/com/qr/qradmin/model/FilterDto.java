@@ -2,10 +2,10 @@ package com.qr.qradmin.model;
 
 import java.util.List;
 
-public class Filter {
+public class FilterDto {
     private List<SingleFilter> filters;
 
-    public Filter(List<SingleFilter> filters) {
+    public FilterDto(List<SingleFilter> filters) {
         this.filters = filters;
     }
 

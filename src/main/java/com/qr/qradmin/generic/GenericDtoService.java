@@ -1,8 +1,7 @@
 package com.qr.qradmin.generic;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qr.qradmin.model.Filter;
+import com.qr.qradmin.model.FilterDto;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +22,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
     @Resource
     protected ObjectMapper objectMapper;
 
-    protected abstract EntityFilter buildFilter(Filter filter);
+    protected abstract EntityFilter buildFilter(FilterDto filterDto);
 
     protected abstract Class<E> getEClass();
 

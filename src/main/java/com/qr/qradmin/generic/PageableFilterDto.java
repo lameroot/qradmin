@@ -1,7 +1,7 @@
 package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.qr.qradmin.model.Filter;
+import com.qr.qradmin.model.FilterDto;
 import org.springframework.data.domain.Sort;
 
 /**
@@ -12,7 +12,7 @@ public class PageableFilterDto {
     private Integer page;
     private Integer limit;
     private Sort sort;
-    private Filter filter;
+    private FilterDto filter;
 
     public Integer getPage() {
         return page;
@@ -38,11 +38,11 @@ public class PageableFilterDto {
         this.sort = sort;
     }
 
-    public Filter getFilter() {
+    public FilterDto getFilter() {
         return filter;
     }
 
-    public void setFilter(Filter filter) {
+    public void setFilter(FilterDto filter) {
         this.filter = filter;
     }
 }

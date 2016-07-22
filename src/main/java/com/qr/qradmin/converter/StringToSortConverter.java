@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SortToEntityConverter implements Converter<String, Sort> {
+public class StringToSortConverter implements Converter<String, Sort> {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Resource
