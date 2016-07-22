@@ -5,12 +5,11 @@ Ext.define('QrAdmin.store.OrderStore', {
     autoLoad: true,
     autoDestroy: true,
     pageSize: 30,
+    remoteSort: true,
+    remoteFilter: true,
     proxy: {
         type: 'rest',
         url: 'api/order',
-        extraParams: {
-            filter: {}
-        },
         reader: {
             type: 'json',
             rootProperty: 'data'
