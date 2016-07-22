@@ -22,6 +22,7 @@
                 <bean class="com.qr.qradmin.converter.UserToEntityConverter"/>
                 <bean class="com.qr.qradmin.converter.MerchantOrderToDtoConverter"/>
                 <bean class="com.qr.qradmin.converter.SortToEntityConverter"/>
+                <bean class="com.qr.qradmin.converter.FilterToEntityConverter"/>
             </set>
         </property>
     </bean>

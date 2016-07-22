@@ -46,7 +46,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
         for (E e : entityPage) {
             dtos.add(conversionService.convert(e, getEDtoClass()));
         }
-        return new PageResponse(dtos, entityPage.getTotalElements() > dtos.size(), entityPage.getTotalElements());
+        return new PageResponse(dtos, entityPage.getTotalElements());
     }
 
 
