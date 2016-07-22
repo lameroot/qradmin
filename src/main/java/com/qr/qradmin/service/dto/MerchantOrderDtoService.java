@@ -6,6 +6,7 @@ import com.qr.qradmin.filter.MerchantOrderFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
+import com.qr.qradmin.model.Filter;
 import com.qr.qradmin.service.entity.MerchantOrderService;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.MerchantOrder;
@@ -19,9 +20,9 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
     private MerchantOrderService merchantOrderService;
 
     @Override
-    protected EntityFilter buildFilter(MerchantOrderFilterDto pageableFilterDto) {
-        MerchantOrderFilter filter = new MerchantOrderFilter(pageableFilterDto);
-        return filter;
+    protected EntityFilter buildFilter(Filter filter) {
+        MerchantOrderFilter merchantOrderFilter = new MerchantOrderFilter();
+        return merchantOrderFilter;
     }
 
     @Override

@@ -2,14 +2,13 @@ package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qr.qradmin.model.Filter;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +23,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
     @Resource
     protected ObjectMapper objectMapper;
 
-    protected abstract EntityFilter buildFilter(EFilterDto filterDto);        //TODO все фильтры должны быть сортированными
+    protected abstract EntityFilter buildFilter(Filter filter);
 
     protected abstract Class<E> getEClass();
 
@@ -41,7 +40,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
                 .ofNullable(filterDto.getSort())
                 .orElse(new Sort(Sort.Direction.DESC, "id"));
         PageRequest pageRequest = new PageRequest(filterDto.getPage() - 1, filterDto.getLimit(), sort);
-        Page<E> entityPage = getEntityService().get(buildFilter(filterDto), pageRequest);
+        Page<E> entityPage = getEntityService().get(buildFilter(filterDto.getFilter()), pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
             dtos.add(conversionService.convert(e, getEDtoClass()));

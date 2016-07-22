@@ -7,6 +7,7 @@ import com.qr.qradmin.generic.ElementResponse;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
+import com.qr.qradmin.model.Filter;
 import com.qr.qradmin.service.entity.UserService;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.User;
@@ -25,9 +26,9 @@ public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterD
     }
 
     @Override
-    protected EntityFilter buildFilter(UserFilterDto pageableFilterDto) {
-        UserFilter filter = new UserFilter(pageableFilterDto);
-        return filter;
+    protected EntityFilter buildFilter(Filter filter) {
+        UserFilter userFilter = new UserFilter();
+        return userFilter;
     }
 
     @Override
