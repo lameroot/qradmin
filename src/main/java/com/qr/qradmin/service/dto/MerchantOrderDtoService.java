@@ -9,9 +9,11 @@ import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.model.FilterDto;
 import com.qr.qradmin.service.entity.MerchantOrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import ru.qrhandshake.qrpos.domain.MerchantOrder;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 @Service
 public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, MerchantOrderDto, MerchantOrderFilterDto> {
@@ -22,6 +24,25 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
     @Override
     protected EntityFilter buildFilter(FilterDto filterDto) {
         MerchantOrderFilter filter = new MerchantOrderFilter();
+        if (filterDto == null || filterDto.getFilters() == null){
+            return filter;
+        }
+        for (FilterDto.SingleFilter f : filterDto.getFilters()) {
+            switch (f.getProperty()) {
+                case "amountFrom":
+                    filter.setAmountFrom(Long.valueOf(f.getValue()));
+                    break;
+                case "amountTo":
+                    filter.setAmountTo(Long.valueOf(f.getValue()));
+                    break;
+                case "deviceId":
+                    filter.setDeviceId(f.getValue());
+                    break;
+                case "orderId":
+                    filter.setOrderId(f.getValue());
+                    break;
+            }
+        }
         return filter;
     }
 
