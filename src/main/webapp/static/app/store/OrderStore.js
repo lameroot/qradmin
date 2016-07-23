@@ -5,6 +5,8 @@ Ext.define('QrAdmin.store.OrderStore', {
     autoLoad: true,
     autoDestroy: true,
     pageSize: 30,
+    leadingBufferZone: 2,
+    trailingBufferZone: 2,
     remoteSort: true,
     remoteFilter: true,
     proxy: {
