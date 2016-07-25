@@ -12,13 +12,10 @@ Ext.define('QrAdmin.view.board.BoardView', {
     ui: 'navigation',
     tabPosition: 'left',
     tabRotation: 0,
-
+    activeTab: 1,
     header: {
-        title: {
-            text: 'QR console',
-            flex: 0
-        },
-        iconCls: 'fa-th-list',
+        title: 'QR console',
+        bodyPadding: 5,
         items: [
             {
                 xtype: 'button',
