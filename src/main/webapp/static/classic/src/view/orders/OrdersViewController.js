@@ -6,23 +6,14 @@ Ext.define('QrAdmin.view.orders.OrdersViewController', {
 	onFilterButtonClick: function () {
 		var ordersStore = this.getView().down('#ordersGrid').getStore();
 		var filter = this.getView().getViewModel().get('filter');
-		for (var filterName in filter) {
-			ordersStore.filter([{
-				property: filterName,
-				value: filter[filterName],
-				serializer: function (result) {
-					if (result) {
-						result[result.property] = result.value;
-						delete result.property;
-						delete result.value;
-					}
-				}
-			}]);
-		}
+        ordersStore.getProxy().setExtraParam('filter', Ext.JSON.encode(filter));
+        ordersStore.load();
 	},
 
 	onResetFilterButtonClick: function () {
+        var ordersStore = this.getView().down('#ordersGrid').getStore();
 		this.getView().getViewModel().set('filter', {});
-		this.getView().down('#ordersGrid').getStore().clearFilter();
-	}
+        ordersStore.getProxy().setExtraParam('filter', {});
+        ordersStore.load();
+    }
 });
