@@ -22,7 +22,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
     @Resource
     protected ObjectMapper objectMapper;
 
-    protected abstract EntityFilter buildFilter(FilterDto filterDto);
+    protected abstract EntityFilter buildFilter(EFilterDto filterDto);
 
     protected abstract Class<E> getEClass();
 
@@ -39,7 +39,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
                 .ofNullable(filterDto.getSort())
                 .orElse(new Sort(Sort.Direction.DESC, "id"));
         PageRequest pageRequest = new PageRequest(filterDto.getPage() - 1, filterDto.getLimit(), sort);
-        Page<E> entityPage = getEntityService().get(buildFilter(filterDto.getFilter()), pageRequest);
+        Page<E> entityPage = getEntityService().get(buildFilter(filterDto), pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
             dtos.add(conversionService.convert(e, getEDtoClass()));

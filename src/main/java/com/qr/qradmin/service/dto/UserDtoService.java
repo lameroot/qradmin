@@ -26,7 +26,7 @@ public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterD
     }
 
     @Override
-    protected EntityFilter buildFilter(FilterDto filterDto) {
+    protected EntityFilter buildFilter(UserFilterDto filterDto) {
         UserFilter filter = new UserFilter();
         return filter;
     }

@@ -12,7 +12,6 @@ public class PageableFilterDto {
     private Integer page;
     private Integer limit;
     private Sort sort;
-    private FilterDto filter;
 
     public Integer getPage() {
         return page;
@@ -36,13 +35,5 @@ public class PageableFilterDto {
 
     public void setSort(Sort sort) {
         this.sort = sort;
-    }
-
-    public FilterDto getFilter() {
-        return filter;
-    }
-
-    public void setFilter(FilterDto filter) {
-        this.filter = filter;
     }
 }

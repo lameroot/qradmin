@@ -22,27 +22,8 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
     private MerchantOrderService merchantOrderService;
 
     @Override
-    protected EntityFilter buildFilter(FilterDto filterDto) {
+    protected EntityFilter buildFilter(MerchantOrderFilterDto filterDto) {
         MerchantOrderFilter filter = new MerchantOrderFilter();
-        if (filterDto == null || filterDto.getFilters() == null){
-            return filter;
-        }
-        for (FilterDto.SingleFilter f : filterDto.getFilters()) {
-            switch (f.getProperty()) {
-                case "amountFrom":
-                    filter.setAmountFrom(Long.valueOf(f.getValue()));
-                    break;
-                case "amountTo":
-                    filter.setAmountTo(Long.valueOf(f.getValue()));
-                    break;
-                case "deviceId":
-                    filter.setDeviceId(f.getValue());
-                    break;
-                case "orderId":
-                    filter.setOrderId(f.getValue());
-                    break;
-            }
-        }
         return filter;
     }
 
