@@ -6,6 +6,7 @@ import ru.qrhandshake.qrpos.domain.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Smirnov_Y on 28.11.2014.
@@ -26,15 +27,15 @@ public class MerchantOrderFilter extends EntityFilter {
     private Long amountTo;
 
     private String deviceId;
-    private Merchant merchant;
-    private Terminal terminal;
-    private Client client;
-    private IntegrationSupport integrationSupport;
-    private OrderStatus orderStatus;
+    private Long merchantId;
+    private Long terminalId;
+    private Long clientId;
     private String sessionId;
-    private PaymentSecureType paymentSecureType;
-    private PaymentWay paymentWay;
-    private PaymentType paymentType;
+    private List<IntegrationSupport> integrationSupports;
+    private List<OrderStatus> orderStatuses;
+    private List<PaymentSecureType> paymentSecureTypes;
+    private List<PaymentWay> paymentWays;
+    private List<PaymentType> paymentTypes;
 
     public Long getId() {
         return id;
@@ -124,44 +125,28 @@ public class MerchantOrderFilter extends EntityFilter {
         this.deviceId = deviceId;
     }
 
-    public Merchant getMerchant() {
-        return merchant;
+    public Long getMerchantId() {
+        return merchantId;
     }
 
-    public void setMerchant(Merchant merchant) {
-        this.merchant = merchant;
+    public void setMerchantId(Long merchantId) {
+        this.merchantId = merchantId;
     }
 
-    public Terminal getTerminal() {
-        return terminal;
+    public Long getTerminalId() {
+        return terminalId;
     }
 
-    public void setTerminal(Terminal terminal) {
-        this.terminal = terminal;
+    public void setTerminalId(Long terminalId) {
+        this.terminalId = terminalId;
     }
 
-    public Client getClient() {
-        return client;
+    public Long getClientId() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public IntegrationSupport getIntegrationSupport() {
-        return integrationSupport;
-    }
-
-    public void setIntegrationSupport(IntegrationSupport integrationSupport) {
-        this.integrationSupport = integrationSupport;
-    }
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public String getSessionId() {
@@ -172,27 +157,43 @@ public class MerchantOrderFilter extends EntityFilter {
         this.sessionId = sessionId;
     }
 
-    public PaymentSecureType getPaymentSecureType() {
-        return paymentSecureType;
+    public List<IntegrationSupport> getIntegrationSupports() {
+        return integrationSupports;
     }
 
-    public void setPaymentSecureType(PaymentSecureType paymentSecureType) {
-        this.paymentSecureType = paymentSecureType;
+    public void setIntegrationSupports(List<IntegrationSupport> integrationSupports) {
+        this.integrationSupports = integrationSupports;
     }
 
-    public PaymentWay getPaymentWay() {
-        return paymentWay;
+    public List<OrderStatus> getOrderStatuses() {
+        return orderStatuses;
     }
 
-    public void setPaymentWay(PaymentWay paymentWay) {
-        this.paymentWay = paymentWay;
+    public void setOrderStatuses(List<OrderStatus> orderStatuses) {
+        this.orderStatuses = orderStatuses;
     }
 
-    public PaymentType getPaymentType() {
-        return paymentType;
+    public List<PaymentSecureType> getPaymentSecureTypes() {
+        return paymentSecureTypes;
     }
 
-    public void setPaymentType(PaymentType paymentType) {
-        this.paymentType = paymentType;
+    public void setPaymentSecureTypes(List<PaymentSecureType> paymentSecureTypes) {
+        this.paymentSecureTypes = paymentSecureTypes;
+    }
+
+    public List<PaymentWay> getPaymentWays() {
+        return paymentWays;
+    }
+
+    public void setPaymentWays(List<PaymentWay> paymentWays) {
+        this.paymentWays = paymentWays;
+    }
+
+    public List<PaymentType> getPaymentTypes() {
+        return paymentTypes;
+    }
+
+    public void setPaymentTypes(List<PaymentType> paymentTypes) {
+        this.paymentTypes = paymentTypes;
     }
 }

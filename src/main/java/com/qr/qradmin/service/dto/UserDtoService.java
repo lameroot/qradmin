@@ -22,7 +22,7 @@ public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterD
     private UserService userService;
 
     public ElementResponse<UserDto> getCurrentUser() {
-        return new ElementResponse<UserDto>(conversionService.convert(SecurityUtils.getCurrentUser(), UserDto.class));
+        return new ElementResponse<>(conversionService.convert(SecurityUtils.getCurrentUser(), UserDto.class));
     }
 
     @Override

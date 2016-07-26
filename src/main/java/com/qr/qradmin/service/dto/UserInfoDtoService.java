@@ -16,6 +16,6 @@ public class UserInfoDtoService {
     private UserInfoService userInfoService;
 
     public ElementResponse getCurrentUserInfo() {
-        return new ElementResponse<UserInfoDto>(conversionService.convert(userInfoService.getCurrentUserInfo(), UserInfoDto.class));
+        return new ElementResponse<>(conversionService.convert(userInfoService.getCurrentUserInfo(), UserInfoDto.class));
     }
 }
