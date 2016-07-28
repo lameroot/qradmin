@@ -28,51 +28,55 @@ public class MerchantOrderService extends GenericEntityService<MerchantOrder> {
                 MerchantOrderFilter filter = (MerchantOrderFilter)f;
                 Predicate predicate = buildPredicate(root, cb, filter);
 
-//                if (filter.getId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getOrderId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getExternalId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getExternalOrderStatus() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getCreatedDateFrom() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getCreatedDateTo() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getPaymentDateFrom() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getPaymentDateTo() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getAmountFrom() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getAmountTo() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getDeviceId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getMerchantId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getTerminalId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getClientId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
-//                if (filter.getSessionId() != null) {
-//                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdAt), filter.getCreatedAtFrom()) );
-//                }
+                if (filter.getId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.id), filter.getId()) );
+                }
+                if (filter.getOrderId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.orderId), filter.getOrderId()) );
+                }
+                if (filter.getExternalId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.externalId), filter.getExternalId()) );
+                }
+                if (filter.getExternalOrderStatus() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.externalOrderStatus), filter.getExternalOrderStatus()) );
+                }
+
+                if (filter.getCreatedDateFrom() != null) {
+                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.createdDate), filter.getCreatedDateFrom()) );
+                }
+                if (filter.getCreatedDateTo() != null) {
+                    predicate.getExpressions().add( cb.lessThanOrEqualTo(root.get(MerchantOrder_.createdDate), filter.getCreatedDateTo()) );
+                }
+
+                if (filter.getPaymentDateFrom() != null) {
+                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.paymentDate), filter.getPaymentDateFrom()) );
+                }
+                if (filter.getPaymentDateTo() != null) {
+                    predicate.getExpressions().add( cb.lessThanOrEqualTo(root.get(MerchantOrder_.paymentDate), filter.getPaymentDateTo()) );
+                }
+
+                if (filter.getAmountFrom() != null) {
+                    predicate.getExpressions().add( cb.greaterThanOrEqualTo(root.get(MerchantOrder_.amount), filter.getAmountFrom()) );
+                }
+                if (filter.getAmountTo() != null) {
+                    predicate.getExpressions().add( cb.lessThanOrEqualTo(root.get(MerchantOrder_.amount), filter.getAmountTo()) );
+                }
+
+                if (filter.getDeviceId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.deviceId), filter.getDeviceId()) );
+                }
+                if (filter.getMerchantId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.merchant), filter.getMerchantId()) );
+                }
+                if (filter.getTerminalId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.terminal), filter.getTerminalId()) );
+                }
+                if (filter.getClientId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.client), filter.getClientId()) );
+                }
+                if (filter.getSessionId() != null) {
+                    predicate.getExpressions().add( cb.equal(root.get(MerchantOrder_.sessionId), filter.getSessionId()) );
+                }
                 return predicate;
             }
         };
