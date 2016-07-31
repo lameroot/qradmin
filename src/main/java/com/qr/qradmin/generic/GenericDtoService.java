@@ -13,9 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-/**
- * Created by Smirnov_Y on 18.06.2015.
- */
 public abstract class GenericDtoService<E, EDto> {
 
     @Resource

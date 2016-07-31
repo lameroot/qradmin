@@ -12,7 +12,6 @@ import org.springframework.core.convert.converter.Converter;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 public class StringToFilterConverter implements Converter<String, Filter> {
@@ -25,7 +24,8 @@ public class StringToFilterConverter implements Converter<String, Filter> {
     public Filter convert(String source) {
         if (StringUtils.isBlank(source)) return null;
         try {
-            Map<String, String> filters = objectMapper.readValue(source, new TypeReference<Map>() {});
+            Map<String, String> filters = objectMapper.readValue(source, new TypeReference<Map>() {
+            });
             return new Filter(filters);
         } catch (IOException e) {
             logger.error("wrong filter format", e);

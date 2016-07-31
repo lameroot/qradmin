@@ -1,7 +1,6 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.UserDto;
-import com.qr.qradmin.dto.filter.UserFilterDto;
 import com.qr.qradmin.filter.UserFilter;
 import com.qr.qradmin.generic.ElementResponse;
 import com.qr.qradmin.generic.EntityFilter;

@@ -1,7 +1,6 @@
 package com.qr.qradmin.controller;
 
 import com.qr.qradmin.dto.entity.UserDto;
-import com.qr.qradmin.dto.filter.UserFilterDto;
 import com.qr.qradmin.generic.CrudOperation;
 import com.qr.qradmin.generic.GenericController;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -23,7 +22,7 @@ import java.util.Collections;
 public class UserController extends GenericController<User, UserDto> {
 
     @PostConstruct
-    public void init(){
+    public void init() {
         supportedOperations.put(CrudOperation.GET_ONE, Collections.emptyList());
         supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.emptyList());
         supportedOperations.put(CrudOperation.CREATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));

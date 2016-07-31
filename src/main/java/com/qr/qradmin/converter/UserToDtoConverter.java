@@ -2,12 +2,7 @@ package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.UserDto;
 import org.springframework.core.convert.converter.Converter;
-import ru.qrhandshake.qrpos.domain.EnumGrantedAuthority;
-import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.User;
-
-import java.util.Date;
-import java.util.List;
 
 public class UserToDtoConverter implements Converter<User, UserDto> {
 

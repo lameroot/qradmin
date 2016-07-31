@@ -1,11 +1,10 @@
 package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.MerchantOrderDto;
-import com.qr.qradmin.dto.entity.UserDto;
 import org.springframework.core.convert.converter.Converter;
-import ru.qrhandshake.qrpos.domain.*;
+import ru.qrhandshake.qrpos.domain.Client;
+import ru.qrhandshake.qrpos.domain.MerchantOrder;
 
-import java.util.Date;
 import java.util.Optional;
 
 public class MerchantOrderToDtoConverter implements Converter<MerchantOrder, MerchantOrderDto> {

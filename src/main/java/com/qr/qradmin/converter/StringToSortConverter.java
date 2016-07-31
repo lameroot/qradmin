@@ -25,7 +25,8 @@ public class StringToSortConverter implements Converter<String, Sort> {
         if (source == null) return null;
         List<SortDto> sortDtos;
         try {
-            sortDtos = objectMapper.readValue(source, new TypeReference<List<SortDto>>() {});
+            sortDtos = objectMapper.readValue(source, new TypeReference<List<SortDto>>() {
+            });
         } catch (IOException e) {
             logger.error("wrong sort format", e);
             return null;

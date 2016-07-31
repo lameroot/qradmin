@@ -2,7 +2,6 @@ package com.qr.qradmin.dto.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.qrhandshake.qrpos.domain.EnumGrantedAuthority;
-import ru.qrhandshake.qrpos.domain.Merchant;
 
 import java.util.ArrayList;
 import java.util.Date;

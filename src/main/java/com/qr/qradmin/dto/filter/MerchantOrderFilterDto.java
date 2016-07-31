@@ -1,11 +1,8 @@
 package com.qr.qradmin.dto.filter;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.qr.qradmin.generic.PageableFilterDto;
-import ru.qrhandshake.qrpos.domain.*;
 
 import java.util.Date;
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MerchantOrderFilterDto {

@@ -1,10 +1,8 @@
 package com.qr.qradmin.filter;
 
 import com.qr.qradmin.generic.EntityFilter;
-import com.qr.qradmin.generic.PageableFilterDto;
 import ru.qrhandshake.qrpos.domain.*;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 

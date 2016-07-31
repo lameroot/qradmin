@@ -3,10 +3,7 @@ package com.qr.qradmin.dto.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.qrhandshake.qrpos.domain.*;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MerchantOrderDto {

@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qr.qradmin.model.Filter;
 import org.springframework.data.domain.Sort;
 
-import java.util.Map;
-
 /**
  * Created by Smirnov_Y on 25.08.2015.
  */
