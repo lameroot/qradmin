@@ -20,7 +20,7 @@ import java.util.Collections;
 
 @Controller
 @RequestMapping("/api/order")
-public class OrderController extends GenericController<MerchantOrder, MerchantOrderDto, MerchantOrderFilterDto> {
+public class OrderController extends GenericController<MerchantOrder, MerchantOrderDto> {
 
     @PostConstruct
     public void init(){
@@ -49,7 +49,7 @@ public class OrderController extends GenericController<MerchantOrder, MerchantOr
     }
 
     @Override
-    protected GenericDtoService<MerchantOrder, MerchantOrderDto, MerchantOrderFilterDto> getDtoService() {
+    protected GenericDtoService<MerchantOrder, MerchantOrderDto> getDtoService() {
         return merchantOrderDtoService;
     }
 }

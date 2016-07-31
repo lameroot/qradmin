@@ -1,7 +1,7 @@
 package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qr.qradmin.model.FilterDto;
+import com.qr.qradmin.model.Filter;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,19 +10,20 @@ import org.springframework.data.domain.Sort;
 import javax.annotation.Resource;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
  * Created by Smirnov_Y on 18.06.2015.
  */
-public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilterDto> {
+public abstract class GenericDtoService<E, EDto> {
 
     @Resource
     protected ConversionService conversionService;
     @Resource
     protected ObjectMapper objectMapper;
 
-    protected abstract EntityFilter buildFilter(EFilterDto filterDto);
+    protected abstract EntityFilter buildFilter(Map<String, String> filter);
 
     protected abstract Class<E> getEClass();
 
@@ -34,12 +35,13 @@ public abstract class GenericDtoService<E, EDto, EFilterDto extends PageableFilt
         return new ElementResponse(conversionService.convert(getEntityService().get(id), getEDtoClass()));
     }
 
-    public PageResponse get(EFilterDto filterDto) {
+    public PageResponse get(PageableFilterDto filterDto) {
         Sort sort = Optional
                 .ofNullable(filterDto.getSort())
                 .orElse(new Sort(Sort.Direction.DESC, "id"));
         PageRequest pageRequest = new PageRequest(filterDto.getPage() - 1, filterDto.getLimit(), sort);
-        Page<E> entityPage = getEntityService().get(buildFilter(filterDto), pageRequest);
+        Map<String, String> filter = Optional.ofNullable(filterDto.getFilter()).map(Filter::getFilters).orElse(null);
+        Page<E> entityPage = getEntityService().get(buildFilter(filter), pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
             dtos.add(conversionService.convert(e, getEDtoClass()));

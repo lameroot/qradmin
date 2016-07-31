@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MerchantOrderFilterDto extends PageableFilterDto {
+public class MerchantOrderFilterDto {
     private Long id;
     private String orderId;
     private String externalId;
@@ -24,11 +24,11 @@ public class MerchantOrderFilterDto extends PageableFilterDto {
     private Long terminalId;
     private Long clientId;
     private String sessionId;
-    private List<IntegrationSupport> integrationSupports;
-    private List<OrderStatus> orderStatuses;
-    private List<PaymentSecureType> paymentSecureTypes;
-    private List<PaymentWay> paymentWays;
-    private List<PaymentType> paymentTypes;
+//    private List<IntegrationSupport> integrationSupports;
+//    private List<OrderStatus> orderStatuses;
+//    private List<PaymentSecureType> paymentSecureTypes;
+//    private List<PaymentWay> paymentWays;
+//    private List<PaymentType> paymentTypes;
 
     public Long getId() {
         return id;
@@ -150,43 +150,43 @@ public class MerchantOrderFilterDto extends PageableFilterDto {
         this.sessionId = sessionId;
     }
 
-    public List<IntegrationSupport> getIntegrationSupports() {
-        return integrationSupports;
-    }
-
-    public void setIntegrationSupports(List<IntegrationSupport> integrationSupports) {
-        this.integrationSupports = integrationSupports;
-    }
-
-    public List<OrderStatus> getOrderStatuses() {
-        return orderStatuses;
-    }
-
-    public void setOrderStatuses(List<OrderStatus> orderStatuses) {
-        this.orderStatuses = orderStatuses;
-    }
-
-    public List<PaymentSecureType> getPaymentSecureTypes() {
-        return paymentSecureTypes;
-    }
-
-    public void setPaymentSecureTypes(List<PaymentSecureType> paymentSecureTypes) {
-        this.paymentSecureTypes = paymentSecureTypes;
-    }
-
-    public List<PaymentWay> getPaymentWays() {
-        return paymentWays;
-    }
-
-    public void setPaymentWays(List<PaymentWay> paymentWays) {
-        this.paymentWays = paymentWays;
-    }
-
-    public List<PaymentType> getPaymentTypes() {
-        return paymentTypes;
-    }
-
-    public void setPaymentTypes(List<PaymentType> paymentTypes) {
-        this.paymentTypes = paymentTypes;
-    }
+//    public List<IntegrationSupport> getIntegrationSupports() {
+//        return integrationSupports;
+//    }
+//
+//    public void setIntegrationSupports(List<IntegrationSupport> integrationSupports) {
+//        this.integrationSupports = integrationSupports;
+//    }
+//
+//    public List<OrderStatus> getOrderStatuses() {
+//        return orderStatuses;
+//    }
+//
+//    public void setOrderStatuses(List<OrderStatus> orderStatuses) {
+//        this.orderStatuses = orderStatuses;
+//    }
+//
+//    public List<PaymentSecureType> getPaymentSecureTypes() {
+//        return paymentSecureTypes;
+//    }
+//
+//    public void setPaymentSecureTypes(List<PaymentSecureType> paymentSecureTypes) {
+//        this.paymentSecureTypes = paymentSecureTypes;
+//    }
+//
+//    public List<PaymentWay> getPaymentWays() {
+//        return paymentWays;
+//    }
+//
+//    public void setPaymentWays(List<PaymentWay> paymentWays) {
+//        this.paymentWays = paymentWays;
+//    }
+//
+//    public List<PaymentType> getPaymentTypes() {
+//        return paymentTypes;
+//    }
+//
+//    public void setPaymentTypes(List<PaymentType> paymentTypes) {
+//        this.paymentTypes = paymentTypes;
+//    }
 }

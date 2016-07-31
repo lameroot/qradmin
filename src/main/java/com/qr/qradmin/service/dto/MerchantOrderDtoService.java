@@ -1,56 +1,57 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.MerchantOrderDto;
-import com.qr.qradmin.dto.filter.MerchantOrderFilterDto;
 import com.qr.qradmin.filter.MerchantOrderFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
-import com.qr.qradmin.model.FilterDto;
 import com.qr.qradmin.service.entity.MerchantOrderService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import ru.qrhandshake.qrpos.domain.*;
+import ru.qrhandshake.qrpos.domain.MerchantOrder;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, MerchantOrderDto, MerchantOrderFilterDto> {
+public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, MerchantOrderDto> {
 
     @Resource
     private MerchantOrderService merchantOrderService;
 
     @Override
-    protected EntityFilter buildFilter(MerchantOrderFilterDto filterDto) {
-        MerchantOrderFilter filter = new MerchantOrderFilter();
-        filter.setId(filterDto.getId());
-        filter.setOrderId(filterDto.getOrderId());
-        filter.setExternalId(filterDto.getExternalId());
-        filter.setExternalOrderStatus(filterDto.getExternalOrderStatus());
+    protected EntityFilter buildFilter(Map<String, String> filter) {
+        MerchantOrderFilter entityFilter = new MerchantOrderFilter();
+        if (CollectionUtils.isEmpty(filter)) {
+            return entityFilter;
+        }
+        entityFilter.setId(Optional.ofNullable(filter.get("id")).map(Long::valueOf).orElse(null));
+        entityFilter.setOrderId(filter.get("orderId"));
+        entityFilter.setExternalId(filter.get("externalId"));
+        entityFilter.setExternalOrderStatus(filter.get("externalOrderStatus"));
 
-        filter.setCreatedDateFrom(filterDto.getCreatedDateFrom());
-        filter.setCreatedDateTo(filterDto.getCreatedDateTo());
+//        entityFilter.setCreatedDateFrom(filter.get("id"));
+//        entityFilter.setCreatedDateTo(filter.get("id"));
 
-        filter.setPaymentDateFrom(filterDto.getPaymentDateFrom());
-        filter.setPaymentDateTo(filterDto.getPaymentDateTo());
+//        entityFilter.setPaymentDateFrom(filter.get("id"));
+//        entityFilter.setPaymentDateTo(filter.get("id"));
 
-        filter.setAmountFrom(filterDto.getAmountFrom());
-        filter.setAmountTo(filterDto.getAmountTo());
+        entityFilter.setAmountFrom(Optional.ofNullable(filter.get("amountFrom")).map(Long::valueOf).orElse(null));
+        entityFilter.setAmountTo(Optional.ofNullable(filter.get("amountTo")).map(Long::valueOf).orElse(null));
 
-        filter.setDeviceId(filterDto.getDeviceId());
-        filter.setMerchantId(filterDto.getMerchantId());
-        filter.setTerminalId(filterDto.getTerminalId());
-        filter.setClientId(filterDto.getClientId());
-        filter.setSessionId(filterDto.getSessionId());
+        entityFilter.setDeviceId(filter.get("deviceId"));
+//        entityFilter.setMerchantId(filter.get("id"));
+//        entityFilter.setTerminalId(filter.get("id"));
+//        entityFilter.setClientId(filter.get("id"));
+        entityFilter.setSessionId(filter.get("sessionId"));
 
-        filter.setIntegrationSupports(filterDto.getIntegrationSupports());
-        filter.setOrderStatuses(filterDto.getOrderStatuses());
-        filter.setPaymentSecureTypes(filterDto.getPaymentSecureTypes());
-        filter.setPaymentWays(filterDto.getPaymentWays());
-        filter.setPaymentTypes(filterDto.getPaymentTypes());
-        return filter;
+//        filter.setIntegrationSupports(filterDto.getIntegrationSupports());
+//        filter.setOrderStatuses(filterDto.getOrderStatuses());
+//        filter.setPaymentSecureTypes(filterDto.getPaymentSecureTypes());
+//        filter.setPaymentWays(filterDto.getPaymentWays());
+//        filter.setPaymentTypes(filterDto.getPaymentTypes());
+        return entityFilter;
     }
 
     @Override

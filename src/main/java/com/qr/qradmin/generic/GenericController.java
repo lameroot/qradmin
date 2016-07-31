@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class GenericController<E, EDto, EFilterDto extends PageableFilterDto> {
+public abstract class GenericController<E, EDto> {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected final Map<CrudOperation, List<EnumGrantedAuthority>> supportedOperations = new HashMap<>();
@@ -27,7 +27,7 @@ public abstract class GenericController<E, EDto, EFilterDto extends PageableFilt
 
     protected abstract Validator getFilterValidator();
 
-    protected abstract GenericDtoService<E, EDto, EFilterDto> getDtoService();
+    protected abstract GenericDtoService<E, EDto> getDtoService();
 
     @Resource
     private ErrorService errorService;
@@ -45,7 +45,7 @@ public abstract class GenericController<E, EDto, EFilterDto extends PageableFilt
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     @Transactional
-    public Response get(EFilterDto pageableFilter, BindingResult result) throws BindException {
+    public Response get(PageableFilterDto pageableFilter, BindingResult result) throws BindException {
         checkForSupportedOperations(CrudOperation.GET_SEVERAL);
         genericPageableFilterDtoValidator.validate(pageableFilter, result);
         getFilterValidator().validate(pageableFilter, result);

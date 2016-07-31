@@ -1,8 +1,10 @@
 package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.qr.qradmin.model.FilterDto;
+import com.qr.qradmin.model.Filter;
 import org.springframework.data.domain.Sort;
+
+import java.util.Map;
 
 /**
  * Created by Smirnov_Y on 25.08.2015.
@@ -12,6 +14,7 @@ public class PageableFilterDto {
     private Integer page;
     private Integer limit;
     private Sort sort;
+    private Filter filter;
 
     public Integer getPage() {
         return page;
@@ -35,5 +38,13 @@ public class PageableFilterDto {
 
     public void setSort(Sort sort) {
         this.sort = sort;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public void setFilter(Filter filter) {
+        this.filter = filter;
     }
 }

@@ -7,16 +7,16 @@ import com.qr.qradmin.generic.ElementResponse;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
-import com.qr.qradmin.model.FilterDto;
 import com.qr.qradmin.service.entity.UserService;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.User;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Service
-public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterDto> {
+public class UserDtoService extends GenericDtoService<User, UserDto> {
 
     @Resource
     private UserService userService;
@@ -26,9 +26,9 @@ public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterD
     }
 
     @Override
-    protected EntityFilter buildFilter(UserFilterDto filterDto) {
-        UserFilter filter = new UserFilter();
-        return filter;
+    protected EntityFilter buildFilter(Map<String, String> filter) {
+        UserFilter entityFilter = new UserFilter();
+        return entityFilter;
     }
 
     @Override

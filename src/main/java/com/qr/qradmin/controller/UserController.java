@@ -20,7 +20,7 @@ import java.util.Collections;
 
 @Controller
 @RequestMapping("/api/user")
-public class UserController extends GenericController<User, UserDto, UserFilterDto> {
+public class UserController extends GenericController<User, UserDto> {
 
     @PostConstruct
     public void init(){
@@ -49,7 +49,7 @@ public class UserController extends GenericController<User, UserDto, UserFilterD
     }
 
     @Override
-    protected GenericDtoService<User, UserDto, UserFilterDto> getDtoService() {
+    protected GenericDtoService<User, UserDto> getDtoService() {
         return userDtoService;
     }
 }
