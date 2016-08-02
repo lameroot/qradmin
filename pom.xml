@@ -384,9 +384,6 @@
             <properties>
                 <properties.file.application>classpath:config/properties/application.properties</properties.file.application>
                 <properties.file.datasource>classpath:config/properties/datasource.properties</properties.file.datasource>
-                <properties.file.mail>classpath:config/properties/mail.properties</properties.file.mail>
-                <properties.file.social>classpath:config/properties/social.properties</properties.file.social>
-                <properties.file.validator>classpath:config/properties/validator.properties</properties.file.validator>
             </properties>
         </profile>
         <profile>
@@ -394,9 +391,6 @@
             <properties>
                 <properties.file.application>file:#{systemProperties[JETTY_HOME]}/config/application.properties</properties.file.application>
                 <properties.file.datasource>file:#{systemProperties[JETTY_HOME]}/config/datasource.properties</properties.file.datasource>
-                <properties.file.mail>file:#{systemProperties[JETTY_HOME]}/config/mail.properties</properties.file.mail>
-                <properties.file.social>file:#{systemProperties[JETTY_HOME]}/config/social.properties</properties.file.social>
-                <properties.file.validator>file:#{systemProperties[JETTY_HOME]}/config/validator.properties</properties.file.validator>
             </properties>
         </profile>
     </profiles>
