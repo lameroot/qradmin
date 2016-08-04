@@ -1,0 +1,8 @@
+.project
+.classpath
+.settings
+
+*.iml
+/.idea/
+/target/
+/src/main/webapp/static/build/
