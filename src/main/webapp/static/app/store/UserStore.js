@@ -14,7 +14,7 @@ Ext.define('QrAdmin.store.UserStore', {
 
     proxy: {
         type: 'rest',
-        url: 'api/user',
+        url: '/api/user',
         extraParams: {
             size: 10,
             filter: {}
