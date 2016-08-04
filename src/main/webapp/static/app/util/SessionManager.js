@@ -5,9 +5,9 @@ Ext.define('QrAdmin.util.SessionManager', {
     authenticated: false,
     alternateClassName: 'SessionManager',
     urls: {
-        loginUrl: '/api/security/login',
-        logoutUrl: '/api/security/logout',
-        userInfoUrl: '/api/info/userInfo'
+        loginUrl: 'api/security/login',
+        logoutUrl: 'api/security/logout',
+        userInfoUrl: 'api/info/userInfo'
     },
     userInfo: null,
     
