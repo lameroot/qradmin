@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:resources mapping="/**" location="/static/"/>
+    <mvc:resources mapping="/**" location="${application.static.path}"/>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="${image.filesize.max.bytes}"/>
