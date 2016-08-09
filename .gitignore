@@ -5,4 +5,3 @@
 *.iml
 /.idea/
 /target/
-/src/main/webapp/static/build/
