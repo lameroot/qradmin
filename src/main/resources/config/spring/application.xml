@@ -12,19 +12,4 @@
     <context:component-scan base-package="com.qr.qradmin"/>
     <aop:config proxy-target-class="true"/>
 
-    <mvc:annotation-driven conversion-service="conversionService"/>
-
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="converters">
-            <set>
-                <bean class="com.qr.qradmin.converter.UserInfoToDtoConverter"/>
-                <bean class="com.qr.qradmin.converter.UserToDtoConverter"/>
-                <bean class="com.qr.qradmin.converter.UserToEntityConverter"/>
-                <bean class="com.qr.qradmin.converter.MerchantOrderToDtoConverter"/>
-                <bean class="com.qr.qradmin.converter.StringToSortConverter"/>
-                <bean class="com.qr.qradmin.converter.StringToFilterConverter"/>
-            </set>
-        </property>
-    </bean>
-
 </beans>

@@ -21,7 +21,8 @@
         </property>
     </bean>
 
-    <mvc:annotation-driven>
+    <mvc:annotation-driven
+            conversion-service="conversionService">
         <mvc:message-converters>
             <bean id="jacksonMessageConverter"
                   class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -31,4 +32,16 @@
     </mvc:annotation-driven>
 
 
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.qr.qradmin.converter.StringToSortConverter"/>
+                <bean class="com.qr.qradmin.converter.StringToFilterConverter"/>
+                <bean class="com.qr.qradmin.converter.UserInfoToDtoConverter"/>
+                <bean class="com.qr.qradmin.converter.UserToDtoConverter"/>
+                <bean class="com.qr.qradmin.converter.UserToEntityConverter"/>
+                <bean class="com.qr.qradmin.converter.MerchantOrderToDtoConverter"/>
+            </set>
+        </property>
+    </bean>
 </beans>
