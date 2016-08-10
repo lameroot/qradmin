@@ -8,8 +8,8 @@ Ext.define('QrAdmin.model.Order', {
     idProperty: 'id',
     fields: [
         {type: 'string',    name: 'orderId'},
-        {type: 'string',    name: 'createdDate'},
-        {type: 'string',    name: 'paymentDate'},
+        {type: 'date',      name: 'createdDate', dateFormat: 'time'},
+        {type: 'date',      name: 'paymentDate', dateFormat: 'time'},
         {type: 'int',       name: 'amount'},
         {type: 'string',    name: 'description'},
         {type: 'string',    name: 'deviceId'},

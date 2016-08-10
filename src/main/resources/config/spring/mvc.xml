@@ -13,13 +13,7 @@
         <property name="maxUploadSize" value="${image.filesize.max.bytes}"/>
     </bean>
 
-    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
-        <property name="dateFormat">
-            <bean class="java.text.SimpleDateFormat">
-                <constructor-arg type="java.lang.String" value="${json.format.date}"></constructor-arg>
-            </bean>
-        </property>
-    </bean>
+    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <mvc:annotation-driven
             conversion-service="conversionService">
