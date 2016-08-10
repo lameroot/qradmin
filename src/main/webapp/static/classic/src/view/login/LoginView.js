@@ -9,27 +9,31 @@ Ext.define('QrAdmin.view.login.LoginView', {
     viewModel: {
         type: 'loginform'
     },
+    layout: 'ux.center',
 
-    items: [
-        {
-            xtype: 'textfield',
-            bind: '{login}',
-            fieldLabel: 'Username',
-            allowBlank: false
-        },
-        {
-            xtype: 'textfield',
-            bind: '{password}',
-            inputType: 'password',
-            fieldLabel: 'Password',
-            allowBlank: false
-        },
-        {
-            xtype: 'button',
-            text: 'Login',
-            listeners: {
-                click: 'onLoginButtonClick'
+    items: {
+        xtype: 'container',
+        items: [
+            {
+                xtype: 'textfield',
+                bind: '{login}',
+                fieldLabel: 'Username',
+                allowBlank: false
+            },
+            {
+                xtype: 'textfield',
+                bind: '{password}',
+                inputType: 'password',
+                fieldLabel: 'Password',
+                allowBlank: false
+            },
+            {
+                xtype: 'button',
+                text: 'Login',
+                listeners: {
+                    click: 'onLoginButtonClick'
+                }
             }
-        }
-    ]
+        ]
+    }
 });

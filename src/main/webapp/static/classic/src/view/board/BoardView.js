@@ -6,7 +6,8 @@ Ext.define('QrAdmin.view.board.BoardView', {
     requires: [
         'QrAdmin.view.board.BoardController',
         'QrAdmin.view.users.UsersView',
-        'QrAdmin.view.orders.OrdersView'
+        'QrAdmin.view.orders.OrdersView',
+        'QrAdmin.view.ordertemplates.OrderTemplatesView'
     ],
 
     ui: 'navigation',
@@ -46,6 +47,16 @@ Ext.define('QrAdmin.view.board.BoardView', {
             items: [
                 {
                     xtype: 'ordersView'
+                }
+            ]
+        },
+        {
+            title: 'Order templates',
+            iconCls: 'fa-users',
+            layout: 'fit',
+            items: [
+                {
+                    xtype: 'orderTemplatesView'
                 }
             ]
         }
