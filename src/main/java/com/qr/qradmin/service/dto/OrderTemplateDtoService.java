@@ -20,6 +20,7 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
     @Resource
     private OrderTemplateService orderTemplateService;
 
+
     @Override
     protected EntityFilter buildFilter(Map<String, String> filter) {
         OrderTemplateFilter entityFilter = new OrderTemplateFilter();

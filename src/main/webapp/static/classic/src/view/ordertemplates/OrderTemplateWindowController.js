@@ -4,7 +4,8 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindowController', {
 	alias: 'controller.orderTemplateWindow',
 
     onSaveButtonClick: function () {
-        var viewModel = this.getView().getViewModel();
+        var newOrderTemplate = this.getView().getViewModel().get('orderTemplate');
+        newOrderTemplate.save();
 	},
 
     onCloseButtonClick: function () {

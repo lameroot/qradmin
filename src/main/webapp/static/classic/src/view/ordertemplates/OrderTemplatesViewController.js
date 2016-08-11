@@ -7,6 +7,10 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
         'QrAdmin.view.ordertemplates.OrderTemplateWindow'
     ],
 
+    init: function() {
+
+    },
+
 	onFilterButtonClick: function () {
 		var ordersStore = this.getView().down('#orderTemplatesGrid').getStore();
 		var filter = this.getView().getViewModel().get('filter');
@@ -22,16 +26,20 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
     },
 
     onCreateOrderTemplateButtonClick: function() {
-        var ot = Ext.create({
+        var newOrderTemplate = Ext.create({
             xtype: 'orderTemplate'
         });
         Ext.create(
             {
                 xtype: 'orderTemplatesWindow',
                 viewModel: {
-                    data: ot
+                    data: {orderTemplate: newOrderTemplate}
                 }
             }
         ).show();
+    },
+
+    itemclick: function(d) {
+        debugger
     }
 });

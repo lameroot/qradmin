@@ -12,9 +12,9 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindow', {
 	layout: 'fit',
     modal: true,
     bodyPadding: 10,
-    // viewModel: {
-    //     xtype: 'orderTemplate'
-    // },
+    viewModel: {
+        data: {orderTemplate: {}}
+    },
 	items: {
 	    xtype: 'panel',
         items: [
