@@ -1,6 +1,6 @@
 Ext.define('QrAdmin.model.OrderTemplate', {
     extend: 'Ext.data.Model',
-
+    xtype: 'orderTemplate',
     requires: [
         'Ext.data.proxy.Rest'
     ],

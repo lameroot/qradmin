@@ -8,7 +8,7 @@ Ext.define('QrAdmin.view.orders.OrdersView', {
 	],
 	controller: 'ordersView',
 	layout: 'border',
-	viewModel: {filter: {}},
+	viewModel: {data:{filter: {}}},
 	items: [
 		{
 			bodyPadding: 5,

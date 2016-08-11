@@ -13,7 +13,7 @@ Ext.define('QrAdmin.view.board.BoardView', {
     ui: 'navigation',
     tabPosition: 'left',
     tabRotation: 0,
-    activeTab: 1,
+    activeTab: 2,
     header: {
         title: 'QR console',
         bodyPadding: 5,

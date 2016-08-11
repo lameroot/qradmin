@@ -8,7 +8,7 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
 	],
 	controller: 'orderTemplatesView',
 	layout: 'border',
-	viewModel: {filter: {}},
+	viewModel: {data:{filter: {}}},
 	items: [
 		{
 			bodyPadding: 5,
@@ -59,11 +59,23 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
 		{
 			xtype: 'gridpanel',
 			id: 'orderTemplatesGrid',
-			title: 'Order Templates',
 			region: 'center',
 			store: {
 				type: 'orderTemplate'
 			},
+            header: {
+                title: 'Order Templates',
+                items: [
+                    {
+                        xtype: 'button',
+                        text: 'Create',
+                        dock: 'right',
+                        listeners: {
+                            click: 'onCreateOrderTemplateButtonClick'
+                        }
+                    }
+                ]
+            },
 			columns: [
 				{text: 'ID', dataIndex: 'id'},
                 {text: 'terminal ID', dataIndex: 'terminalId'},

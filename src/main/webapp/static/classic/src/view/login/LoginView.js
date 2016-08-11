@@ -3,11 +3,10 @@ Ext.define('QrAdmin.view.login.LoginView', {
     xtype: 'loginView',
     controller: 'login',
     requires: [
-        'QrAdmin.view.login.LoginController',
-        'QrAdmin.view.login.LoginFormViewModel'
+        'QrAdmin.view.login.LoginController'
     ],
     viewModel: {
-        type: 'loginform'
+        data: {}
     },
     layout: 'ux.center',
 
