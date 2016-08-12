@@ -83,7 +83,10 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
                 {text: 'amount', dataIndex: 'amount'},
                 {text: 'name', dataIndex: 'name'},
                 {text: 'description', dataIndex: 'description'}
-			]
+			],
+			listeners: {
+				itemclick: 'onItemClicked'
+			}
 		}
 	]
 });

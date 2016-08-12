@@ -33,13 +33,26 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
             {
                 xtype: 'orderTemplatesWindow',
                 viewModel: {
-                    data: {orderTemplate: newOrderTemplate}
+                    data: {
+						orderTemplate: newOrderTemplate,
+						newItem: true
+					}
                 }
             }
         ).show();
     },
 
-    itemclick: function(d) {
-        debugger
+	onItemClicked: function(grid, record, item, index) {
+		Ext.create(
+			{
+				xtype: 'orderTemplatesWindow',
+				viewModel: {
+					data: {
+						orderTemplate: record,
+						newItem: false
+					}
+				}
+			}
+		).show();
     }
 });
