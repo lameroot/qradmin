@@ -21,7 +21,7 @@ public class OrderTemplateToEntityConverter implements Converter<OrderTemplateDt
         }
         orderTemplate.setAmount(orderTemplateDto.getAmount());
         orderTemplate.setName(orderTemplateDto.getName());
-        orderTemplate.setDescription(orderTemplate.getDescription());
+        orderTemplate.setDescription(orderTemplateDto.getDescription());
 
         return orderTemplate;
     }

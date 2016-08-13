@@ -24,22 +24,38 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
 			},
 			minWidth: 295,
 			items: [
-				// {
-				// 	xtype: 'fieldset',
-				// 	title: 'creation date',
-				// 	items: [
-				// 		{
-				// 			xtype: 'textfield',
-				// 			fieldLabel: 'from',
-				// 			bind: '{filter.createdDateFrom}'
-				// 		},
-				// 		{
-				// 			xtype: 'textfield',
-				// 			fieldLabel: 'to',
-				// 			bind: '{filter.createdDateTo}'
-				// 		}
-				// 	]
-				// }
+				{
+					xtype: 'fieldset',
+					title: 'amount',
+					items: [
+						{
+							xtype: 'textfield',
+							fieldLabel: 'from',
+							bind: '{filter.amountFrom}'
+						},
+						{
+							xtype: 'textfield',
+							fieldLabel: 'to',
+							bind: '{filter.amountTo}'
+						}
+					]
+				},
+				{
+					xtype: 'fieldset',
+					title: 'parameters',
+					items: [
+						{
+							xtype: 'textfield',
+							fieldLabel: 'name',
+							bind: '{filter.name}'
+						},
+						{
+							xtype: 'textfield',
+							fieldLabel: 'terminal ID',
+							bind: '{filter.terminalId}'
+						}
+					]
+				}
 			],
 			buttons: [
 				{
@@ -78,11 +94,11 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
             },
 			columns: [
 				{text: 'ID', dataIndex: 'id'},
-                {text: 'terminal ID', dataIndex: 'terminalId'},
-                {text: 'merchant ID', dataIndex: 'merchantId'},
+                {text: 'terminal ID', dataIndex: 'terminalId', sortable: false},
+                {text: 'merchant ID', dataIndex: 'merchantId', sortable: false},
                 {text: 'amount', dataIndex: 'amount'},
                 {text: 'name', dataIndex: 'name'},
-                {text: 'description', dataIndex: 'description'}
+                {text: 'description', dataIndex: 'description', flex: 1  }
 			],
 			listeners: {
 				itemclick: 'onItemClicked'

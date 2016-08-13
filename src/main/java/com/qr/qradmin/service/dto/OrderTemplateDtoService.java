@@ -30,8 +30,8 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
         entityFilter.setAmountFrom(Optional.ofNullable(filter.get("amountFrom")).map(Long::valueOf).orElse(null));
         entityFilter.setAmountTo(Optional.ofNullable(filter.get("amountTo")).map(Long::valueOf).orElse(null));
 
-        entityFilter.setMerchant_id(Optional.ofNullable(filter.get("merchantId")).map(Long::valueOf).orElse(null));
-        entityFilter.setMerchant_id(Optional.ofNullable(filter.get("terminalId")).map(Long::valueOf).orElse(null));
+        entityFilter.setTerminalId(Optional.ofNullable(filter.get("terminalId")).map(Long::valueOf).orElse(null));
+        entityFilter.setName(Optional.ofNullable(filter.get("name")).orElse(null));
         return entityFilter;
     }
 

@@ -39,12 +39,12 @@ public class OrderTemplateService extends GenericEntityService<OrderTemplate> {
                     predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get(OrderTemplate_.amount), filter.getAmountTo()));
                 }
 
-//                if (filter.getMerchant_id() != null) {
-//                    predicate.getExpressions().add(cb.equal(root.get(OrderTemplate_.id), filter.getId()));
-//                }
+                if (filter.getTerminalId() != null) {
+                    predicate.getExpressions().add(cb.equal(root.get(OrderTemplate_.terminal), filter.getTerminalId()));
+                }
 
-                if (filter.getTerminal_id() != null) {
-                    predicate.getExpressions().add(cb.equal(root.get(OrderTemplate_.terminal), filter.getTerminal_id()));
+                if (filter.getName() != null) {
+                    predicate.getExpressions().add(cb.equal(root.get(OrderTemplate_.name), filter.getName()));
                 }
 
                 return predicate;

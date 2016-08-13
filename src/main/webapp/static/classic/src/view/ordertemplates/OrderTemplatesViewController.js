@@ -8,10 +8,6 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
         'QrAdmin.util.SessionManager'
     ],
 
-    init: function() {
-
-    },
-
 	onFilterButtonClick: function () {
 		var ordersStore = this.getView().down('#orderTemplatesGrid').getStore();
 		var filter = this.getView().getViewModel().get('filter');
