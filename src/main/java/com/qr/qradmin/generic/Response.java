@@ -1,7 +1,7 @@
 package com.qr.qradmin.generic;
 
 public class Response {
-    private boolean error = false;
+    private boolean successful = true;
     private String message = "successful";
     private String code = "0";
 
@@ -10,18 +10,18 @@ public class Response {
     public Response() {
     }
 
-    public Response(boolean error, String message, String code) {
-        this.error = error;
+    public Response(boolean successful, String message, String code) {
+        this.successful = successful;
         this.message = message;
         this.code = code;
     }
 
-    public boolean isError() {
-        return error;
+    public boolean isSuccessful() {
+        return successful;
     }
 
-    public void setError(boolean error) {
-        this.error = error;
+    public void setSuccessful(boolean successful) {
+        this.successful = successful;
     }
 
     public String getMessage() {

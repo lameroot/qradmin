@@ -9,9 +9,11 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindowController', {
         orderTemplate.save({
             success: function (record) {
                 ths.getView().getViewModel().set('orderTemplate', record);
-                Ext.Msg.alert('Info', 'Order template saved');
+                Ext.Msg.alert('Successful', 'Order template saved');
+            },
+            failure: function (record) {
+                Ext.Msg.alert('Error', 'Order template not saved');
             }
-            //TODO unsucccessful  Ext.Msg.alert('Info', 'Order template saved');
         });
 	},
 

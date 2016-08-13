@@ -55,8 +55,7 @@ public abstract class GenericDtoService<E, EDto> {
 
     public Response update(Long id, EDto dto) {
         E e = conversionService.convert(dto, getEClass());
-        getEntityService().update(id, e);
-        return new ElementResponse(conversionService.convert(getEntityService().create(e), getEDtoClass()));
+        return new ElementResponse(conversionService.convert(getEntityService().update(id, e), getEDtoClass()));
     }
 
     public Response delete(Long id) {

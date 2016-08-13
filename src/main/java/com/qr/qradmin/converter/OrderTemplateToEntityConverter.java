@@ -16,7 +16,9 @@ public class OrderTemplateToEntityConverter implements Converter<OrderTemplateDt
     public OrderTemplate convert(OrderTemplateDto orderTemplateDto) {
         if (orderTemplateDto == null) return null;
         OrderTemplate orderTemplate = new OrderTemplate();
-        orderTemplate.setTerminal(terminalService.get(orderTemplateDto.getTerminalId()));
+        if (orderTemplateDto.getTerminalId() != null){
+            orderTemplate.setTerminal(terminalService.get(orderTemplateDto.getTerminalId()));
+        }
         orderTemplate.setAmount(orderTemplateDto.getAmount());
         orderTemplate.setName(orderTemplateDto.getName());
         orderTemplate.setDescription(orderTemplate.getDescription());

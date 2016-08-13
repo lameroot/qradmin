@@ -16,7 +16,7 @@ public class ErrorService {
 
     public Response generateErrorResponse(ErrorCode errorCode, Object... args) {
         Response response = new Response();
-        response.setError(true);
+        response.setSuccessful(false);
         response.setCode(errorCode.getCode());
         if (args.length > 0) {
             Formatter formatter = new Formatter();
@@ -30,7 +30,7 @@ public class ErrorService {
     public Response generateErrorResponse(BindingResult result) {
         ObjectError error = result.getAllErrors().get(0);
         Response response = new Response();
-        response.setError(true);
+        response.setSuccessful(false);
         response.setCode(error.getCode());
         response.setMessage(error.getDefaultMessage());
         return response;

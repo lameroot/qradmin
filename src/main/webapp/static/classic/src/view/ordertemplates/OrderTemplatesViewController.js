@@ -4,7 +4,8 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
 	alias: 'controller.orderTemplatesView',
 
     requires: [
-        'QrAdmin.view.ordertemplates.OrderTemplateWindow'
+        'QrAdmin.view.ordertemplates.OrderTemplateWindow',
+        'QrAdmin.util.SessionManager'
     ],
 
     init: function() {
@@ -34,7 +35,8 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
                 xtype: 'orderTemplatesWindow',
                 viewModel: {
                     data: {
-						orderTemplate: newOrderTemplate
+						orderTemplate: newOrderTemplate,
+                        terminalId: SessionManager.getUserInfo().terminalIds[0]
 					}
                 }
             }
@@ -47,7 +49,8 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
 				xtype: 'orderTemplatesWindow',
 				viewModel: {
 					data: {
-						orderTemplate: record
+						orderTemplate: record,
+                        terminalId: SessionManager.getUserInfo().terminalIds[0]
 					}
 				}
 			}

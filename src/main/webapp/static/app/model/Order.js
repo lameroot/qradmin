@@ -29,7 +29,8 @@ Ext.define('QrAdmin.model.Order', {
         url: 'api/order',
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            successProperty: 'successful'
         }
     }
 });

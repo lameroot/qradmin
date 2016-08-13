@@ -23,7 +23,8 @@ Ext.define('QrAdmin.model.User', {
         url: 'api/user',
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            successProperty: 'successful'
         }
     }
 });

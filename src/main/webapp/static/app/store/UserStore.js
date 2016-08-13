@@ -21,7 +21,8 @@ Ext.define('QrAdmin.store.UserStore', {
         },
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            successProperty: 'successful'
         }
     }
 });

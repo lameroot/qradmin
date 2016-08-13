@@ -30,7 +30,8 @@ Ext.define('QrAdmin.model.OrderTemplate', {
         url: 'api/orderTemplate',
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            successProperty: 'successful'
         }
         // ,
         // actionMethods: {

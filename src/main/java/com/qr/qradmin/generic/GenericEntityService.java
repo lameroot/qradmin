@@ -34,8 +34,7 @@ public abstract class GenericEntityService<E> {
         E target = getRepository().findOne(id);
         if (target == null) return null;
         BeanUtils.updateBean(source, target);
-        getRepository().save(target);
-        return target;
+        return getRepository().save(target);
     }
 
     public E update(E source) {

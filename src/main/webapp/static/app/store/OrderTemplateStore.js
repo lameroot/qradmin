@@ -14,7 +14,8 @@ Ext.define('QrAdmin.store.OrderTemplateStore', {
         url: 'api/orderTemplate',
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            successProperty: 'successful'
         }
     }
 });
