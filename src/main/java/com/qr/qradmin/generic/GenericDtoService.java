@@ -50,13 +50,13 @@ public abstract class GenericDtoService<E, EDto> {
     public Response create(EDto dto) {
         E e = conversionService.convert(dto, getEClass());
         getEntityService().create(e);
-        return Response.SUCCESSFUL;
+        return new ElementResponse(conversionService.convert(getEntityService().create(e), getEDtoClass()));
     }
 
     public Response update(Long id, EDto dto) {
         E e = conversionService.convert(dto, getEClass());
         getEntityService().update(id, e);
-        return Response.SUCCESSFUL;
+        return new ElementResponse(conversionService.convert(getEntityService().create(e), getEDtoClass()));
     }
 
     public Response delete(Long id) {
