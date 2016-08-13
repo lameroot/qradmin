@@ -1,24 +1,21 @@
 Ext.define('QrAdmin.view.ordertemplates.QrCode', {
     extend: 'Ext.Component',
-    extend: 'Ext.form.field.Base',
     xtype: 'qrCode',
     config:{
-        qrText: 'someText',
+        qrText: null,
         emptyHtml: '<h1>Qr code will be here</h1>'
     },
-    click: function () {
-        var qrText = this.getQrText();
-        this.update(qrText);
-    },
     setQrText: function (qrText) {
+        console.log('qrText = ' + qrText);
         this.qrText = qrText;
         var ths = this;
         if (qrText) {
             Ext.Loader.loadScript({
                     url: 'external/qrcode.js',
                     onLoad: function () {
+                        console.log('show qr');
                         var qr = qrcode(4, 'M');
-                        qr.addData(qrText);
+                        qr.addData(ths.qrText);
                         qr.make();
                         var qrCodeTag = qr.createImgTag(4);
                         ths.update(qrCodeTag);
@@ -26,6 +23,7 @@ Ext.define('QrAdmin.view.ordertemplates.QrCode', {
                 }
             );
         } else {
+            console.log('show message');
             var qrCodeTag = this.getEmptyHtml();
             ths.update(qrCodeTag);
         }
