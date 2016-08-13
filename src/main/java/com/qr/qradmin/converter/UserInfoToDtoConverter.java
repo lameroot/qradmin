@@ -7,6 +7,7 @@ import ru.qrhandshake.qrpos.domain.EnumGrantedAuthority;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserInfoToDtoConverter implements Converter<UserInfo, UserInfoDto> {
 
@@ -16,11 +17,9 @@ public class UserInfoToDtoConverter implements Converter<UserInfo, UserInfoDto> 
         UserInfoDto userInfoDto = new UserInfoDto();
         userInfoDto.setId(userInfo.getId());
         userInfoDto.setName(userInfo.getName());
-        List<String> roles = new LinkedList<>();
-        for (EnumGrantedAuthority authority : userInfo.getRoles()) {
-            roles.add(authority.getAuthority());
-        }
-        userInfoDto.setRoles(roles);
+        userInfoDto.setRoles(userInfo.getRoles().stream().map(Enum::name).collect(Collectors.toList()));
+        userInfoDto.setMerchantId(userInfo.getMerchantId());
+        userInfoDto.setTerminalIds(userInfo.getTerminalIds());
         return userInfoDto;
     }
 }
