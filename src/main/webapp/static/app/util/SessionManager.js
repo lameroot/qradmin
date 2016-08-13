@@ -20,7 +20,6 @@ Ext.define('QrAdmin.util.SessionManager', {
     },
 
     login: function (login, password) {
-        console.log('login');
         var ths = this;
         return new Ext.Promise(function (resolve, reject) {
             Ext.Ajax.request({
@@ -48,7 +47,6 @@ Ext.define('QrAdmin.util.SessionManager', {
     },
 
     logout: function() {
-        console.log('logout');
         var ths = this;
         return new Ext.Promise(function (resolve, reject) {
             Ext.Ajax.request({
@@ -65,7 +63,6 @@ Ext.define('QrAdmin.util.SessionManager', {
     },
     
     updateUserInfo: function () {
-        console.log('updateUserInfo');
         var ths = this;
         return new Ext.Promise(function (resolve, reject) {
             Ext.Ajax.request({
@@ -83,7 +80,6 @@ Ext.define('QrAdmin.util.SessionManager', {
     },
 
     getUserInfo: function() {
-        console.log('getUserInfo');
         return this.userInfo;
     },
 

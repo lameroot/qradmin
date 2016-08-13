@@ -53,6 +53,10 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindow', {
                 bind: '{orderTemplate.description}',
                 fieldLabel: 'description',
                 allowBlank: false
+            },
+            {
+                xtype: 'qrCode',
+                bind: {qrText: '{orderTemplate.id}'}
             }
         ]
     },

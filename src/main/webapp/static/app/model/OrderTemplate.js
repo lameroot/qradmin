@@ -12,7 +12,15 @@ Ext.define('QrAdmin.model.OrderTemplate', {
         {type: 'int',   name: 'merchantId', persist: false},
         {type: 'int',   name: 'amount'},
         {type: 'string',    name: 'name'},
-        {type: 'string',    name: 'description'}
+        {type: 'string',    name: 'description'},
+        {
+            type: 'string',   
+            name: 'paymentLink',
+            calculate: function (data) {
+                return 'http://qwe.ddns.net/qrapi/' + data.id;
+            }
+        }
+
     ],
 
     proxy: {

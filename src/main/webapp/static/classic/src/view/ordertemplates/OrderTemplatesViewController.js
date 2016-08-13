@@ -34,8 +34,7 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
                 xtype: 'orderTemplatesWindow',
                 viewModel: {
                     data: {
-						orderTemplate: newOrderTemplate,
-						newItem: true
+						orderTemplate: newOrderTemplate
 					}
                 }
             }
@@ -48,8 +47,7 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
 				xtype: 'orderTemplatesWindow',
 				viewModel: {
 					data: {
-						orderTemplate: record,
-						newItem: false
+						orderTemplate: record
 					}
 				}
 			}
