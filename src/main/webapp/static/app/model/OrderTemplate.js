@@ -26,11 +26,16 @@ Ext.define('QrAdmin.model.OrderTemplate', {
     ],
 
     proxy: {
-        type: 'ajax',
+        type: 'rest',
         url: 'api/orderTemplate',
         reader: {
             type: 'json',
             rootProperty: 'data'
         }
+        // ,
+        // actionMethods: {
+        //     create : 'POST',
+        //     update : 'PUT'
+        // }
     }
 });

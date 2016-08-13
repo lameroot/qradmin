@@ -2,7 +2,6 @@ package com.qr.qradmin.validator.entity;
 
 import com.qr.qradmin.dto.entity.OrderTemplateDto;
 import com.qr.qradmin.service.entity.UserService;
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,11 +27,12 @@ public class OrderTemplateDtoValidator implements Validator {
     @Override
     @Transactional(readOnly = true)
     public void validate(Object target, Errors errors) {
-        OrderTemplateDto orderTemplateDto = (OrderTemplateDto)target;
+        OrderTemplateDto orderTemplateDto = (OrderTemplateDto) target;
         User user = userService.get(SecurityUtils.getCurrentUser().getId());
         Hibernate.initialize(user.getMerchant());
         Hibernate.initialize(user.getMerchant().getTerminals());
-        if (!user.getMerchant().getTerminals()
+        if (orderTemplateDto.getTerminalId() == null
+                || !user.getMerchant().getTerminals()
                 .stream()
                 .anyMatch(terminal -> Objects.equals(terminal.getId(), orderTemplateDto.getTerminalId()))) {
             errors.reject("OrderTemplateDto.terminalId.NotFound", null, null);
