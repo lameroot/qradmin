@@ -20,43 +20,45 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindow', {
         items: [
             {
                 xtype: 'textfield',
-                bind: '{orderTemplate.id}',
+                bind: {value:'{orderTemplate.id}'},
                 fieldLabel: 'ID',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
-                bind: '{orderTemplate.terminalId}',
+                bind: {value:'{orderTemplate.terminalId}'},
                 fieldLabel: 'terminal ID',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
-                bind: '{orderTemplate.merchantId}',
+                bind: {value:'{orderTemplate.merchantId}'},
                 fieldLabel: 'merchant ID',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
-                bind: '{orderTemplate.amount}',
+                bind: {value:'{orderTemplate.amount}'},
                 fieldLabel: 'amount',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
-                bind: '{orderTemplate.name}',
+                bind: {value:'{orderTemplate.name}'},
                 fieldLabel: 'name',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
-                bind: '{orderTemplate.description}',
+                bind: {value:'{orderTemplate.description}'},
                 fieldLabel: 'description',
                 allowBlank: false
             },
             {
                 xtype: 'qrCode',
-                bind: {qrText: '{orderTemplate.id}'}
+                bind: {
+                    qrText: '{orderTemplate.paymentLink}'
+                }
             }
         ]
     },
