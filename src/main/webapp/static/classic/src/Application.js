@@ -5,6 +5,9 @@
  */
 Ext.define('QrAdmin.Application', {
     extend: 'Ext.app.Application',
+    requires: [
+        'Ext.app.ViewModel'
+    ],
 
     name: 'QrAdmin',
 
