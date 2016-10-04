@@ -7,10 +7,8 @@ import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.qrhandshake.qrpos.api.OrderTemplateParams;
 import ru.qrhandshake.qrpos.domain.OrderTemplate;
 import ru.qrhandshake.qrpos.domain.OrderTemplate_;
-import ru.qrhandshake.qrpos.exception.AuthException;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
