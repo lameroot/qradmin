@@ -17,7 +17,12 @@ Ext.define('QrAdmin.view.login.LoginView', {
                 xtype: 'textfield',
                 bind: '{login}',
                 fieldLabel: 'Username',
-                allowBlank: false
+                allowBlank: false,
+                listeners: {
+                    afterrender: function(field) {
+                        field.focus(false, 1000);
+                    }
+                }
             },
             {
                 xtype: 'textfield',

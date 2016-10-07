@@ -33,9 +33,9 @@ public class OrderTemplateController extends GenericController<OrderTemplate, Or
     @Resource
     private OrderTemplateDtoService orderTemplateDtoService;
     @Resource
-    private OrderTemplateDtoValidator orderTemplateDtoValidator;
+    private Validator orderTemplateDtoValidator;
     @Resource
-    private OrderTemplateFilterDtoValidator orderTemplateFilterDtoValidator;
+    private Validator orderTemplateFilterDtoValidator;
 
     @Override
     protected Validator getEntityValidator() {

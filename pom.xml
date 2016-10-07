@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <web.context>/</web.context>
+        <web.context>/qradmin</web.context>
         <spring.version>4.2.2.RELEASE</spring.version>
         <spring-security.version>4.0.3.RELEASE</spring-security.version>
         <spring.data.jpa.version>1.9.0.RELEASE</spring.data.jpa.version>
@@ -24,6 +24,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mysql.connector.version>5.1.18</mysql.connector.version>
         <jetty.version>8.1.14.v20131031</jetty.version>
+        <logback.version>1.1.7</logback.version>
+        <jcl.slf4j.version>1.7.12</jcl.slf4j.version>
     </properties>
     <packaging>war</packaging>
 
@@ -203,11 +205,33 @@
         </dependency>
 
         <!-- Logging -->
+        <!-- 2. Bridge logging from JCL to SLF4j-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${jcl.slf4j.version}</version>
+            <scope>runtime</scope>
         </dependency>
+
+        <!-- 3. logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+            <!--<version>1.7.5</version>-->
+        <!--</dependency>-->
+
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -219,17 +243,6 @@
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>jetty-maven-plugin</artifactId>
             <version>${jetty.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.3.2</version>
         </dependency>
 
         <dependency>
@@ -316,6 +329,7 @@
     <build>
         <finalName>qradmin</finalName>
         <plugins>
+            <!--
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -353,7 +367,6 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.6</version>
                 <executions>
-                    <!--copy paths to config files-->
                     <execution>
                         <id>copy-resources</id>
                         <phase>generate-sources</phase>
@@ -375,24 +388,103 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.11.v20150529</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>${web.context}</contextPath>
+                        <webInfIncludeJarPattern>.*/spring-web.*.jar$</webInfIncludeJarPattern>
+                    </webApp>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>jetty.port</name>
+                            <value>8787</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/src/resources</directory>
+                                    <targetPath>classes</targetPath>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <buildTimestamp>${buildDateTime}</buildTimestamp>
+                            <revision>${buildRevision}</revision>
+                            <version>${project.version}</version>
+                            <project_name>${project.artifactId}</project_name>
+                        </manifestEntries>
+                    </archive>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
+    <!--
     <profiles>
         <profile>
             <id>local</id>
             <properties>
                 <properties.file.application>classpath:config/properties/application.properties</properties.file.application>
-                <properties.file.datasource>classpath:config/properties/datasource.properties</properties.file.datasource>
             </properties>
         </profile>
         <profile>
             <id>server</id>
             <properties>
-                <properties.file.application>file:#{systemProperties[JETTY_HOME]}/config/application.properties</properties.file.application>
-                <properties.file.datasource>file:#{systemProperties[JETTY_HOME]}/config/datasource.properties</properties.file.datasource>
+                <properties.file.application>#{systemProperties[qrAdminConfigLocation]}</properties.file.application>
             </properties>
         </profile>
     </profiles>
+    -->
 
 </project>

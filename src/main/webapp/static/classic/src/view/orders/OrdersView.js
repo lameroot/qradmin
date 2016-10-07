@@ -29,7 +29,10 @@ Ext.define('QrAdmin.view.orders.OrdersView', {
 					title: 'creation date',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'datefield',
+							//value: new Date(),
+							//margin: '0 20 0 3',
+							//disabledDays: [0, 6],
 							fieldLabel: 'from',
 							bind: '{filter.createdDateFrom}'
 						},

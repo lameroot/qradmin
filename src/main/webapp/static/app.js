@@ -5,6 +5,7 @@
  */
 Ext.application({
     name: 'QrAdmin',
+    theme: "crisp",
 
     extend: 'QrAdmin.Application',
 

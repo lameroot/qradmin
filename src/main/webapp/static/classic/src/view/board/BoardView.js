@@ -11,9 +11,10 @@ Ext.define('QrAdmin.view.board.BoardView', {
     ],
 
     ui: 'navigation',
-    tabPosition: 'left',
+    tabPosition: 'top',
     tabRotation: 0,
-    activeTab: 2,
+    activeTab: 1,
+    /*
     header: {
         title: 'QR console',
         bodyPadding: 5,
@@ -28,11 +29,12 @@ Ext.define('QrAdmin.view.board.BoardView', {
             }
         ]
     },
+    */
 
     items: [
         {
-            title: 'Users',
-            iconCls: 'fa-user',
+            title: 'Пользователи',
+            //iconCls: 'fa-user',
             layout: 'fit',
             items: [
                 {
@@ -41,8 +43,8 @@ Ext.define('QrAdmin.view.board.BoardView', {
             ]
         },
         {
-            title: 'Orders',
-            iconCls: 'fa-users',
+            title: 'Заказы',
+            //iconCls: 'fa-users',
             layout: 'fit',
             items: [
                 {
@@ -51,8 +53,8 @@ Ext.define('QrAdmin.view.board.BoardView', {
             ]
         },
         {
-            title: 'Order templates',
-            iconCls: 'fa-users',
+            title: 'Шаблоны',
+            //iconCls: 'fa-users',
             layout: 'fit',
             items: [
                 {
