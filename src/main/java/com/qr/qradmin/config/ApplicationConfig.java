@@ -14,7 +14,7 @@ import ru.qrhandshake.qrpos.config.DatabaseConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(value = {"com.qr.qradmin.converter","com.qr.qradmin.service","com.qr.qradmin.validator"})//todo: сделать нормальный скан пакетов
+@ComponentScan(value = {"com.qr.qradmin.converter","com.qr.qradmin.service","com.qr.qradmin.validator"})
 @PropertySource(ignoreResourceNotFound = true,
         value = {
                 "classpath:config/properties/application.properties",
@@ -25,7 +25,6 @@ import ru.qrhandshake.qrpos.config.DatabaseConfig;
         DatasourceConfig.class,
         SecurityConfig.class
 })
-
 public class ApplicationConfig {
 
     private final static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);

@@ -66,9 +66,6 @@ public class DatasourceConfig {
         if ( environment.containsProperty("hibernate.hbm2ddl.import_files") ) {
             properties.put("hibernate.hbm2ddl.import_files", environment.getProperty("hibernate.hbm2ddl.import_files"));
         }
-//        properties.put("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory");
-//        properties.put("hibernate.cache.use_second_level_cache", "true");
-//        properties.put("hibernate.cache.use_query_cache", "true");
         properties.put("hibernate.connection.CharSet","utf8");
         properties.put("hibernate.connection.characterEncoding","utf8");
         properties.put("hibernate.connection.useUnicode","true");
