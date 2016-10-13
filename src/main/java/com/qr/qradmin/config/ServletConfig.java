@@ -20,27 +20,18 @@ import java.util.List;
 import java.util.Map;
 
 @Configuration
-//@ImportResource(value = "classpath:config/spring/mvc.xml")
 @EnableWebMvc
-@ComponentScan(value = "com.qr.admin.controller")
-public class ServletConfig
-        extends WebMvcConfigurerAdapter
-{
+@ComponentScan(value = {"com.qr.qradmin.controller","com.qr.qradmin.generic"})
+public class ServletConfig extends WebMvcConfigurerAdapter {
+
+    @Resource
+    private Environment environment;
+    @Resource
+    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
-    }
-
-
-    @Resource
-    private Environment environment;
-
-
-
-    @Bean
-    public ObjectMapper objectMapper() {
-        return new ObjectMapper();
     }
 
     @Bean
@@ -48,34 +39,15 @@ public class ServletConfig
         return new CommonsMultipartResolver();
     }
 
-    @Bean
-    public MappingJackson2HttpMessageConverter jacksonMessageConverter() {
-        return new MappingJackson2HttpMessageConverter(objectMapper());
-    }
-
-    @Bean
-    public ConversionService conversionService() {
-        FormattingConversionService formattingConversionService = new FormattingConversionService();
-        formattingConversionService.addConverter(new StringToSortConverter());
-        formattingConversionService.addConverter(new StringToFilterConverter());
-        formattingConversionService.addConverter(new UserInfoToDtoConverter());
-        formattingConversionService.addConverter(new UserToDtoConverter());
-        formattingConversionService.addConverter(new UserToEntityConverter());
-        formattingConversionService.addConverter(new MerchantOrderToDtoConverter());
-        formattingConversionService.addConverter(new OrderTemplateToDtoConverter());
-        formattingConversionService.addConverter(new OrderTemplateToEntityConverter());
-
-        return formattingConversionService;
-    }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(jacksonMessageConverter());
+        converters.add(jacksonMessageConverter);
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //registry.addResourceHandler("/**").addResourceLocations(environment.getProperty("application.static.path"));
+        registry.addResourceHandler("/**").addResourceLocations(environment.getProperty("application.static.path"));
     }
 
 }

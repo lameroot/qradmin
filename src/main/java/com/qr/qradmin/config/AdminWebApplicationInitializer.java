@@ -8,6 +8,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 import ru.qrhandshake.qrpos.integration.rbs.RbsIntegrationConfig;
@@ -43,7 +44,9 @@ public class AdminWebApplicationInitializer extends AbstractDispatcherServletIni
         characterEncodingFilter.setForceEncoding(true);
         characterEncodingFilter.setEncoding("UTF-8");
 
-        return new Filter[] {characterEncodingFilter};
+        OpenEntityManagerInViewFilter openEntityManagerInViewFilter = new OpenEntityManagerInViewFilter();
+        DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy("springSecurityFilterChain");
+        return new Filter[] {characterEncodingFilter, openEntityManagerInViewFilter, delegatingFilterProxy};
     }
 
 }
