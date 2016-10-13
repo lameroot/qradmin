@@ -2,8 +2,7 @@ package com.qr.qradmin.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qr.qradmin.converter.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
@@ -21,16 +20,23 @@ import java.util.List;
 import java.util.Map;
 
 @Configuration
+//@ImportResource(value = "classpath:config/spring/mvc.xml")
 @EnableWebMvc
-public class ServletConfig extends WebMvcConfigurerAdapter {
-
-    @Resource
-    private Environment environment;
+@ComponentScan(value = "com.qr.admin.controller")
+public class ServletConfig
+        extends WebMvcConfigurerAdapter
+{
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
+
+
+    @Resource
+    private Environment environment;
+
+
 
     @Bean
     public ObjectMapper objectMapper() {
@@ -71,4 +77,5 @@ public class ServletConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //registry.addResourceHandler("/**").addResourceLocations(environment.getProperty("application.static.path"));
     }
+
 }

@@ -3,11 +3,12 @@ package com.qr.qradmin.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import ru.qrhandshake.qrpos.config.DatabaseConfig;
 
 @Configuration
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 @ComponentScan(value = {"com.qr.qradmin"})//todo: сделать нормальный скан пакетов
 @PropertySource(ignoreResourceNotFound = true,
         value = {
@@ -23,6 +24,11 @@ public class ApplicationConfig {
 
     private final static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
     public static final String SYSTEM_VARIABLE_CONFIG_LOCATION = "qrAdminConfigLocation";
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
     public final static void setSystemVariableConfigLocation() {
         logger.debug("System variable with name '" + ApplicationConfig.SYSTEM_VARIABLE_CONFIG_LOCATION + "' has value = '" + System.getProperty(ApplicationConfig.SYSTEM_VARIABLE_CONFIG_LOCATION) + "'");
