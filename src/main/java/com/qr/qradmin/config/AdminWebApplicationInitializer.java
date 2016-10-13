@@ -19,7 +19,6 @@ import java.util.EnumSet;
 
 public class AdminWebApplicationInitializer extends AbstractDispatcherServletInitializer {
 
-    
     @Override
     protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
