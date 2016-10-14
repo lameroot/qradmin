@@ -19,6 +19,10 @@ import java.util.EnumSet;
 
 public class AdminWebApplicationInitializer extends AbstractDispatcherServletInitializer {
 
+    static {
+        ApplicationConfig.setSystemVariableConfigLocation();
+    }
+
     @Override
     protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
