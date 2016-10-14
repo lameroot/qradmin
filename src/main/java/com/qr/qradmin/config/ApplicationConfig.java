@@ -10,7 +10,6 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import ru.qrhandshake.qrpos.config.DatabaseConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
