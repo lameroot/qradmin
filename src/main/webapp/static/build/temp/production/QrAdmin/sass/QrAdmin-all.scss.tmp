@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'QrAdmin' );
-$image-search-path: 'D:/Users/Krainov/Documents/workspaces_idea/my/qradmin/src/main/webapp/static/build/production/QrAdmin/modern/resources';
+$image-search-path: 'D:/WORKSPACES/home/java/qradmin/src/main/webapp/static/build/production/QrAdmin/modern/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(false);;
 $include-ext-abstractmanager: dynamic(false);;
