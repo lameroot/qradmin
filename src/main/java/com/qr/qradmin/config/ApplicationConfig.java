@@ -45,6 +45,8 @@ public class ApplicationConfig {
         formattingConversionService.addConverter(new MerchantOrderToDtoConverter());
         formattingConversionService.addConverter(new OrderTemplateToDtoConverter());
         formattingConversionService.addConverter(new OrderTemplateToEntityConverter());
+        formattingConversionService.addConverter(new MerchantToDtoConverter());
+        formattingConversionService.addConverter(new MerchantToEntityConverter());
 
         return formattingConversionService;
     }

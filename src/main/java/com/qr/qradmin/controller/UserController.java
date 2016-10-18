@@ -27,7 +27,6 @@ public class UserController extends GenericController<User, UserDto> {
         supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.emptyList());
         supportedOperations.put(CrudOperation.CREATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
         supportedOperations.put(CrudOperation.UPDATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
-        supportedOperations.put(CrudOperation.DELETE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
     }
 
     @Resource
