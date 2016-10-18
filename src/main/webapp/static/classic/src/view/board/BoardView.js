@@ -34,6 +34,8 @@ Ext.define('QrAdmin.view.board.BoardView', {
             title: 'Пользователи',
             //iconCls: 'fa-user',
             layout: 'fit',
+            plugins: 'access',
+            accessFor: ['ADMIN'],
             items: [
                 {
                     xtype: 'usersView'
@@ -44,6 +46,8 @@ Ext.define('QrAdmin.view.board.BoardView', {
             title: 'Продавцы',
             //iconCls: 'fa-user',
             layout: 'fit',
+            plugins: 'access',
+            accessFor: ['ADMIN'],
             items: [
                 {
                     xtype: 'merchantsView'

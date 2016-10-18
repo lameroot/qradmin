@@ -23,8 +23,8 @@ public class UserController extends GenericController<User, UserDto> {
 
     @PostConstruct
     public void init() {
-        supportedOperations.put(CrudOperation.GET_ONE, Collections.emptyList());
-        supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.emptyList());
+        supportedOperations.put(CrudOperation.GET_ONE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
+        supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.singletonList(EnumGrantedAuthority.ADMIN));
         supportedOperations.put(CrudOperation.CREATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
         supportedOperations.put(CrudOperation.UPDATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
     }

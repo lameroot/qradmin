@@ -83,7 +83,7 @@ Ext.define('QrAdmin.util.SessionManager', {
         return this.userInfo;
     },
 
-    hasRole: function() {
-
+    hasRole: function(role) {
+        return Ext.Array.contains(this.userInfo.roles, role);
     }
 });
