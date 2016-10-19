@@ -16,11 +16,7 @@ Ext.define('QrAdmin.view.login.LoginController', {
 			.login(login, password)
 			.then(
 				function () {
-					if (SessionManager.isAuthenticated()) {
-						ths.redirectTo('board');
-					} else {
-						ths.redirectTo('login');
-					}
+					console.log('successful login'); //TODO
 				},
 				function () {
 					console.log('network error'); //TODO

@@ -18,7 +18,7 @@ Ext.define('QrAdmin.model.OrderTemplate', {
             name: 'paymentLink',
             calculate: function (data) {
                 return data.id
-                    ? 'http://qwe.ddns.net/qrapi/' + data.id
+                    ? 'https://paystudio.mircloud.host/proxy/template/payment/' + data.id //TODO get link from settings
                     : null;
             }
         }

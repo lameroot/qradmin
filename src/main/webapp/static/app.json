@@ -553,7 +553,7 @@
         "classic": {
             "toolkit": "classic",
             
-            "theme": "theme-triton",
+            "theme": "theme-crisp",
             
             "sass": {
                 // "save": "classic/sass/save.scss"

@@ -31,6 +31,7 @@ Ext.define('QrAdmin.util.SessionManager', {
                 success: function (response) {
                     var responseObject = Ext.decode(response.responseText);
                     ths.userInfo = responseObject.data;
+                    Ext.fireEvent("loginEvent");
                     resolve();
                 },
                 failure: function (response) {
@@ -53,6 +54,7 @@ Ext.define('QrAdmin.util.SessionManager', {
                 url: ths.urls.logoutUrl,
                 success: function (response) {
                     ths.userInfo = null;
+                    Ext.fireEvent("logoutEvent");
                     resolve();
                 },
                 failure: function (response) {
@@ -83,7 +85,7 @@ Ext.define('QrAdmin.util.SessionManager', {
         return this.userInfo;
     },
 
-    hasRole: function() {
-
+    hasRole: function(role) {
+        return Ext.Array.contains(this.userInfo.roles, role);
     }
 });

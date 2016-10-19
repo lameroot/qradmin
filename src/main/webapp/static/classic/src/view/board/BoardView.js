@@ -6,18 +6,18 @@ Ext.define('QrAdmin.view.board.BoardView', {
     requires: [
         'QrAdmin.view.board.BoardController',
         'QrAdmin.view.users.UsersView',
+        'QrAdmin.view.merchants.MerchantsView',
         'QrAdmin.view.orders.OrdersView',
         'QrAdmin.view.ordertemplates.OrderTemplatesView'
     ],
 
     ui: 'navigation',
-    tabPosition: 'top',
+    tabPosition: 'left',
     tabRotation: 0,
     activeTab: 1,
-    /*
     header: {
         title: 'QR console',
-        bodyPadding: 5,
+        padding: '0 50 0 0',
         items: [
             {
                 xtype: 'button',
@@ -29,13 +29,26 @@ Ext.define('QrAdmin.view.board.BoardView', {
             }
         ]
     },
-    */
 
     items: [
+        {
+            title: 'Продавцы',
+            //iconCls: 'fa-user',
+            layout: 'fit',
+            plugins: 'access',
+            accessFor: ['ADMIN'],
+            items: [
+                {
+                    xtype: 'merchantsView'
+                }
+            ]
+        },
         {
             title: 'Пользователи',
             //iconCls: 'fa-user',
             layout: 'fit',
+            plugins: 'access',
+            accessFor: ['ADMIN'],
             items: [
                 {
                     xtype: 'usersView'

@@ -1,5 +1,5 @@
 Ext.define('QrAdmin.view.users.UsersView', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Ext.panel.Panel',
     xtype: 'usersView',
 
     requires: [
@@ -7,16 +7,24 @@ Ext.define('QrAdmin.view.users.UsersView', {
         'QrAdmin.view.users.UsersController'
     ],
     controller: 'users',
-
-    title: 'Users',
-
-    store: {
-        type: 'user'
-    },
-
-    columns: [
-        { text: 'Id',  dataIndex: 'id' },
-        { text: 'User name',  dataIndex: 'userName', flex: 1  },
-        { text: 'Merchant name', dataIndex: 'merchantName', flex: 1 }
+    layout: 'border',
+    viewModel: {data:{filter: {}}},
+    items: [
+        {
+            xtype: 'gridpanel',
+            id: 'usersGrid',
+            region: 'center',
+            store: {
+                type: 'user'
+            },
+            header: {
+                title: 'Пользователи'
+            },
+            columns: [
+                { text: 'Id',  dataIndex: 'id' },
+                { text: 'User name',  dataIndex: 'userName', flex: 1  },
+                { text: 'Merchant name', dataIndex: 'merchantName', flex: 1 }
+            ]
+        }
     ]
 });

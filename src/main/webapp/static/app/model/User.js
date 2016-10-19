@@ -10,7 +10,7 @@ Ext.define('QrAdmin.model.User', {
         {type: 'number',    name: 'id', persist: false},
         {type: 'string',    name: 'userName'},
         {type: 'string',    name: 'merchantName'},
-        {type: 'date',      name: 'createdDate'},
+        {type: 'date',      name: 'createdDate', persist: false},
         {type: 'boolean',   name: 'isEnabled'},
         {type: 'boolean',   name: 'isExpired'},
         {type: 'boolean',   name: 'isLocked'},
