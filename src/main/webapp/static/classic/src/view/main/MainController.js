@@ -20,26 +20,6 @@ Ext.define('QrAdmin.view.main.MainController', {
 		this.checkForAuthentication();
 	},
 
-	showLoginView: function () {
-		var view = this.getView();
-		view.removeAll();
-		view.add(
-			Ext.create({
-				xtype: 'loginView'
-			})
-		);
-	},
-
-	showBoardView: function () {
-		var view = this.getView();
-		view.removeAll();
-		view.add(
-			Ext.create({
-				xtype: 'boardView'
-			})
-		);
-	},
-
 	checkForAuthentication: function () {
 		var ths = this;
 		SessionManager
@@ -47,14 +27,24 @@ Ext.define('QrAdmin.view.main.MainController', {
 			.then(
 				function () {
 					if (SessionManager.isAuthenticated()) {
-						ths.showBoardView();
+						ths.showView('boardView');
 					} else {
-						ths.showLoginView();
+						ths.showView('loginView');
 					}
 				},
 				function () {
 					console.log('network error'); //TODO
 				}
 			);
+	},
+
+	showView: function (viewType) {
+		var view = this.getView();
+		view.removeAll();
+		view.add(
+			Ext.create({
+				xtype: viewType
+			})
+		);
 	}
 });
