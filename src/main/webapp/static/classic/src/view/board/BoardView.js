@@ -1,14 +1,14 @@
-Ext.define('QrAdmin.view.board.BoardView', {
+Ext.define('PayAdmin.view.board.BoardView', {
     extend: 'Ext.tab.Panel',
     xtype: 'boardView',
     controller: 'board',
 
     requires: [
-        'QrAdmin.view.board.BoardController',
-        'QrAdmin.view.users.UsersView',
-        'QrAdmin.view.merchants.MerchantsView',
-        'QrAdmin.view.orders.OrdersView',
-        'QrAdmin.view.ordertemplates.OrderTemplatesView'
+        'PayAdmin.view.board.BoardController',
+        'PayAdmin.view.users.UsersView',
+        'PayAdmin.view.merchants.MerchantsView',
+        'PayAdmin.view.orders.OrdersView',
+        'PayAdmin.view.ordertemplates.OrderTemplatesView'
     ],
 
     ui: 'navigation',

@@ -1,12 +1,12 @@
-Ext.define('QrAdmin.view.main.MainController', {
+Ext.define('PayAdmin.view.main.MainController', {
 	extend: 'Ext.app.ViewController',
 
 	alias: 'controller.main',
 
 	requires: [
-		'QrAdmin.util.SessionManager',
-		'QrAdmin.view.board.BoardView',
-		'QrAdmin.view.login.LoginView'
+		'PayAdmin.util.SessionManager',
+		'PayAdmin.view.board.BoardView',
+		'PayAdmin.view.login.LoginView'
 	],
 
 	listen: {

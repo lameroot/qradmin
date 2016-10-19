@@ -3,10 +3,10 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('QrAdmin.Application', {
+Ext.define('PayAdmin.Application', {
     extend: 'Ext.app.Application',
     
-    name: 'QrAdmin',
+    name: 'PayAdmin',
 
     stores: [
         // TODO: add global / shared stores here

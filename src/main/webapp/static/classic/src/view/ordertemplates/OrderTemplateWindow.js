@@ -1,9 +1,9 @@
-Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindow', {
+Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
     extend: 'Ext.window.Window',
     xtype: 'orderTemplatesWindow',
 
     requires: [
-        'QrAdmin.view.ordertemplates.OrderTemplateWindowController'
+        'PayAdmin.view.ordertemplates.OrderTemplateWindowController'
     ],
     controller: 'orderTemplateWindow',
     title: 'Order template',

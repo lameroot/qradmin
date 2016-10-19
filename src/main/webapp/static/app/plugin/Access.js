@@ -1,9 +1,9 @@
-Ext.define('QrAdmin.plugin.Access', {
+Ext.define('PayAdmin.plugin.Access', {
     extend: 'Ext.AbstractPlugin',
     alias: 'plugin.access',
 
     requires: [
-        'QrAdmin.util.SessionManager'
+        'PayAdmin.util.SessionManager'
     ],
 
     init: function (target) {

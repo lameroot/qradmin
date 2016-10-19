@@ -1,10 +1,10 @@
-Ext.define('QrAdmin.view.login.LoginController', {
+Ext.define('PayAdmin.view.login.LoginController', {
 	extend: 'Ext.app.ViewController',
 
 	alias: 'controller.login',
 
 	requires: [
-		'QrAdmin.util.SessionManager'
+		'PayAdmin.util.SessionManager'
 	],
 
 	onLoginButtonClick: function () {

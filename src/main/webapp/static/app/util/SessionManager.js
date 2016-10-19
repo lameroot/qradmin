@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.util.SessionManager', {
+Ext.define('PayAdmin.util.SessionManager', {
     mixins: ['Ext.mixin.Observable'],
 
     singleton: true,

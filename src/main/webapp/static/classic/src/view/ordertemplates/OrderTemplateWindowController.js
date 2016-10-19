@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.view.ordertemplates.OrderTemplateWindowController', {
+Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindowController', {
 	extend: 'Ext.app.ViewController',
 
 	alias: 'controller.orderTemplateWindow',

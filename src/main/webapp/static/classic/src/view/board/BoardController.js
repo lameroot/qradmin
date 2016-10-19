@@ -1,10 +1,10 @@
-Ext.define('QrAdmin.view.board.BoardController', {
+Ext.define('PayAdmin.view.board.BoardController', {
 	extend: 'Ext.app.ViewController',
 
 	alias: 'controller.board',
 
 	requires: [
-		'QrAdmin.util.SessionManager'
+		'PayAdmin.util.SessionManager'
 	],
 
 	onLogoutButtonClick: function () {

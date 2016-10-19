@@ -1,10 +1,10 @@
-Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
+Ext.define('PayAdmin.view.ordertemplates.OrderTemplatesView', {
 	extend: 'Ext.panel.Panel',
 	xtype: 'orderTemplatesView',
 
 	requires: [
-		'QrAdmin.store.OrderTemplateStore',
-		'QrAdmin.view.ordertemplates.OrderTemplatesViewController'
+		'PayAdmin.store.OrderTemplateStore',
+		'PayAdmin.view.ordertemplates.OrderTemplatesViewController'
 	],
 	controller: 'orderTemplatesView',
 	layout: 'border',

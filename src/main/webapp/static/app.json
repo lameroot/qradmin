@@ -2,7 +2,7 @@
     /**
      * The application's namespace.
      */
-    "name": "QrAdmin",
+    "name": "PayAdmin",
     
     /**
      * The version of the application.
@@ -76,22 +76,30 @@
     "sass": {
         /**
          * The root namespace to use when mapping *.scss files to classes in the
-         * sass/src and sass/var directories. For example, "QrAdmin.view.Foo" would
-         * map to "sass/src/view/Foo.scss". If we changed this to "QrAdmin.view" then
+         * sass/src and sass/var directories. For example, "PayAdmin.view.Foo" would
+         * map to "sass/src/view/Foo.scss". If we changed this to "PayAdmin.view" then
          * it would map to "sass/src/Foo.scss". To style classes outside the app's
          * root namespace, change this to "". Doing so would change the mapping of
-         * "QrAdmin.view.Foo" to "sass/src/QrAdmin/view/Foo.scss".
+         * "PayAdmin.view.Foo" to "sass/src/PayAdmin/view/Foo.scss".
          */
-        "namespace": "QrAdmin",
+        "namespace": "PayAdmin",
 
         /**
-         * File used to save sass variables edited via Sencha Inspector. This file
-         * will automatically be applied to the end of the scss build.
+         * Generated sass source settings
          *
-         *      "save": "sass/save.scss"
+         *      "generated": {
+         *         // The file used to save sass variables edited via Sencha Inspector and Sencha Themer.
+         *         // This file will automatically be applied to the end of the scss build.
+         *         "var": "sass/save.scss",
+         *      
+         *         // The directory used to save generated sass sources.
+         *         // This directory will automatically be applied to the end of the scss build.
+         *         "src": "sass/save"
+         *      }
          *
          */
          
+
         /**
          * Comma-separated list of files or folders containing extra Sass. These
          * files are automatically included in the Sass compilation. By default this
@@ -325,13 +333,9 @@
      * Settings specific to development builds.
      */
     "development": {
-        "tags": [
-            // You can add this tag to enable Fashion when using app watch or
-            // you can add "?platformTags=fashion:1" to the URL to enable Fashion
-            // without changing this file.
-            //
-            // "fashion"
-        ]
+        "watch": {
+            "delay": 250
+        }
     },
 
     /**
@@ -489,14 +493,6 @@
     ],
 
     /**
-     * File / directory name patttern to ignore when copying to the builds. Must be a
-     * valid regular expression.
-     */
-    "ignore": [
-        "(^|/)CVS(/?$|/.*?$)"
-    ],
-
-    /**
      * Directory path to store all previous production builds. Note that the content
      * generated inside this directory must be kept intact for proper generation of
      * deltas between updates.
@@ -506,27 +502,6 @@
     
 
 
-    /**
-     * The space config object is used by the "sencha app publish" command to publish
-     * a version of this application to Sencha Web Application Manager:
-     *
-     *      "manager": {
-     *          // the space id for this application
-     *          "id": 12345,
-     *
-     *          // space host
-     *          "host": "https://api.space.sencha.com/json.rpc",
-     *
-     *          // Either a zip file path or a folder to be zipped
-     *          // this example shows how to publish the root folder for all build profiles
-     *          "file": "${app.output.base}/../",
-     *
-     *          // These may be specified here, but are best specified in your user
-     *          // ~/.sencha/cmd/sencha.cfg file
-     *          "apiKey": "",
-     *          "secret": ""
-     *      }
-     */
 
     /**
      * Build Profiles. This object's properties are each a "build profile". You can
@@ -553,10 +528,13 @@
         "classic": {
             "toolkit": "classic",
             
-            "theme": "theme-crisp",
+            "theme": "theme-triton",
             
             "sass": {
-                // "save": "classic/sass/save.scss"
+                "generated": {
+                    "var": "classic/sass/save.scss",
+                    "src": "classic/sass/save"
+                }
             }
         },
 
@@ -566,15 +544,26 @@
             "theme": "theme-triton",
             
             "sass": {
-                // "save": "modern/sass/save.scss"
+                "generated": {
+                    "var": "modern/sass/save.scss",
+                    "src": "modern/sass/save"
+                }
             }
         }
     },
     
+    
+    /**
+     * File / directory name patttern to ignore when copying to the builds. Must be a
+     * valid regular expression.
+     */
+    "ignore": [
+        "(^|/)CVS(/?$|/.*?$)"
+    ],
 
     /**
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "0fc82718-603a-48d0-8115-b1d07cb7c21d"
+    "id": "448be4c7-8006-43f5-be59-29ede32f342b"
 }

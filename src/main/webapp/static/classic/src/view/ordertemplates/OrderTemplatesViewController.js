@@ -1,11 +1,11 @@
-Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesViewController', {
+Ext.define('PayAdmin.view.ordertemplates.OrderTemplatesViewController', {
 	extend: 'Ext.app.ViewController',
 
 	alias: 'controller.orderTemplatesView',
 
     requires: [
-        'QrAdmin.view.ordertemplates.OrderTemplateWindow',
-        'QrAdmin.util.SessionManager'
+        'PayAdmin.view.ordertemplates.OrderTemplateWindow',
+        'PayAdmin.util.SessionManager'
     ],
 
 	onFilterButtonClick: function () {

@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.view.ordertemplates.QrCode', {
+Ext.define('PayAdmin.view.ordertemplates.QrCode', {
     extend: 'Ext.Component',
     xtype: 'qrCode',
     config:{

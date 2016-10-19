@@ -1,10 +1,10 @@
-Ext.define('QrAdmin.view.merchants.MerchantsView', {
+Ext.define('PayAdmin.view.merchants.MerchantsView', {
     extend: 'Ext.panel.Panel',
     xtype: 'merchantsView',
 
     requires: [
-        'QrAdmin.store.MerchantStore',
-        'QrAdmin.view.merchants.MerchantsController'
+        'PayAdmin.store.MerchantStore',
+        'PayAdmin.view.merchants.MerchantsController'
     ],
     controller: 'merchants',
     layout: 'border',

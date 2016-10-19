@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.model.OrderTemplate', {
+Ext.define('PayAdmin.model.OrderTemplate', {
     extend: 'Ext.data.Model',
     xtype: 'orderTemplate',
     requires: [

@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.model.User', {
+Ext.define('PayAdmin.model.User', {
     extend: 'Ext.data.Model',
 
     requires: [

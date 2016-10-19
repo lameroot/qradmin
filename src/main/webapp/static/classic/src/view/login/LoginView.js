@@ -1,9 +1,9 @@
-Ext.define('QrAdmin.view.login.LoginView', {
+Ext.define('PayAdmin.view.login.LoginView', {
     extend: 'Ext.container.Container',
     xtype: 'loginView',
     controller: 'login',
     requires: [
-        'QrAdmin.view.login.LoginController'
+        'PayAdmin.view.login.LoginController'
     ],
     viewModel: {
         data: {}

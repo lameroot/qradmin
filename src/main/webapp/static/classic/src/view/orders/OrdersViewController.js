@@ -1,4 +1,4 @@
-Ext.define('QrAdmin.view.orders.OrdersViewController', {
+Ext.define('PayAdmin.view.orders.OrdersViewController', {
 	extend: 'Ext.app.ViewController',
 
 	alias: 'controller.ordersView',

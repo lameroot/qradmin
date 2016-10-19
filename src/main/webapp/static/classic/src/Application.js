@@ -3,20 +3,20 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('QrAdmin.Application', {
+Ext.define('PayAdmin.Application', {
     extend: 'Ext.app.Application',
     requires: [
         'Ext.app.ViewModel'
     ],
 
-    name: 'QrAdmin',
+    name: 'PayAdmin',
 
     stores: [
         // TODO: add global / shared stores here
     ],
 
     // defaultToken : 'home',
-    mainView: 'QrAdmin.view.main.Main',
+    mainView: 'PayAdmin.view.main.Main',
 
     launch: function () {
         // TODO - Launch the application

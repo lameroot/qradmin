@@ -1,10 +1,10 @@
-Ext.define('QrAdmin.view.users.UsersView', {
+Ext.define('PayAdmin.view.users.UsersView', {
     extend: 'Ext.panel.Panel',
     xtype: 'usersView',
 
     requires: [
-        'QrAdmin.store.UserStore',
-        'QrAdmin.view.users.UsersController'
+        'PayAdmin.store.UserStore',
+        'PayAdmin.view.users.UsersController'
     ],
     controller: 'users',
     layout: 'border',

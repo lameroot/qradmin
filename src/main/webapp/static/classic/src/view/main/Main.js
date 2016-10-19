@@ -1,8 +1,8 @@
-Ext.define('QrAdmin.view.main.Main', {
+Ext.define('PayAdmin.view.main.Main', {
     extend: 'Ext.container.Viewport',
     xtype: 'app-main',
     requires: [
-        'QrAdmin.view.main.MainController'
+        'PayAdmin.view.main.MainController'
     ],
     controller: 'main',
     layout: 'fit'

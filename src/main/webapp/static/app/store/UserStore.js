@@ -1,6 +1,6 @@
-Ext.define('QrAdmin.store.UserStore', {
+Ext.define('PayAdmin.store.UserStore', {
     extend: 'Ext.data.Store',
-    model: 'QrAdmin.model.User',
+    model: 'PayAdmin.model.User',
     alias: 'store.user',
 
     sorters: [

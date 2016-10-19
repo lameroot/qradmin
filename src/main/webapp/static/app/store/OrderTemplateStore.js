@@ -1,6 +1,6 @@
-Ext.define('QrAdmin.store.OrderTemplateStore', {
+Ext.define('PayAdmin.store.OrderTemplateStore', {
     extend: 'Ext.data.BufferedStore',
-    model: 'QrAdmin.model.OrderTemplate',
+    model: 'PayAdmin.model.OrderTemplate',
     alias: 'store.orderTemplate',
     autoLoad: true,
     autoDestroy: true,
