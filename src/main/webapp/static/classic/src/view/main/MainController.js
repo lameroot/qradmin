@@ -26,11 +26,10 @@ Ext.define('QrAdmin.view.main.MainController', {
 			.updateUserInfo()
 			.then(
 				function () {
-					if (SessionManager.isAuthenticated()) {
-						ths.showView('boardView');
-					} else {
-						ths.showView('loginView');
-					}
+					var showViewType = SessionManager.isAuthenticated()
+						? 'boardView'
+						: 'loginView';
+					ths.showView(showViewType);
 				},
 				function () {
 					console.log('network error'); //TODO
