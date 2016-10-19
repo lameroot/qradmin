@@ -9,16 +9,14 @@ Ext.define('QrAdmin.view.main.MainController', {
 		'QrAdmin.view.login.LoginView'
 	],
 
-	listeners: {
-		logoutEvent : 'onLogoutEvent'
+	listen: {
+		global: {
+			logoutEvent : 'checkForAuthentication',
+			loginEvent : 'checkForAuthentication'
+		}
 	},
 
 	afterRender: function () {
-		this.checkForAuthentication();
-	},
-
-	onLogoutEvent: function () {
-		debugger
 		this.checkForAuthentication();
 	},
 
