@@ -18,26 +18,13 @@ Ext.define('QrAdmin.view.users.UsersView', {
                 type: 'user'
             },
             header: {
-                title: 'Пользователи',
-                items: [
-                    {
-                        xtype: 'button',
-                        text: 'Создать',
-                        dock: 'right',
-                        listeners: {
-                            click: 'onCreateButtonClick'
-                        }
-                    }
-                ]
+                title: 'Пользователи'
             },
             columns: [
                 { text: 'Id',  dataIndex: 'id' },
                 { text: 'User name',  dataIndex: 'userName', flex: 1  },
                 { text: 'Merchant name', dataIndex: 'merchantName', flex: 1 }
-            ],
-            listeners: {
-                itemclick: 'onItemClicked'
-            }
+            ]
         }
     ]
 });

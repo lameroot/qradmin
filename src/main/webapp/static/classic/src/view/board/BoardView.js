@@ -17,6 +17,7 @@ Ext.define('QrAdmin.view.board.BoardView', {
     activeTab: 1,
     header: {
         title: 'QR console',
+        padding: '0 50 0 0',
         items: [
             {
                 xtype: 'button',
