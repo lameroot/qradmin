@@ -80,11 +80,11 @@ Ext.define('QrAdmin.view.ordertemplates.OrderTemplatesView', {
 				type: 'orderTemplate'
 			},
             header: {
-                title: 'Order Templates',
+                title: 'Шаблоны платежей',
                 items: [
                     {
                         xtype: 'button',
-                        text: 'Create',
+                        text: 'Создать',
                         dock: 'right',
                         listeners: {
                             click: 'onCreateOrderTemplateButtonClick'
