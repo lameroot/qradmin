@@ -10,17 +10,17 @@ import java.util.List;
  * Created by Smirnov_Y on 28.11.2014.
  */
 public class OrderTemplateFilter extends EntityFilter {
-    private Long terminalId;
+    private List<Long> terminalIds;
     private String name;
     private Long amountFrom;
     private Long amountTo;
 
-    public Long getTerminalId() {
-        return terminalId;
+    public List<Long> getTerminalIds() {
+        return terminalIds;
     }
 
-    public void setTerminalId(Long terminalId) {
-        this.terminalId = terminalId;
+    public void setTerminalIds(List<Long> terminalIds) {
+        this.terminalIds = terminalIds;
     }
 
     public String getName() {

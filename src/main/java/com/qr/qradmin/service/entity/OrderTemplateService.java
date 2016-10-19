@@ -7,6 +7,7 @@ import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import ru.qrhandshake.qrpos.domain.OrderTemplate;
 import ru.qrhandshake.qrpos.domain.OrderTemplate_;
 
@@ -37,8 +38,8 @@ public class OrderTemplateService extends GenericEntityService<OrderTemplate> {
                     predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get(OrderTemplate_.amount), filter.getAmountTo()));
                 }
 
-                if (filter.getTerminalId() != null) {
-                    predicate.getExpressions().add(cb.equal(root.get(OrderTemplate_.terminal), filter.getTerminalId()));
+                if (!CollectionUtils.isEmpty(filter.getTerminalIds())) {
+                    predicate.getExpressions().add(root.get(OrderTemplate_.terminal).in(filter.getTerminalIds()));
                 }
 
                 if (filter.getName() != null) {

@@ -9,6 +9,8 @@ import com.qr.qradmin.service.entity.MerchantOrderService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import ru.qrhandshake.qrpos.domain.MerchantOrder;
+import ru.qrhandshake.qrpos.domain.User;
+import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -23,6 +25,12 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
     @Override
     protected EntityFilter buildFilter(Map<String, String> filter) {
         MerchantOrderFilter entityFilter = new MerchantOrderFilter();
+
+        if (!SecurityUtils.isCurrentUserAdmin()) {
+            User user = SecurityUtils.getCurrentUser();
+            entityFilter.setMerchantId(user.getMerchant().getId());
+        }
+
         if (CollectionUtils.isEmpty(filter)) {
             return entityFilter;
         }
