@@ -1,20 +1,13 @@
 package com.qr.qradmin.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
-import ru.qrhandshake.qrpos.integration.rbs.RbsIntegrationConfig;
 
-import javax.servlet.*;
-import java.util.EnumSet;
+import javax.servlet.Filter;
 
 
 public class AdminWebApplicationInitializer extends AbstractDispatcherServletInitializer {
