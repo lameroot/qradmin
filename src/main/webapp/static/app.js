@@ -9,6 +9,7 @@ Ext.application({
     extend: 'PayAdmin.Application',
 
     requires: [
+        'Ext.*',
         'PayAdmin.*'
     ]
 
