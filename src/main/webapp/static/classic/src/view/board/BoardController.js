@@ -13,7 +13,7 @@ Ext.define('QrAdmin.view.board.BoardController', {
 			.logout()
 			.then(
 				function () {
-					ths.redirectTo('login');
+					console.log('successful logout'); 
 				},
 				function () {
 					console.log('network error'); //TODO

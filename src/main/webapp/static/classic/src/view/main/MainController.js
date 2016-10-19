@@ -9,12 +9,20 @@ Ext.define('QrAdmin.view.main.MainController', {
 		'QrAdmin.view.login.LoginView'
 	],
 
-	routes: {
-		login: 'onLogin',
-		board: 'onBoard'
+	listeners: {
+		logoutEvent : 'onLogoutEvent'
 	},
 
-	onLogin: function () {
+	afterRender: function () {
+		this.checkForAuthentication();
+	},
+
+	onLogoutEvent: function () {
+		debugger
+		this.checkForAuthentication();
+	},
+
+	showLoginView: function () {
 		var view = this.getView();
 		view.removeAll();
 		view.add(
@@ -24,7 +32,7 @@ Ext.define('QrAdmin.view.main.MainController', {
 		);
 	},
 
-	onBoard: function () {
+	showBoardView: function () {
 		var view = this.getView();
 		view.removeAll();
 		view.add(
@@ -34,16 +42,16 @@ Ext.define('QrAdmin.view.main.MainController', {
 		);
 	},
 
-	afterRender: function () {
+	checkForAuthentication: function () {
 		var ths = this;
 		SessionManager
 			.updateUserInfo()
 			.then(
 				function () {
 					if (SessionManager.isAuthenticated()) {
-						ths.redirectTo('board');
+						ths.showBoardView();
 					} else {
-						ths.redirectTo('login');
+						ths.showLoginView();
 					}
 				},
 				function () {

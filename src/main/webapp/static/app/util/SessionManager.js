@@ -53,6 +53,8 @@ Ext.define('QrAdmin.util.SessionManager', {
                 url: ths.urls.logoutUrl,
                 success: function (response) {
                     ths.userInfo = null;
+                    debugger
+                    Ext.fireEvent("logoutEvent");
                     resolve();
                 },
                 failure: function (response) {
