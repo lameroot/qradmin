@@ -1,6 +1,6 @@
 Ext.define('PayAdmin.model.User', {
     extend: 'Ext.data.Model',
-
+    xtype: 'user',
     requires: [
         'Ext.data.proxy.Rest'
     ],

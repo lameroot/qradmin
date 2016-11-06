@@ -1,6 +1,6 @@
 Ext.define('PayAdmin.model.Merchant', {
     extend: 'Ext.data.Model',
-
+    xtype: 'merchant',
     requires: [
         'Ext.data.proxy.Rest'
     ],
