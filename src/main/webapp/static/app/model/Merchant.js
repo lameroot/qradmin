@@ -18,12 +18,16 @@ Ext.define('PayAdmin.model.Merchant', {
     ],
 
     proxy: {
-        type: 'ajax',
+        type: 'rest',
         url: 'api/merchant',
         reader: {
             type: 'json',
             rootProperty: 'data',
             successProperty: 'successful'
+        },
+        actionMethods: {
+            create : 'POST',
+            update : 'PUT'
         }
     }
 });

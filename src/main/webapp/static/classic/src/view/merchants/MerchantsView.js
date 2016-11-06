@@ -25,7 +25,7 @@ Ext.define('PayAdmin.view.merchants.MerchantsView', {
                         text: 'Создать',
                         dock: 'right',
                         listeners: {
-                            click: 'onCreateMerchantButtonClick'
+                            click: 'onCreateButtonClick'
                         }
                     }
                 ]

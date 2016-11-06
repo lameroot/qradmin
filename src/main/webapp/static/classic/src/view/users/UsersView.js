@@ -4,9 +4,9 @@ Ext.define('PayAdmin.view.users.UsersView', {
 
     requires: [
         'PayAdmin.store.UserStore',
-        'PayAdmin.view.users.UsersController'
+        'PayAdmin.view.users.UsersViewController'
     ],
-    controller: 'users',
+    controller: 'usersView',
     layout: 'border',
     viewModel: {data:{filter: {}}},
     items: [
@@ -18,13 +18,26 @@ Ext.define('PayAdmin.view.users.UsersView', {
                 type: 'user'
             },
             header: {
-                title: 'Пользователи'
+                title: 'Пользователи',
+                items: [
+                    {
+                        xtype: 'button',
+                        text: 'Создать',
+                        dock: 'right',
+                        listeners: {
+                            click: 'onCreateButtonClick'
+                        }
+                    }
+                ]
             },
             columns: [
-                { text: 'Id',  dataIndex: 'id' },
-                { text: 'User name',  dataIndex: 'userName', flex: 1  },
-                { text: 'Merchant name', dataIndex: 'merchantName', flex: 1 }
-            ]
+                { text: 'ID',  dataIndex: 'id' },
+                { text: 'Имя',  dataIndex: 'userName', flex: 1  },
+                { text: 'Название продавца', dataIndex: 'merchantName', flex: 1 }
+            ],
+            listeners: {
+                itemclick: 'onItemClicked'
+            }
         }
     ]
 });

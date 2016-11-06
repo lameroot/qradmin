@@ -1,22 +1,22 @@
-Ext.define('PayAdmin.view.merchants.MerchantsViewController', {
+Ext.define('PayAdmin.view.users.UsersViewController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.merchantsView',
+    alias: 'controller.usersView',
 
     requires: [
-        'PayAdmin.view.merchants.MerchantWindow'
+        'PayAdmin.view.users.UserWindow'
     ],
 
     onCreateButtonClick: function() {
-        var merchant = Ext.create({
-            xtype: 'merchant'
+        var user = Ext.create({
+            xtype: 'user'
         });
         Ext.create(
             {
-                xtype: 'merchantWindow',
+                xtype: 'userWindow',
                 viewModel: {
                     data: {
-                        merchant: merchant
+                        merchant: user
                     }
                 }
             }
@@ -26,7 +26,7 @@ Ext.define('PayAdmin.view.merchants.MerchantsViewController', {
     onItemClicked: function(grid, record, item, index) {
         Ext.create(
             {
-                xtype: 'merchantWindow',
+                xtype: 'userWindow',
                 viewModel: {
                     data: {
                         merchant: record

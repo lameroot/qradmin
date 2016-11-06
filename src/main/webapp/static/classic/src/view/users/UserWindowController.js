@@ -1,18 +1,18 @@
-Ext.define('PayAdmin.view.merchants.MerchantWindowController', {
+Ext.define('PayAdmin.view.users.UserWindowController', {
 	extend: 'Ext.app.ViewController',
 
-	alias: 'controller.merchantWindow',
+	alias: 'controller.userWindow',
 
     onSaveButtonClick: function () {
         var ths = this;
-        var merchant = this.getView().getViewModel().get('merchant');
+        var merchant = this.getView().getViewModel().get('user');
         merchant.save({
             success: function (record) {
                 ths.getView().getViewModel().set('orderTemplate', record);
-                Ext.Msg.alert('Успешно', 'Продавец сохранен');
+                Ext.Msg.alert('Успешно', 'Пользователь сохранен');
             },
             failure: function (record) {
-                Ext.Msg.alert('Ошибка', 'Продавец не сохранен');
+                Ext.Msg.alert('Ошибка', 'Пользователь не сохранен');
             }
         });
 	},
