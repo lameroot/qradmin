@@ -10,6 +10,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
     private long id;
+    private long merchantId;
     private String merchantName;
     private String userName;
     private Date createdDate;
@@ -80,5 +81,13 @@ public class UserDto {
 
     public void setRoles(List<EnumGrantedAuthority> roles) {
         this.roles = roles;
+    }
+
+    public long getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(long merchantId) {
+        this.merchantId = merchantId;
     }
 }

@@ -24,12 +24,13 @@ Ext.define('PayAdmin.view.users.UsersViewController', {
     },
 
     onItemClicked: function(grid, record, item, index) {
+        // debugger
         Ext.create(
             {
                 xtype: 'userWindow',
                 viewModel: {
                     data: {
-                        merchant: record
+                        user: record
                     }
                 }
             }
