@@ -16,7 +16,7 @@ Ext.define('PayAdmin.view.users.UsersViewController', {
                 xtype: 'userWindow',
                 viewModel: {
                     data: {
-                        merchant: user
+                        user: user
                     }
                 }
             }
@@ -24,7 +24,6 @@ Ext.define('PayAdmin.view.users.UsersViewController', {
     },
 
     onItemClicked: function(grid, record, item, index) {
-        // debugger
         Ext.create(
             {
                 xtype: 'userWindow',

@@ -5,8 +5,8 @@ Ext.define('PayAdmin.view.users.UserWindowController', {
 
     onSaveButtonClick: function () {
         var ths = this;
-        var merchant = this.getView().getViewModel().get('user');
-        merchant.save({
+        var user = this.getView().getViewModel().get('user');
+        user.save({
             success: function (record) {
                 ths.getView().getViewModel().set('orderTemplate', record);
                 Ext.Msg.alert('Успешно', 'Пользователь сохранен');
