@@ -31,9 +31,9 @@ Ext.define('PayAdmin.view.merchants.MerchantsView', {
                 ]
             },
             columns: [
-                { text: 'Id',  dataIndex: 'id' },
-                { text: 'Merchant name',  dataIndex: 'name', flex: 1  },
-                { text: 'Description', dataIndex: 'description', flex: 1 }
+                { text: 'ID',  dataIndex: 'id' },
+                { text: 'Название',  dataIndex: 'name', flex: 1  },
+                { text: 'Описание', dataIndex: 'description', flex: 1 }
             ],
             listeners: {
                 itemclick: 'onItemClicked'
