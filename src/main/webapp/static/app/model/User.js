@@ -9,13 +9,9 @@ Ext.define('PayAdmin.model.User', {
     fields: [
         {type: 'number',    name: 'id', persist: false},
         {type: 'string',    name: 'userName'},
-        {type: 'string',    name: 'merchantName'},
-        {name: 'merchantId', reference: 'Merchant'},
-        {type: 'date',      name: 'createdDate', persist: false},
-        {type: 'boolean',   name: 'isEnabled'},
-        {type: 'boolean',   name: 'isExpired'},
-        {type: 'boolean',   name: 'isLocked'},
-        {type: 'string',    name: 'roles'}
+        {type: 'string',    name: 'merchantName', persist: false},
+        {type: 'number',    name: 'merchantId'},
+        {type: 'date',      name: 'createdDate', persist: false}
     ],
 
     proxy: {

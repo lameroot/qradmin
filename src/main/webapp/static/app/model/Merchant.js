@@ -11,9 +11,6 @@ Ext.define('PayAdmin.model.Merchant', {
         {type: 'string',    name: 'name'},
         {type: 'string',    name: 'description'},
         {type: 'date',      name: 'createdDate', persist: false},
-        {type: 'string',    name: 'integrationSupport', persist: false},
-        // private Set<Long> terminalIds;     //TODO one to many
-        // private Set<Long> userIds;
         {type: 'boolean',   name: 'createBinding'}
     ],
 

@@ -2,6 +2,7 @@ Ext.define('PayAdmin.store.UserStore', {
     extend: 'Ext.data.Store',
     model: 'PayAdmin.model.User',
     alias: 'store.user',
+    storeId: 'user',
 
     sorters: [
         {

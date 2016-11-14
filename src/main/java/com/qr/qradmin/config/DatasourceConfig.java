@@ -22,7 +22,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(value = {"com.qr.qradmin.dao"})
+@EnableJpaRepositories(value = {"com.qr.qradmin.dao", "ru.qrhandshake.qrpos.repository"})
 public class DatasourceConfig {
 
     @Bean(destroyMethod = "close")

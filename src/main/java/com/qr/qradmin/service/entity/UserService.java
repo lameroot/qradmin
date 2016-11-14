@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.User;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
@@ -23,6 +24,8 @@ public class UserService extends GenericEntityService<User> implements UserDetai
 
     @Resource
     private UserRepository userRepository;
+    @Resource
+    private ru.qrhandshake.qrpos.service.UserService commonUserService;
 
     @Override
     protected Specification<User> buildSpecification(final EntityFilter filter) {
@@ -53,6 +56,11 @@ public class UserService extends GenericEntityService<User> implements UserDetai
         List<User> users = userRepository.findByUsername(login);
         if (users.isEmpty() || users.get(0) == null) return null;
         return users.get(0);
+    }
+
+    @Override
+    public User create(User user) {
+        return commonUserService.create(user.getMerchant(), user.getUsername(), user.getUsername());
     }
 
     public User update(String username, List<String> authorities) {

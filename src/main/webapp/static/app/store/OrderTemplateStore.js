@@ -9,6 +9,7 @@ Ext.define('PayAdmin.store.OrderTemplateStore', {
     trailingBufferZone: 2,
     remoteSort: true,
     remoteFilter: true,
+    storeId: 'orderTemplate',
     proxy: {
         type: 'rest',
         url: 'api/orderTemplate',

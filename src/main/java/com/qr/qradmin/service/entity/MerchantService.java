@@ -4,6 +4,7 @@ import com.qr.qradmin.dao.MerchantRepository;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.Merchant;
@@ -15,6 +16,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Service
+@Qualifier("qradmin")
 public class MerchantService extends GenericEntityService<Merchant> {
 
     @Resource
