@@ -22,6 +22,8 @@ public class ConverterConfig {
         formattingConversionService.addConverter(new OrderTemplateToEntityConverter());
         formattingConversionService.addConverter(new MerchantToDtoConverter());
         formattingConversionService.addConverter(new MerchantToEntityConverter());
+        formattingConversionService.addConverter(new TerminalToDtoConverter());
+        formattingConversionService.addConverter(terminalToEntityConverter());
 
         return formattingConversionService;
     }
@@ -29,5 +31,9 @@ public class ConverterConfig {
     @Bean
     public UserToEntityConverter userToEntityConverter() {
         return new UserToEntityConverter();
+    }
+    @Bean
+    public TerminalToEntityConverter terminalToEntityConverter() {
+        return new TerminalToEntityConverter();
     }
 }

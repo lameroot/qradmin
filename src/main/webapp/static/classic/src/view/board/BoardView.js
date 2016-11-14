@@ -7,6 +7,7 @@ Ext.define('PayAdmin.view.board.BoardView', {
         'PayAdmin.view.board.BoardController',
         'PayAdmin.view.users.UsersView',
         'PayAdmin.view.merchants.MerchantsView',
+        'PayAdmin.view.terminals.TerminalsView',
         'PayAdmin.view.orders.OrdersView',
         'PayAdmin.view.ordertemplates.OrderTemplatesView'
     ],
@@ -40,6 +41,18 @@ Ext.define('PayAdmin.view.board.BoardView', {
             items: [
                 {
                     xtype: 'merchantsView'
+                }
+            ]
+        },
+        {
+            title: 'Терминалы',
+            //iconCls: 'fa-user',
+            layout: 'fit',
+            plugins: 'access',
+            accessFor: ['ADMIN'],
+            items: [
+                {
+                    xtype: 'terminalsView'
                 }
             ]
         },

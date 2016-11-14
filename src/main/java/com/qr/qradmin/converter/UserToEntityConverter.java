@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 public class UserToEntityConverter implements Converter<UserDto, User> {
 
     @Resource
-    @Qualifier("qradmin")
     private MerchantService merchantService;
 
     @Override

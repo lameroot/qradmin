@@ -12,10 +12,8 @@ public class UserToDtoConverter implements Converter<User, UserDto> {
         UserDto userDto = new UserDto();
 
         userDto.setId(user.getId());
-        if (user.getMerchant() != null) {
-            userDto.setMerchantId(user.getMerchant().getId());
-            userDto.setMerchantName(user.getMerchant().getName());
-        }
+        userDto.setMerchantId(user.getMerchant().getId());
+        userDto.setMerchantName(user.getMerchant().getName());
         userDto.setUserName(user.getUsername());
         userDto.setCreatedDate(user.getCreatedDate());
         userDto.setEnabled(user.isEnabled());

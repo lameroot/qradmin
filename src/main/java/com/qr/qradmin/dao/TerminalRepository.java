@@ -7,4 +7,5 @@ import ru.qrhandshake.qrpos.domain.Terminal;
 
 @Repository
 public interface TerminalRepository extends GenericRepository<Terminal> {
+    Terminal findByAuthName(String authName);
 }

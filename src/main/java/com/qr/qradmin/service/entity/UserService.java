@@ -62,7 +62,10 @@ public class UserService extends GenericEntityService<User> implements UserDetai
 
     @Override
     public User create(User user) {
-        user.setPassword(passwordEncoder.encode(user.getUsername()));           //TODO вынести в обзий модуль с прокси
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new RuntimeException("user already exist");
+        }
+        user.setPassword(passwordEncoder.encode(user.getUsername()));           //TODO вынести в общий модуль с прокси
         user.setExpired(false);
         user.setEnabled(true);
         user.setLocked(false);
