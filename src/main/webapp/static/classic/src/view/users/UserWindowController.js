@@ -13,6 +13,9 @@ Ext.define('PayAdmin.view.users.UserWindowController', {
             },
             failure: function (record) {
                 Ext.Msg.alert('Ошибка', 'Пользователь не сохранен');
+            },
+            callback: function() {
+                Ext.data.StoreManager.lookup('user').reload();
             }
         });
 	},

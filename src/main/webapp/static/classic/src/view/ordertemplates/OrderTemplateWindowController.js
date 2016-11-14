@@ -13,6 +13,9 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindowController', {
             },
             failure: function (record) {
                 Ext.Msg.alert('Error', 'Order template not saved');
+            },
+            callback: function() {
+                Ext.data.StoreManager.lookup('orderTemplate').reload();
             }
         });
 	},

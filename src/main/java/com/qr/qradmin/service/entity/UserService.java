@@ -7,9 +7,11 @@ import com.qr.qradmin.generic.GenericRepository;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.User;
+import ru.qrhandshake.qrpos.service.SecurityService;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
@@ -25,7 +27,7 @@ public class UserService extends GenericEntityService<User> implements UserDetai
     @Resource
     private UserRepository userRepository;
     @Resource
-    private ru.qrhandshake.qrpos.service.UserService commonUserService;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     protected Specification<User> buildSpecification(final EntityFilter filter) {
@@ -60,7 +62,11 @@ public class UserService extends GenericEntityService<User> implements UserDetai
 
     @Override
     public User create(User user) {
-        return commonUserService.create(user.getMerchant(), user.getUsername(), user.getUsername());
+        user.setPassword(passwordEncoder.encode(user.getUsername()));           //TODO вынести в обзий модуль с прокси
+        user.setExpired(false);
+        user.setEnabled(true);
+        user.setLocked(false);
+        return userRepository.save(user);
     }
 
     public User update(String username, List<String> authorities) {

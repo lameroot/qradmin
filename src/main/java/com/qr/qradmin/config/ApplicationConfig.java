@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 
 @Configuration
 //@EnableAspectJAutoProxy
-@ComponentScan(value = {"com.qr.qradmin.converter","com.qr.qradmin.service","com.qr.qradmin.validator", "ru.qrhandshake.qrpos.service"})
+@ComponentScan(value = {"com.qr.qradmin.converter","com.qr.qradmin.service","com.qr.qradmin.validator"})
 @PropertySource(ignoreResourceNotFound = true,
         value = {
                 "classpath:config/properties/application.properties",

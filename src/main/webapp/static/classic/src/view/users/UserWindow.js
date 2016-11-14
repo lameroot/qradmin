@@ -25,9 +25,12 @@ Ext.define('PayAdmin.view.users.UserWindow', {
                 allowBlank: false
             },
             {
-                xtype: 'textfield',
-                bind: {value: '{user.merchantName}'},
-                fieldLabel: 'Название продавца',
+                xtype: 'combobox',
+                bind: {value: '{user.merchantId}'},
+                fieldLabel: 'Продавец',
+                store: 'merchant',
+                displayField: 'name',
+                valueField: 'id',
                 allowBlank: false
             }
         ]

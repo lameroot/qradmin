@@ -16,7 +16,7 @@ Ext.define('PayAdmin.view.board.BoardView', {
     tabRotation: 0,
     activeTab: 1,
     header: {
-        title: 'QR console',
+        title: 'PAYstudio',
         padding: '0 50 0 0',
         items: [
             {
