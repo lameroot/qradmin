@@ -3,3 +3,14 @@
  */
 
 $enable-font-awesome: dynamic(true);
+
+//$base-color: #e6ae49;
+//$font-family: dynamic(Ubuntu, sans-serif);
+//@font-face {
+//  font-family: 'Ubuntu';
+//  font-weight: 100;
+//  font-style: normal;
+//   Chrome for md does not properly support local 'Roboto' https://code.google.com/p/chromium/issues/detail?id=536928
+//   Chrome also does not properly respect weights for local fonts https://code.google.com/p/chromium/issues/detail?id=578275
+//src: local('Roboto Light'), local('Roboto-Light'), url($roboto-path + '/Roboto-Light.ttf') format('truetype');
+//}

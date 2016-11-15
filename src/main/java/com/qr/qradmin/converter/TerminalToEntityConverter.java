@@ -24,6 +24,7 @@ public class TerminalToEntityConverter implements Converter<TerminalDto, Termina
             terminal.setMerchant(merchantService.get(teminalDto.getMerchantId()));
         }
         terminal.setAuthName(teminalDto.getAuthName());
+        terminal.setAuthPassword(teminalDto.getAuthPassword());
         return terminal;
     }
 }

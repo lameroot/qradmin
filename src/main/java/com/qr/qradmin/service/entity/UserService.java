@@ -4,6 +4,7 @@ import com.qr.qradmin.dao.UserRepository;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -48,16 +49,11 @@ public class UserService extends GenericEntityService<User> implements UserDetai
 
     @Override
     public User loadUserByUsername(String login) throws UsernameNotFoundException {
-        List<User> users = userRepository.findByUsername(login);
-        if (users.isEmpty() || users.get(0) == null)
+        User user = userRepository.findByUsername(login);
+        if (user == null) {
             throw new UsernameNotFoundException("User [" + login + "] is not found");
-        return users.get(0);
-    }
-
-    public User getByLogin(String login) {
-        List<User> users = userRepository.findByUsername(login);
-        if (users.isEmpty() || users.get(0) == null) return null;
-        return users.get(0);
+        }
+        return user;
     }
 
     @Override
@@ -65,19 +61,16 @@ public class UserService extends GenericEntityService<User> implements UserDetai
         if (userRepository.findByUsername(user.getUsername()) != null) {
             throw new RuntimeException("user already exist");
         }
-        user.setPassword(passwordEncoder.encode(user.getUsername()));           //TODO вынести в общий модуль с прокси
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setExpired(false);
         user.setEnabled(true);
         user.setLocked(false);
         return userRepository.save(user);
     }
 
-    public User update(String username, List<String> authorities) {
-        User user = loadUserByUsername(username);
-        if (authorities != null) {
-            user.setAuthorities(SecurityUtils.createAuthorityList(authorities.toArray(new String[authorities.size()])));
-        }
-        userRepository.save(user);
-        return user;
+    @Override
+    public User update(Long id, User source) {
+        source.setPassword(null);
+        return super.update(id, source);
     }
 }

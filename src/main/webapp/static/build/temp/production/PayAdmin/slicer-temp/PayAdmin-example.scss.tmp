@@ -1,6 +1,6 @@
 $app-name:  dynamic( 'PayAdmin' );
 $image-search-path: 'E:/WORKSPACES/home/java/qradmin/src/main/webapp/static/build/production/PayAdmin/classic/resources';
-$theme-name:  dynamic( 'paystudio-theme' );
+$theme-name:  dynamic( 'theme-crisp' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
 $include-ext-abstractmanager: dynamic(true);;
@@ -984,14 +984,6 @@ $current-resource-root: $theme-crisp-resource-root;
 $relative-image-path-for-uis: $theme-crisp-resource-path;
 @import '../../../../../ext/classic/theme-crisp/sass/etc/all';
 
-/* including package paystudio-theme */
-$paystudio-theme-resource-root: '' !default;
-$paystudio-theme-resource-path: 'images' !default;
-$current-package: 'paystudio-theme';
-$current-resource-root: $paystudio-theme-resource-root;
-$relative-image-path-for-uis: $paystudio-theme-resource-path;
-@import '../../../../../packages/local/paystudio-theme/sass/etc/all';
-
 /* including package font-awesome */
 $font-awesome-resource-root: 'font-awesome' !default;
 $font-awesome-resource-path: 'font-awesome/images' !default;
@@ -1171,14 +1163,6 @@ $relative-image-path-for-uis: $theme-crisp-resource-path;
 @import '../../../../../ext/classic/theme-crisp/sass/var/tab/Tab';
 @import '../../../../../ext/classic/theme-crisp/sass/var/tab/Bar';
 @import '../../../../../ext/classic/theme-crisp/sass/var/window/Toast';
-
-/* including package paystudio-theme */
-$paystudio-theme-resource-root: '' !default;
-$paystudio-theme-resource-path: 'images' !default;
-$current-package: 'paystudio-theme';
-$current-resource-root: $paystudio-theme-resource-root;
-$relative-image-path-for-uis: $paystudio-theme-resource-path;
-@import '../../../../../packages/local/paystudio-theme/sass/var/Component';
 
 /* including package PayAdmin */
 $PayAdmin-resource-root: '' !default;

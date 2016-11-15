@@ -9,6 +9,7 @@ Ext.define('PayAdmin.model.User', {
     fields: [
         {type: 'number',    name: 'id', persist: false},
         {type: 'string',    name: 'userName'},
+        {type: 'string',    name: 'password'},
         {type: 'string',    name: 'merchantName', persist: false},
         {type: 'number',    name: 'merchantId'},
         {type: 'date',      name: 'createdDate', persist: false}

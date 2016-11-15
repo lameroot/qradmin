@@ -13,7 +13,12 @@ Ext.define('PayAdmin.view.terminals.TerminalWindow', {
     modal: true,
     bodyPadding: 10,
     viewModel: {
-        data: {terminal: {}}
+        data: {terminal: {}},
+        formulas: {
+            isNewTerminal: function(get) {
+                return get('terminal').phantom
+            }
+        }
     },
     items: {
         xtype: 'panel',
@@ -22,6 +27,15 @@ Ext.define('PayAdmin.view.terminals.TerminalWindow', {
                 xtype: 'textfield',
                 bind: {value: '{terminal.authName}'},
                 fieldLabel: 'Имя',
+                allowBlank: false
+            },
+            {
+                xtype: 'textfield',
+                bind: {
+                    hidden: '{!isNewTerminal}',
+                    value: '{terminal.password}'
+                },
+                fieldLabel: 'Пароль',
                 allowBlank: false
             },
             {

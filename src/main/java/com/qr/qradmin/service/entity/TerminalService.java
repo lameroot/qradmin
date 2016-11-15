@@ -45,8 +45,14 @@ public class TerminalService extends GenericEntityService<Terminal> {
         if (terminalRepository.findByAuthName(terminal.getAuthName()) != null) {
             throw new RuntimeException("terminal already exist");
         }
-        terminal.setAuthPassword(passwordEncoder.encode(terminal.getAuthName()));           //TODO вынести в общий модуль с прокси
+        terminal.setAuthPassword(passwordEncoder.encode(terminal.getAuthPassword()));           //TODO вынести в общий модуль с прокси
         return terminalRepository.save(terminal);
+    }
+
+    @Override
+    public Terminal update(Long id, Terminal source) {
+        source.setAuthPassword(null);
+        return super.update(id, source);
     }
 
     @Override

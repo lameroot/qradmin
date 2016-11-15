@@ -1,2 +1,0 @@
-# paystudio-theme - Read Me
-

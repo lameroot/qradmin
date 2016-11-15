@@ -13,6 +13,7 @@ public class UserDto {
     private Long merchantId;
     private String merchantName;
     private String userName;
+    private String password;
     private Date createdDate;
     private Boolean isEnabled;
     private Boolean isExpired;
@@ -89,5 +90,13 @@ public class UserDto {
 
     public void setRoles(List<EnumGrantedAuthority> roles) {
         this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

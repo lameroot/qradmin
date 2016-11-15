@@ -18,6 +18,7 @@ public class UserToEntityConverter implements Converter<UserDto, User> {
         if (userDto == null) return null;
         User user = new User();
         user.setUsername(userDto.getUserName());
+        user.setPassword(userDto.getPassword());
         if (userDto.getMerchantId() != null) {
             user.setMerchant(merchantService.get(userDto.getMerchantId()));
         }

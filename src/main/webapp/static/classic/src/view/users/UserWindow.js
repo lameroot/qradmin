@@ -13,7 +13,12 @@ Ext.define('PayAdmin.view.users.UserWindow', {
     modal: true,
     bodyPadding: 10,
     viewModel: {
-        data: {user: {}}
+        data: {user: {}},
+        formulas: {
+            isNewUser: function(get) {
+                return get('user').phantom
+            }
+        }
     },
     items: {
         xtype: 'panel',
@@ -22,6 +27,15 @@ Ext.define('PayAdmin.view.users.UserWindow', {
                 xtype: 'textfield',
                 bind: {value: '{user.userName}'},
                 fieldLabel: 'Имя',
+                allowBlank: false
+            },
+            {
+                xtype: 'textfield',
+                bind: {
+                    hidden: '{!isNewUser}',
+                    value: '{user.password}'
+                },
+                fieldLabel: 'Пароль',
                 allowBlank: false
             },
             {

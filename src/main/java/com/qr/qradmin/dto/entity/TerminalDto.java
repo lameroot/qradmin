@@ -13,6 +13,7 @@ public class TerminalDto {
     private String merchantName;
     private Long merchantId;
     private String authName;
+    private String authPassword;
 
     public Long getId() {
         return id;
@@ -46,4 +47,11 @@ public class TerminalDto {
         this.authName = authName;
     }
 
+    public String getAuthPassword() {
+        return authPassword;
+    }
+
+    public void setAuthPassword(String authPassword) {
+        this.authPassword = authPassword;
+    }
 }

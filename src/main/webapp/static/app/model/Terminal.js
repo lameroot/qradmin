@@ -10,7 +10,8 @@ Ext.define('PayAdmin.model.Terminal', {
         {type: 'number',    name: 'id', persist: false},
         {type: 'string',    name: 'merchantName', persist: false},
         {type: 'number',    name: 'merchantId'},
-        {type: 'string',      name: 'authName'}
+        {type: 'string',    name: 'authName'},
+        {type: 'string',    name: 'authPassword'}
     ],
 
     proxy: {
