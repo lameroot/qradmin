@@ -1,15 +1,13 @@
 package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.MerchantDto;
-import com.qr.qradmin.dto.entity.UserDto;
 import org.springframework.core.convert.converter.Converter;
-import ru.qrhandshake.qrpos.domain.IntegrationSupport;
 import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.Terminal;
 import ru.qrhandshake.qrpos.domain.User;
 
-import java.util.Date;
-import java.util.Set;
+import java.util.Collections;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MerchantToDtoConverter implements Converter<Merchant, MerchantDto> {
@@ -24,8 +22,13 @@ public class MerchantToDtoConverter implements Converter<Merchant, MerchantDto> 
         merchantDto.setDescription(merchant.getDescription());
         merchantDto.setCreatedDate(merchant.getCreatedDate());
         merchantDto.setIntegrationSupport(merchant.getIntegrationSupport());
-        merchantDto.setTerminalIds(merchant.getTerminals().stream().map(Terminal::getId).collect(Collectors.toSet()));
-        merchantDto.setUserIds(merchant.getUsers().stream().map(User::getId).collect(Collectors.toSet()));
+        merchantDto.setTerminalIds(
+                Optional.ofNullable(merchant.getTerminals()).orElse(Collections.emptySet())
+                .stream().map(Terminal::getId).collect(Collectors.toSet())
+        );
+        merchantDto.setUserIds(Optional.ofNullable(merchant.getUsers()).orElse(Collections.emptySet())
+                .stream().map(User::getId).collect(Collectors.toSet())
+        );
         merchantDto.setCreateBinding(merchant.isCreateBinding());
 
         return merchantDto;

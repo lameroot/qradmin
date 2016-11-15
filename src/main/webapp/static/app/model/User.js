@@ -1,6 +1,6 @@
 Ext.define('PayAdmin.model.User', {
     extend: 'Ext.data.Model',
-
+    xtype: 'user',
     requires: [
         'Ext.data.proxy.Rest'
     ],
@@ -9,22 +9,22 @@ Ext.define('PayAdmin.model.User', {
     fields: [
         {type: 'number',    name: 'id', persist: false},
         {type: 'string',    name: 'userName'},
-        {type: 'string',    name: 'merchantName'},
-        {type: 'date',      name: 'createdDate', persist: false},
-        {type: 'boolean',   name: 'isEnabled'},
-        {type: 'boolean',   name: 'isExpired'},
-        {type: 'boolean',   name: 'isLocked'},
-        {type: 'string',    name: 'roles'}
+        {type: 'string',    name: 'merchantName', persist: false},
+        {type: 'number',    name: 'merchantId'},
+        {type: 'date',      name: 'createdDate', persist: false}
     ],
 
-
     proxy: {
-        type: 'ajax',
+        type: 'rest',
         url: 'api/user',
         reader: {
             type: 'json',
             rootProperty: 'data',
             successProperty: 'successful'
+        },
+        actionMethods: {
+            create : 'POST',
+            update : 'PUT'
         }
     }
 });

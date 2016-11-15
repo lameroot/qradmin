@@ -1,6 +1,6 @@
 Ext.define('PayAdmin.model.Order', {
     extend: 'Ext.data.Model',
-
+    xtype: 'order',
     requires: [
         'Ext.data.proxy.Rest'
     ],
@@ -25,7 +25,7 @@ Ext.define('PayAdmin.model.Order', {
     ],
 
     proxy: {
-        type: 'ajax',
+        type: 'rest',
         url: 'api/order',
         reader: {
             type: 'json',

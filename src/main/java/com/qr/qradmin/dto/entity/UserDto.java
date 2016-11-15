@@ -10,12 +10,13 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
     private long id;
+    private Long merchantId;
     private String merchantName;
     private String userName;
     private Date createdDate;
-    private boolean isEnabled;
-    private boolean isExpired;
-    private boolean isLocked;
+    private Boolean isEnabled;
+    private Boolean isExpired;
+    private Boolean isLocked;
     private List<EnumGrantedAuthority> roles = new ArrayList<>();
 
     public long getId() {
@@ -24,6 +25,14 @@ public class UserDto {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Long getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Long merchantId) {
+        this.merchantId = merchantId;
     }
 
     public String getMerchantName() {
@@ -50,27 +59,27 @@ public class UserDto {
         this.createdDate = createdDate;
     }
 
-    public boolean isEnabled() {
+    public Boolean getEnabled() {
         return isEnabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         isEnabled = enabled;
     }
 
-    public boolean isExpired() {
+    public Boolean getExpired() {
         return isExpired;
     }
 
-    public void setExpired(boolean expired) {
+    public void setExpired(Boolean expired) {
         isExpired = expired;
     }
 
-    public boolean isLocked() {
+    public Boolean getLocked() {
         return isLocked;
     }
 
-    public void setLocked(boolean locked) {
+    public void setLocked(Boolean locked) {
         isLocked = locked;
     }
 

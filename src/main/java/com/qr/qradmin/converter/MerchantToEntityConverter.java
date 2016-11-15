@@ -19,9 +19,8 @@ public class MerchantToEntityConverter implements Converter<MerchantDto, Merchan
         if (merchantDto == null) return null;
         Merchant merchant = new Merchant();
 
+        merchant.setName(merchantDto.getName());
         merchant.setDescription(merchantDto.getDescription());
-        merchant.setIntegrationSupport(merchantDto.getIntegrationSupport());
-        merchant.setCreateBinding(merchantDto.isCreateBinding());
 
         return merchant;
     }

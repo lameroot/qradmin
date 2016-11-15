@@ -1,26 +1,22 @@
 package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.MerchantRepository;
-import com.qr.qradmin.dao.UserRepository;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.Merchant;
-import ru.qrhandshake.qrpos.domain.User;
-import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.List;
 
 @Service
+@Qualifier("qradmin")
 public class MerchantService extends GenericEntityService<Merchant> {
 
     @Resource

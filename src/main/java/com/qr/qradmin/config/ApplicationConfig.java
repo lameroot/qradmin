@@ -10,6 +10,11 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import ru.qrhandshake.qrpos.repository.UserRepository;
+import ru.qrhandshake.qrpos.service.SecurityService;
+import ru.qrhandshake.qrpos.service.UserService;
+
+import javax.annotation.Resource;
 
 @Configuration
 //@EnableAspectJAutoProxy
@@ -21,6 +26,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         })
 @EnableScheduling
 @Import(value = {
+        ConverterConfig.class,
         DatasourceConfig.class,
         SecurityConfig.class
 })
@@ -32,23 +38,6 @@ public class ApplicationConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
-    }
-
-    @Bean
-    public ConversionService conversionService() {
-        FormattingConversionService formattingConversionService = new FormattingConversionService();
-        formattingConversionService.addConverter(new StringToSortConverter());
-        formattingConversionService.addConverter(new StringToFilterConverter());
-        formattingConversionService.addConverter(new UserInfoToDtoConverter());
-        formattingConversionService.addConverter(new UserToDtoConverter());
-        formattingConversionService.addConverter(new UserToEntityConverter());
-        formattingConversionService.addConverter(new MerchantOrderToDtoConverter());
-        formattingConversionService.addConverter(new OrderTemplateToDtoConverter());
-        formattingConversionService.addConverter(new OrderTemplateToEntityConverter());
-        formattingConversionService.addConverter(new MerchantToDtoConverter());
-        formattingConversionService.addConverter(new MerchantToEntityConverter());
-
-        return formattingConversionService;
     }
 
     @Bean

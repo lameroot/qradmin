@@ -6,6 +6,7 @@ import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.service.entity.MerchantService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.Merchant;
 
@@ -16,6 +17,7 @@ import java.util.Map;
 public class MerchantDtoService extends GenericDtoService<Merchant, MerchantDto> {
 
     @Resource
+    @Qualifier("qradmin")
     private MerchantService merchantService;
 
     @Override

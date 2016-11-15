@@ -32,11 +32,10 @@ Ext.define('PayAdmin.model.OrderTemplate', {
             type: 'json',
             rootProperty: 'data',
             successProperty: 'successful'
+        },
+        actionMethods: {
+            create : 'POST',
+            update : 'PUT'
         }
-        // ,
-        // actionMethods: {
-        //     create : 'POST',
-        //     update : 'PUT'
-        // }
     }
 });
