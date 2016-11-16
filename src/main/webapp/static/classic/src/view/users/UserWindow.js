@@ -9,7 +9,6 @@ Ext.define('PayAdmin.view.users.UserWindow', {
     title: 'Пользователь',
     width: 300,
     height: 200,
-    // layout: 'fit',
     modal: true,
     bodyPadding: 10,
     viewModel: {
@@ -25,22 +24,25 @@ Ext.define('PayAdmin.view.users.UserWindow', {
         items: [
             {
                 xtype: 'textfield',
-                bind: {value: '{user.userName}'},
+                bind: {
+                    disabled: '{!isNewUser}',
+                    value: '{user.userName}'
+                },
                 fieldLabel: 'Имя',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
                 bind: {
-                    hidden: '{!isNewUser}',
                     value: '{user.password}'
                 },
-                fieldLabel: 'Пароль',
-                allowBlank: false
+                fieldLabel: 'Пароль'
             },
             {
                 xtype: 'combobox',
-                bind: {value: '{user.merchantId}'},
+                bind: {
+                    value: '{user.merchantId}'
+                },
                 fieldLabel: 'Продавец',
                 store: 'merchant',
                 displayField: 'name',

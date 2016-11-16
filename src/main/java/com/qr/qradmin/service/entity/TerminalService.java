@@ -6,6 +6,7 @@ import com.qr.qradmin.filter.TerminalFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,10 @@ public class TerminalService extends GenericEntityService<Terminal> {
 
     @Override
     public Terminal update(Long id, Terminal source) {
-        source.setAuthPassword(null);
+        if (StringUtils.isNotBlank(source.getAuthPassword())) {
+            source.setAuthPassword(passwordEncoder.encode(source.getAuthPassword()));
+        }
+        source.setAuthName(null);
         return super.update(id, source);
     }
 

@@ -70,7 +70,10 @@ public class UserService extends GenericEntityService<User> implements UserDetai
 
     @Override
     public User update(Long id, User source) {
-        source.setPassword(null);
+        if (StringUtils.isNotBlank(source.getPassword())) {
+            source.setPassword(passwordEncoder.encode(source.getPassword()));
+        }
+        source.setUsername(null);
         return super.update(id, source);
     }
 }

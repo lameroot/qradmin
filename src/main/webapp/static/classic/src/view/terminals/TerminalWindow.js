@@ -25,18 +25,19 @@ Ext.define('PayAdmin.view.terminals.TerminalWindow', {
         items: [
             {
                 xtype: 'textfield',
-                bind: {value: '{terminal.authName}'},
+                bind: {
+                    disabled: '{!isNewTerminal}',
+                    value: '{terminal.authName}'
+                },
                 fieldLabel: 'Имя',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
                 bind: {
-                    hidden: '{!isNewTerminal}',
                     value: '{terminal.password}'
                 },
-                fieldLabel: 'Пароль',
-                allowBlank: false
+                fieldLabel: 'Пароль'
             },
             {
                 xtype: 'combobox',
