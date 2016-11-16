@@ -8,12 +8,23 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
     controller: 'orderTemplateWindow',
     title: 'Шаблон',
     width: 300,
-    height: 600,
-    // layout: 'fit',
+    height: 400,
     modal: true,
     bodyPadding: 10,
     viewModel: {
-        data: {orderTemplate: {}}
+        data: {orderTemplate: {}},
+        formulas: {
+            paymentLink: function(get) {
+                var orderTemplate = get('orderTemplate');
+                if (orderTemplate.phantom) {
+                    return null;
+                }
+                return 'https://paystudio.mircloud.host?template=' + orderTemplate.id;//TODO get link from settings CHANGE LINK TO PAYSTUDIO.RU  !!!!!
+            },
+            isNewOrderTemplate: function(get) {
+                return get('orderTemplate').phantom;
+            }
+        }
     },
     items: {
         xtype: 'panel',
@@ -47,11 +58,14 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
             },
             {
                 layout: 'hbox',
+                bind: {
+                    hidden: '{isNewOrderTemplate}'
+                },
                 items: [
                     {
                         xtype: 'qrCode',
                         bind: {
-                            qrText: '{orderTemplate.paymentLink}'
+                            qrText: '{paymentLink}'
                         }
                     },
                     {
