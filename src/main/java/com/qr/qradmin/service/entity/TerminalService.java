@@ -10,7 +10,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import ru.qrhandshake.qrpos.domain.OrderTemplate_;
 import ru.qrhandshake.qrpos.domain.Terminal;
+import ru.qrhandshake.qrpos.domain.Terminal_;
 import ru.qrhandshake.qrpos.domain.User;
 
 import javax.annotation.Resource;
@@ -34,6 +37,10 @@ public class TerminalService extends GenericEntityService<Terminal> {
             public Predicate toPredicate(Root<Terminal> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 TerminalFilter filter = (TerminalFilter) f;
                 Predicate predicate = buildPredicate(root, cb, filter);
+
+                if (!CollectionUtils.isEmpty(filter.getTerminalIds())) {
+                    predicate.getExpressions().add(root.get(Terminal_.id).in(filter.getTerminalIds()));
+                }
 
                 return predicate;
             }

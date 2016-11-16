@@ -29,7 +29,7 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
     @Override
     protected EntityFilter buildFilter(Map<String, String> filter) {
         OrderTemplateFilter entityFilter = new OrderTemplateFilter();
-        if (!SecurityUtils.isCurrentUserAdmin()) {
+        if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
             List<Long> merchantTerminalIds = user.getMerchant().getTerminals().stream()
                     .map(Terminal::getId)

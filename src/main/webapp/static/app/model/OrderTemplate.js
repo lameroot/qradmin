@@ -9,20 +9,21 @@ Ext.define('PayAdmin.model.OrderTemplate', {
     fields: [
         {type: 'int', name: 'id', persist: false},
         {type: 'int', name: 'terminalId'},
-        {type: 'int', name: 'merchantId', persist: false},
         {type: 'int', name: 'amount'},
         {type: 'string', name: 'name'},
         {type: 'string', name: 'description'},
-        {
-            type: 'string',
-            name: 'paymentLink',
-            calculate: function (data) {
-                return data.id
-                    ? 'https://paystudio.mircloud.host/proxy/template/payment/' + data.id //TODO get link from settings
-                    : null;
-            }
-        }
-
+        {type: 'string', name: 'terminalName', persist: false},
+        {type: 'string', name: 'merchantName', persist: false},
+        {type: 'int', name: 'merchantId', persist: false}
+        // {
+        //     type: 'string',
+        //     name: 'paymentLink',
+        //     calculate: function (data) {
+        //         return data.id
+        //             ? 'https://paystudio.mircloud.host/proxy/template/payment/' + data.id //TODO get link from settings
+        //             : null;
+        //     }
+        // }
     ],
 
     proxy: {

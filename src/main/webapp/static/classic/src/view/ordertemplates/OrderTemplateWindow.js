@@ -6,7 +6,7 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
         'PayAdmin.view.ordertemplates.OrderTemplateWindowController'
     ],
     controller: 'orderTemplateWindow',
-    title: 'Order template',
+    title: 'Шаблон',
     width: 300,
     height: 600,
     // layout: 'fit',
@@ -20,38 +20,29 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
         items: [
             {
                 xtype: 'textfield',
-                bind: {value: '{orderTemplate.id}'},
-                fieldLabel: 'ID',
-                allowBlank: false
-            },
-            {
-                xtype: 'textfield',
-                bind: {value: '{orderTemplate.terminalId}'},
-                fieldLabel: 'terminal ID',
-                allowBlank: false
-            },
-            {
-                xtype: 'textfield',
-                bind: {value: '{orderTemplate.merchantId}'},
-                fieldLabel: 'merchant ID',
+                bind: {value: '{orderTemplate.name}'},
+                fieldLabel: 'Название',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
                 bind: {value: '{orderTemplate.amount}'},
-                fieldLabel: 'amount',
+                fieldLabel: 'Сумма',
                 allowBlank: false
             },
             {
-                xtype: 'textfield',
-                bind: {value: '{orderTemplate.name}'},
-                fieldLabel: 'name',
+                xtype: 'combobox',
+                bind: {value: '{orderTemplate.terminalId}'},
+                fieldLabel: 'Терминал',
+                store: 'terminal',
+                displayField: 'nameWithMerchant',
+                valueField: 'id',
                 allowBlank: false
             },
             {
                 xtype: 'textfield',
                 bind: {value: '{orderTemplate.description}'},
-                fieldLabel: 'description',
+                fieldLabel: 'Описание',
                 allowBlank: false
             },
             {

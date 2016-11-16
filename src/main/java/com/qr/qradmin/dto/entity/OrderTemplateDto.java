@@ -14,6 +14,8 @@ public class OrderTemplateDto {
     private Long id;
     private Long terminalId;
     private Long merchantId;
+    private String terminalName;
+    private String merchantName;
     private Long amount;
     private String name;
     private String description;
@@ -66,12 +68,30 @@ public class OrderTemplateDto {
         this.description = description;
     }
 
+    public String getTerminalName() {
+        return terminalName;
+    }
+
+    public void setTerminalName(String terminalName) {
+        this.terminalName = terminalName;
+    }
+
+    public String getMerchantName() {
+        return merchantName;
+    }
+
+    public void setMerchantName(String merchantName) {
+        this.merchantName = merchantName;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("OrderTemplateDto{");
         sb.append("id=").append(id);
         sb.append(", terminalId=").append(terminalId);
         sb.append(", merchantId=").append(merchantId);
+        sb.append(", terminalName='").append(terminalName).append('\'');
+        sb.append(", merchantName='").append(merchantName).append('\'');
         sb.append(", amount=").append(amount);
         sb.append(", name='").append(name).append('\'');
         sb.append(", description='").append(description).append('\'');

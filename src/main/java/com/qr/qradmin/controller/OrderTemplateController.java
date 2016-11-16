@@ -5,8 +5,6 @@ import com.qr.qradmin.generic.CrudOperation;
 import com.qr.qradmin.generic.GenericController;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.service.dto.OrderTemplateDtoService;
-import com.qr.qradmin.validator.entity.OrderTemplateDtoValidator;
-import com.qr.qradmin.validator.filter.OrderTemplateFilterDtoValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +21,10 @@ public class OrderTemplateController extends GenericController<OrderTemplate, Or
 
     @PostConstruct
     public void init() {
-        supportedOperations.put(CrudOperation.GET_ONE, Collections.emptyList());
-        supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.emptyList());
+        supportedOperations.put(CrudOperation.GET_ONE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
+        supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.emptyList());        //TODO сделать отдельный метод для получения своих записей
         supportedOperations.put(CrudOperation.CREATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
         supportedOperations.put(CrudOperation.UPDATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
-        supportedOperations.put(CrudOperation.DELETE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
     }
 
     @Resource

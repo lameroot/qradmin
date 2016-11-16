@@ -19,7 +19,7 @@ public class ConverterConfig {
         formattingConversionService.addConverter(userToEntityConverter());
         formattingConversionService.addConverter(new MerchantOrderToDtoConverter());
         formattingConversionService.addConverter(new OrderTemplateToDtoConverter());
-        formattingConversionService.addConverter(new OrderTemplateToEntityConverter());
+        formattingConversionService.addConverter(orderTemplateToEntityConverter());
         formattingConversionService.addConverter(new MerchantToDtoConverter());
         formattingConversionService.addConverter(new MerchantToEntityConverter());
         formattingConversionService.addConverter(new TerminalToDtoConverter());
@@ -35,5 +35,9 @@ public class ConverterConfig {
     @Bean
     public TerminalToEntityConverter terminalToEntityConverter() {
         return new TerminalToEntityConverter();
+    }
+    @Bean
+    public OrderTemplateToEntityConverter orderTemplateToEntityConverter() {
+        return new OrderTemplateToEntityConverter();
     }
 }

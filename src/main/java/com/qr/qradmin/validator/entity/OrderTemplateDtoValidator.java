@@ -31,10 +31,12 @@ public class OrderTemplateDtoValidator implements Validator {
         User user = userService.get(SecurityUtils.getCurrentUser().getId());
         Hibernate.initialize(user.getMerchant());
         Hibernate.initialize(user.getMerchant().getTerminals());
-        if (orderTemplateDto.getTerminalId() != null
-                && !user.getMerchant().getTerminals()
-                .stream()
-                .anyMatch(terminal -> Objects.equals(terminal.getId(), orderTemplateDto.getTerminalId()))) {
+        if (!SecurityUtils.isCurrentUserAdmin() && orderTemplateDto.getTerminalId() != null &&
+                !user.getMerchant().getTerminals()
+                        .stream()
+                        .anyMatch(terminal -> Objects.equals(terminal.getId(), orderTemplateDto.getTerminalId()))
+
+                ) {
             errors.reject("OrderTemplateDto.terminalId.NotFound", null, null);
         }
     }

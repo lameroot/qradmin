@@ -8,9 +8,13 @@ import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.service.entity.TerminalService;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.Terminal;
+import ru.qrhandshake.qrpos.domain.User;
+import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto> {
@@ -21,6 +25,13 @@ public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto>
     @Override
     protected EntityFilter buildFilter(Map<String, String> filter) {
         TerminalFilter entityFilter = new TerminalFilter();
+        if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
+            User user = SecurityUtils.getCurrentUser();
+            List<Long> merchantTerminalIds = user.getMerchant().getTerminals().stream()
+                    .map(Terminal::getId)
+                    .collect(Collectors.toList());
+            entityFilter.setTerminalIds(merchantTerminalIds);
+        }
         return entityFilter;
     }
 

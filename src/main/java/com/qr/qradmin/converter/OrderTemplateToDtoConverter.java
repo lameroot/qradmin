@@ -12,12 +12,10 @@ public class OrderTemplateToDtoConverter implements Converter<OrderTemplate, Ord
         OrderTemplateDto orderTemplateDto = new OrderTemplateDto();
 
         orderTemplateDto.setId(orderTemplate.getId());
-        if (orderTemplate.getTerminal() != null) {
-            orderTemplateDto.setTerminalId(orderTemplate.getTerminal().getId());
-        }
-        if (orderTemplate.getTerminal() != null && orderTemplate.getTerminal().getMerchant() != null) {
-            orderTemplateDto.setMerchantId(orderTemplate.getTerminal().getMerchant().getId());
-        }
+        orderTemplateDto.setTerminalId(orderTemplate.getTerminal().getId());
+        orderTemplateDto.setTerminalName(orderTemplate.getTerminal().getAuthName());
+        orderTemplateDto.setMerchantId(orderTemplate.getTerminal().getMerchant().getId());
+        orderTemplateDto.setMerchantName(orderTemplate.getTerminal().getMerchant().getName());
         orderTemplateDto.setAmount(orderTemplate.getAmount());
         orderTemplateDto.setName(orderTemplate.getName());
         orderTemplateDto.setDescription(orderTemplate.getDescription());

@@ -9,10 +9,10 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindowController', {
         orderTemplate.save({
             success: function (record) {
                 ths.getView().getViewModel().set('orderTemplate', record);
-                Ext.Msg.alert('Successful', 'Order template saved');
+                Ext.Msg.alert('Successful', 'Шаблон сохранен');
             },
             failure: function (record) {
-                Ext.Msg.alert('Error', 'Order template not saved');
+                Ext.Msg.alert('Error', 'Шаблон не сохранен');
             },
             callback: function() {
                 Ext.data.StoreManager.lookup('orderTemplate').reload();

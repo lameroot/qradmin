@@ -94,11 +94,11 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplatesView', {
             },
 			columns: [
 				{text: 'ID', dataIndex: 'id'},
-                {text: 'terminal ID', dataIndex: 'terminalId', sortable: false},
-                {text: 'merchant ID', dataIndex: 'merchantId', sortable: false},
-                {text: 'amount', dataIndex: 'amount'},
-                {text: 'name', dataIndex: 'name'},
-                {text: 'description', dataIndex: 'description', flex: 1  }
+				{text: 'Название', dataIndex: 'name', flex: 1},
+				{text: 'Сумма', dataIndex: 'amount', flex: 1},
+				{text: 'Описание', dataIndex: 'description', flex: 1},
+				{text: 'Терминал', dataIndex: 'terminalName', sortable: false, flex: 1},
+				{text: 'Продавец', dataIndex: 'merchantName', sortable: false, flex: 1}
 			],
 			listeners: {
 				itemclick: 'onItemClicked'
