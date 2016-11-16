@@ -73,15 +73,21 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
                         items: [
                             {
                                 xtype: 'button',
-                                text: 'copy',
+                                text: 'Сохранить',
                                 margin: 20,
-                                width: 70
+                                width: 70,
+                                listeners: {
+                                    click: 'onSaveImageButtonClick'
+                                }
                             },
                             {
                                 xtype: 'button',
-                                text: 'print',
+                                text: 'Печать',
                                 margin: 20,
-                                width: 70
+                                width: 70,
+                                listeners: {
+                                    click: 'onPrintImageButtonClick'
+                                }
                             }
                         ]
                     }
@@ -91,13 +97,13 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindow', {
     },
     buttons: [
         {
-            text: 'Save',
+            text: 'Сохранить',
             listeners: {
                 click: 'onSaveButtonClick'
             }
         },
         {
-            text: 'Close',
+            text: 'Закрыть',
             listeners: {
                 click: 'onCloseButtonClick'
             }

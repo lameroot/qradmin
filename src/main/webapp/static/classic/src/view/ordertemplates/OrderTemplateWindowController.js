@@ -22,5 +22,28 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindowController', {
 
     onCloseButtonClick: function () {
         this.getView().close();
+    },
+
+    onSaveImageButtonClick: function() {
+        // var qrCode = this.getView().down('qrCode');
+        // var imgHtml = qrCode.html;
+        // var regexp = /<img src="(.+)".+/;
+        // debugger
+    },
+
+    onPrintImageButtonClick: function() {
+
+    },
+
+    saveImage: function () {
+        // var imgOrURL;
+        // embedImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA"+
+        //     "AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO"+
+        //     "9TXL0Y4OHwAAAABJRU5ErkJggg==";
+        // imgOrURL = embedImage;
+        // if (typeof imgOrURL == 'object')
+        //     imgOrURL = embedImage.src;
+        // window.win = open(imgOrURL);
+        // setTimeout('win.document.execCommand("SaveAs")', 0);
     }
 });

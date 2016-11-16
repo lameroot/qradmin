@@ -20,6 +20,7 @@ Ext.define('PayAdmin.Application', {
 
     launch: function () {
         // TODO - Launch the application
+        document.getElementById('preloaderImg').style.display='none';
     },
 
     onAppUpdate: function () {
