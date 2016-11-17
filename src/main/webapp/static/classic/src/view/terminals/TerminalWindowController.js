@@ -15,7 +15,7 @@ Ext.define('PayAdmin.view.terminals.TerminalWindowController', {
                 Ext.Msg.alert('Ошибка', 'Терминал не сохранен');
             },
             callback: function() {
-                Ext.data.StoreManager.lookup('terminal').reload();
+                Ext.data.StoreManager.lookup('terminal').load();
             }
         });
 	},

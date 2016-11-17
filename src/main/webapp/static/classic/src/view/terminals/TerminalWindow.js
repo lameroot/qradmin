@@ -52,13 +52,13 @@ Ext.define('PayAdmin.view.terminals.TerminalWindow', {
     },
     buttons: [
         {
-            text: 'Save',
+            text: 'Сохранить',
             listeners: {
                 click: 'onSaveButtonClick'
             }
         },
         {
-            text: 'Close',
+            text: 'Закрыть',
             listeners: {
                 click: 'onCloseButtonClick'
             }

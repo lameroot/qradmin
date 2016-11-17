@@ -15,7 +15,7 @@ Ext.define('PayAdmin.view.merchants.MerchantWindowController', {
                 Ext.Msg.alert('Ошибка', 'Продавец не сохранен');
             },
             callback: function() {
-                Ext.data.StoreManager.lookup('merchant').reload();
+                Ext.data.StoreManager.lookup('merchant').load();
             }
         });
 	},

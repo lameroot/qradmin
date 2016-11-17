@@ -3,16 +3,14 @@ Ext.define('PayAdmin.store.TerminalStore', {
     model: 'PayAdmin.model.Terminal',
     alias: 'store.terminal',
     storeId: 'terminal',
-
+    autoLoad: true,
+    pageSize: 300,
     sorters: [
         {
             property: 'id',
             direction: 'ASC'
         }
     ],
-
-    autoLoad: true,
-
     proxy: {
         type: 'rest',
         url: 'api/terminal',

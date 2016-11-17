@@ -1,6 +1,6 @@
 $app-name:  dynamic( 'PayAdmin' );
 $image-search-path: 'E:/WORKSPACES/home/java/qradmin/src/main/webapp/static/build/testing/PayAdmin/classic/resources';
-$theme-name:  dynamic( 'theme-triton' );
+$theme-name:  dynamic( 'theme-crisp' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
 $include-ext-abstractmanager: dynamic(true);;
@@ -768,6 +768,8 @@ $include-ext-state-stateful: dynamic(true);;
 $include-ext-tab-bar: dynamic(true);;
 $include-ext-tab-panel: dynamic(true);;
 $include-ext-tab-tab: dynamic(true);;
+$include-ext-theme-crisp-component: dynamic(true);;
+$include-ext-theme-crisp-view-table: dynamic(true);;
 $include-ext-theme-neptune-component: dynamic(true);;
 $include-ext-theme-neptune-container-buttongroup: dynamic(true);;
 $include-ext-theme-neptune-form-field-htmleditor: dynamic(true);;
@@ -782,21 +784,6 @@ $include-ext-theme-neptune-picker-month: dynamic(true);;
 $include-ext-theme-neptune-resizer-splitter: dynamic(true);;
 $include-ext-theme-neptune-toolbar-paging: dynamic(true);;
 $include-ext-theme-neptune-toolbar-toolbar: dynamic(true);;
-$include-ext-theme-triton-component: dynamic(true);;
-$include-ext-theme-triton-form-field-checkbox: dynamic(true);;
-$include-ext-theme-triton-grid-column-check: dynamic(true);;
-$include-ext-theme-triton-grid-column-column: dynamic(true);;
-$include-ext-theme-triton-grid-column-rownumberer: dynamic(true);;
-$include-ext-theme-triton-grid-plugin-rowexpander: dynamic(true);;
-$include-ext-theme-triton-grid-selection-spreadsheetmodel: dynamic(true);;
-$include-ext-theme-triton-list-treeitem: dynamic(true);;
-$include-ext-theme-triton-menu-item: dynamic(true);;
-$include-ext-theme-triton-menu-menu: dynamic(true);;
-$include-ext-theme-triton-picker-date: dynamic(true);;
-$include-ext-theme-triton-picker-month: dynamic(true);;
-$include-ext-theme-triton-resizer-splitter: dynamic(true);;
-$include-ext-theme-triton-selection-checkboxmodel: dynamic(true);;
-$include-ext-theme-triton-toolbar-paging: dynamic(true);;
 $include-ext-tip-quicktip: dynamic(true);;
 $include-ext-tip-quicktipmanager: dynamic(true);;
 $include-ext-tip-tip: dynamic(true);;
@@ -911,11 +898,13 @@ $include-payadmin-application: dynamic(true);;
 $include-payadmin-model-merchant: dynamic(true);;
 $include-payadmin-model-order: dynamic(true);;
 $include-payadmin-model-ordertemplate: dynamic(true);;
+$include-payadmin-model-terminal: dynamic(true);;
 $include-payadmin-model-user: dynamic(true);;
 $include-payadmin-plugin-access: dynamic(true);;
 $include-payadmin-store-merchantstore: dynamic(true);;
 $include-payadmin-store-orderstore: dynamic(true);;
 $include-payadmin-store-ordertemplatestore: dynamic(true);;
+$include-payadmin-store-terminalstore: dynamic(true);;
 $include-payadmin-store-userstore: dynamic(true);;
 $include-payadmin-util-sessionmanager: dynamic(true);;
 $include-payadmin-view-board-boardcontroller: dynamic(true);;
@@ -924,8 +913,10 @@ $include-payadmin-view-login-logincontroller: dynamic(true);;
 $include-payadmin-view-login-loginview: dynamic(true);;
 $include-payadmin-view-main-main: dynamic(true);;
 $include-payadmin-view-main-maincontroller: dynamic(true);;
-$include-payadmin-view-merchants-merchantscontroller: dynamic(true);;
+$include-payadmin-view-merchants-merchantwindow: dynamic(true);;
+$include-payadmin-view-merchants-merchantwindowcontroller: dynamic(true);;
 $include-payadmin-view-merchants-merchantsview: dynamic(true);;
+$include-payadmin-view-merchants-merchantsviewcontroller: dynamic(true);;
 $include-payadmin-view-orders-ordersview: dynamic(true);;
 $include-payadmin-view-orders-ordersviewcontroller: dynamic(true);;
 $include-payadmin-view-ordertemplates-ordertemplatewindow: dynamic(true);;
@@ -933,8 +924,14 @@ $include-payadmin-view-ordertemplates-ordertemplatewindowcontroller: dynamic(tru
 $include-payadmin-view-ordertemplates-ordertemplatesview: dynamic(true);;
 $include-payadmin-view-ordertemplates-ordertemplatesviewcontroller: dynamic(true);;
 $include-payadmin-view-ordertemplates-qrcode: dynamic(true);;
-$include-payadmin-view-users-userscontroller: dynamic(true);;
+$include-payadmin-view-terminals-terminalwindow: dynamic(true);;
+$include-payadmin-view-terminals-terminalwindowcontroller: dynamic(true);;
+$include-payadmin-view-terminals-terminalsview: dynamic(true);;
+$include-payadmin-view-terminals-terminalsviewcontroller: dynamic(true);;
+$include-payadmin-view-users-userwindow: dynamic(true);;
+$include-payadmin-view-users-userwindowcontroller: dynamic(true);;
 $include-payadmin-view-users-usersview: dynamic(true);;
+$include-payadmin-view-users-usersviewcontroller: dynamic(true);;
 $include-sessionmanager: dynamic(true);;
 
 
@@ -980,6 +977,14 @@ $current-resource-root: $theme-neptune-resource-root;
 $relative-image-path-for-uis: $theme-neptune-resource-path;
 @import '../../../../../ext/classic/theme-neptune/sass/etc/all';
 
+/* including package theme-crisp */
+$theme-crisp-resource-root: '' !default;
+$theme-crisp-resource-path: 'images' !default;
+$current-package: 'theme-crisp';
+$current-resource-root: $theme-crisp-resource-root;
+$relative-image-path-for-uis: $theme-crisp-resource-path;
+@import '../../../../../ext/classic/theme-crisp/sass/etc/all';
+
 /* including package font-awesome */
 $font-awesome-resource-root: 'font-awesome' !default;
 $font-awesome-resource-path: 'font-awesome/images' !default;
@@ -987,14 +992,6 @@ $current-package: 'font-awesome';
 $current-resource-root: $font-awesome-resource-root;
 $relative-image-path-for-uis: $font-awesome-resource-path;
 @import '../../../../../ext/packages/font-awesome/sass/etc/all';
-
-/* including package theme-triton */
-$theme-triton-resource-root: '' !default;
-$theme-triton-resource-path: 'images' !default;
-$current-package: 'theme-triton';
-$current-resource-root: $theme-triton-resource-root;
-$relative-image-path-for-uis: $theme-triton-resource-path;
-@import '../../../../../ext/classic/theme-triton/sass/etc/all';
 
 /* including package PayAdmin */
 $PayAdmin-resource-root: '' !default;
@@ -1137,48 +1134,36 @@ $relative-image-path-for-uis: $theme-neptune-resource-path;
 @import '../../../../../ext/classic/theme-neptune/sass/var/tree/View';
 @import '../../../../../ext/classic/theme-neptune/sass/var/window/Toast';
 
-/* including package theme-triton */
-$theme-triton-resource-root: '' !default;
-$theme-triton-resource-path: 'images' !default;
-$current-package: 'theme-triton';
-$current-resource-root: $theme-triton-resource-root;
-$relative-image-path-for-uis: $theme-triton-resource-path;
-@import '../../../../../ext/classic/theme-triton/sass/var/Component';
-@import '../../../../../ext/classic/theme-triton/sass/var/LoadMask';
-@import '../../../../../ext/classic/theme-triton/sass/var/ProgressBar';
-@import '../../../../../ext/classic/theme-triton/sass/var/button/Button';
-@import '../../../../../ext/classic/theme-triton/sass/var/panel/Tool';
-@import '../../../../../ext/classic/theme-triton/sass/var/resizer/Splitter';
-@import '../../../../../ext/classic/theme-triton/sass/var/toolbar/Toolbar';
-@import '../../../../../ext/classic/theme-triton/sass/var/panel/Panel';
-@import '../../../../../ext/classic/theme-triton/sass/var/container/ButtonGroup';
-@import '../../../../../ext/classic/theme-triton/sass/var/window/Window';
-@import '../../../../../ext/classic/theme-triton/sass/var/form/field/Base';
-@import '../../../../../ext/classic/theme-triton/sass/var/window/MessageBox';
-@import '../../../../../ext/classic/theme-triton/sass/var/form/field/Checkbox';
-@import '../../../../../ext/classic/theme-triton/sass/var/form/FieldSet';
-@import '../../../../../ext/classic/theme-triton/sass/var/view/BoundList';
-@import '../../../../../ext/classic/theme-triton/sass/var/picker/Date';
-@import '../../../../../ext/classic/theme-triton/sass/var/tip/Tip';
-@import '../../../../../ext/classic/theme-triton/sass/var/form/field/HtmlEditor';
-@import '../../../../../ext/classic/theme-triton/sass/var/form/field/Tag';
-@import '../../../../../ext/classic/theme-triton/sass/var/view/Table';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/header/Container';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/column/Column';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/column/Action';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/feature/Grouping';
-@import '../../../../../ext/classic/theme-triton/sass/var/menu/Menu';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/filters/Filters';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/locking/Lockable';
-@import '../../../../../ext/classic/theme-triton/sass/var/grid/plugin/RowExpander';
-@import '../../../../../ext/classic/theme-triton/sass/var/layout/container/Accordion';
-@import '../../../../../ext/classic/theme-triton/sass/var/layout/container/Border';
-@import '../../../../../ext/classic/theme-triton/sass/var/resizer/Resizer';
-@import '../../../../../ext/classic/theme-triton/sass/var/selection/CheckboxModel';
-@import '../../../../../ext/classic/theme-triton/sass/var/slider/Multi';
-@import '../../../../../ext/classic/theme-triton/sass/var/tab/Tab';
-@import '../../../../../ext/classic/theme-triton/sass/var/tab/Bar';
-@import '../../../../../ext/classic/theme-triton/sass/var/tree/View';
+/* including package theme-crisp */
+$theme-crisp-resource-root: '' !default;
+$theme-crisp-resource-path: 'images' !default;
+$current-package: 'theme-crisp';
+$current-resource-root: $theme-crisp-resource-root;
+$relative-image-path-for-uis: $theme-crisp-resource-path;
+@import '../../../../../ext/classic/theme-crisp/sass/var/Component';
+@import '../../../../../ext/classic/theme-crisp/sass/var/button/Button';
+@import '../../../../../ext/classic/theme-crisp/sass/var/panel/Tool';
+@import '../../../../../ext/classic/theme-crisp/sass/var/resizer/Splitter';
+@import '../../../../../ext/classic/theme-crisp/sass/var/toolbar/Toolbar';
+@import '../../../../../ext/classic/theme-crisp/sass/var/panel/Panel';
+@import '../../../../../ext/classic/theme-crisp/sass/var/window/Window';
+@import '../../../../../ext/classic/theme-crisp/sass/var/form/Labelable';
+@import '../../../../../ext/classic/theme-crisp/sass/var/form/field/Base';
+@import '../../../../../ext/classic/theme-crisp/sass/var/picker/Date';
+@import '../../../../../ext/classic/theme-crisp/sass/var/tip/Tip';
+@import '../../../../../ext/classic/theme-crisp/sass/var/form/field/Tag';
+@import '../../../../../ext/classic/theme-crisp/sass/var/view/Table';
+@import '../../../../../ext/classic/theme-crisp/sass/var/grid/header/Container';
+@import '../../../../../ext/classic/theme-crisp/sass/var/grid/column/Column';
+@import '../../../../../ext/classic/theme-crisp/sass/var/grid/feature/Grouping';
+@import '../../../../../ext/classic/theme-crisp/sass/var/grid/filters/Filters';
+@import '../../../../../ext/classic/theme-crisp/sass/var/grid/locking/Lockable';
+@import '../../../../../ext/classic/theme-crisp/sass/var/layout/container/Accordion';
+@import '../../../../../ext/classic/theme-crisp/sass/var/layout/container/Border';
+@import '../../../../../ext/classic/theme-crisp/sass/var/resizer/Resizer';
+@import '../../../../../ext/classic/theme-crisp/sass/var/tab/Tab';
+@import '../../../../../ext/classic/theme-crisp/sass/var/tab/Bar';
+@import '../../../../../ext/classic/theme-crisp/sass/var/window/Toast';
 
 /* including package PayAdmin */
 $PayAdmin-resource-root: '' !default;
@@ -1374,27 +1359,6 @@ $current-package: 'font-awesome';
 $current-resource-root: $font-awesome-resource-root;
 $relative-image-path-for-uis: $font-awesome-resource-path;
 @import '../../../../../ext/packages/font-awesome/sass/src/all';
-
-/* including package font-ext */
-$font-ext-resource-root: 'font-ext' !default;
-$font-ext-resource-path: 'font-ext/images' !default;
-$current-package: 'font-ext';
-$current-resource-root: $font-ext-resource-root;
-$relative-image-path-for-uis: $font-ext-resource-path;
-@import '../../../../../ext/packages/font-ext/sass/src/all';
-
-/* including package theme-triton */
-$theme-triton-resource-root: '' !default;
-$theme-triton-resource-path: 'images' !default;
-$current-package: 'theme-triton';
-$current-resource-root: $theme-triton-resource-root;
-$relative-image-path-for-uis: $theme-triton-resource-path;
-@import '../../../../../ext/classic/theme-triton/sass/src/Component';
-@import '../../../../../ext/classic/theme-triton/sass/src/form/FieldSet';
-@import '../../../../../ext/classic/theme-triton/sass/src/form/field/Tag';
-@import '../../../../../ext/classic/theme-triton/sass/src/menu/Menu';
-@import '../../../../../ext/classic/theme-triton/sass/src/tab/Tab';
-@import '../../../../../ext/classic/theme-triton/sass/src/window/Toast';
 
 /* including package PayAdmin */
 $PayAdmin-resource-root: '' !default;

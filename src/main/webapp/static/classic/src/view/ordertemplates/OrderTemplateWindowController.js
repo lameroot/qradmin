@@ -15,7 +15,7 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplateWindowController', {
                 Ext.Msg.alert('Error', 'Шаблон не сохранен');
             },
             callback: function() {
-                Ext.data.StoreManager.lookup('orderTemplate').reload();
+                Ext.data.StoreManager.lookup('orderTemplate').load();
             }
         });
 	},

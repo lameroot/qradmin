@@ -53,13 +53,13 @@ Ext.define('PayAdmin.view.users.UserWindow', {
     },
     buttons: [
         {
-            text: 'Save',
+            text: 'Сохранить',
             listeners: {
                 click: 'onSaveButtonClick'
             }
         },
         {
-            text: 'Close',
+            text: 'Закрыть',
             listeners: {
                 click: 'onCloseButtonClick'
             }

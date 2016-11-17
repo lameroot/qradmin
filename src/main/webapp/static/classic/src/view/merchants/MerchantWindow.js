@@ -34,13 +34,13 @@ Ext.define('PayAdmin.view.merchants.MerchantWindow', {
     },
     buttons: [
         {
-            text: 'Save',
+            text: 'Сохранить',
             listeners: {
                 click: 'onSaveButtonClick'
             }
         },
         {
-            text: 'Close',
+            text: 'Закрыть',
             listeners: {
                 click: 'onCloseButtonClick'
             }
