@@ -9,13 +9,14 @@ Ext.define('PayAdmin.view.board.BoardView', {
         'PayAdmin.view.merchants.MerchantsView',
         'PayAdmin.view.terminals.TerminalsView',
         'PayAdmin.view.orders.OrdersView',
-        'PayAdmin.view.ordertemplates.OrderTemplatesView'
+        'PayAdmin.view.ordertemplates.OrderTemplatesView',
+        'PayAdmin.view.statistics.StatisticsView'
     ],
 
     ui: 'navigation',
     tabPosition: 'left',
     tabRotation: 0,
-    activeTab: 1,
+    activeTab: 5,
     header: {
         title: 'PAYstudio',
         padding: '0 50 0 0',
@@ -85,6 +86,16 @@ Ext.define('PayAdmin.view.board.BoardView', {
             items: [
                 {
                     xtype: 'orderTemplatesView'
+                }
+            ]
+        },
+        {
+            title: 'Статистика',
+            //iconCls: 'fa-users',
+            layout: 'fit',
+            items: [
+                {
+                    xtype: 'statisticsView'
                 }
             ]
         }
