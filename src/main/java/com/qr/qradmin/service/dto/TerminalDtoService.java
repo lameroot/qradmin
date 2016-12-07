@@ -14,6 +14,7 @@ import ru.qrhandshake.qrpos.util.SecurityUtils;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +28,8 @@ public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto>
         TerminalFilter entityFilter = new TerminalFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
-            List<Long> merchantTerminalIds = user.getMerchant().getTerminals().stream()
+            Set<Terminal> terminals = terminalService.findByMerchant(user.getMerchant());
+            List<Long> merchantTerminalIds = terminals.stream()
                     .map(Terminal::getId)
                     .collect(Collectors.toList());
             entityFilter.setTerminalIds(merchantTerminalIds);

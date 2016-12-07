@@ -11,12 +11,14 @@ import org.springframework.util.CollectionUtils;
 import ru.qrhandshake.qrpos.domain.OrderTemplate;
 import ru.qrhandshake.qrpos.domain.Terminal;
 import ru.qrhandshake.qrpos.domain.User;
+import ru.qrhandshake.qrpos.service.TerminalService;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +26,8 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
 
     @Resource
     private OrderTemplateService orderTemplateService;
+    @Resource
+    private TerminalService terminalService;
 
 
     @Override
@@ -31,7 +35,8 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
         OrderTemplateFilter entityFilter = new OrderTemplateFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
-            List<Long> merchantTerminalIds = user.getMerchant().getTerminals().stream()
+            Set<Terminal> terminals = terminalService.findByMerchant(user.getMerchant());
+            List<Long> merchantTerminalIds = terminals.stream()
                     .map(Terminal::getId)
                     .collect(Collectors.toList());
             entityFilter.setTerminalIds(merchantTerminalIds);

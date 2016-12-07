@@ -1,7 +1,6 @@
 package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.TerminalRepository;
-import com.qr.qradmin.filter.OrderTemplateFilter;
 import com.qr.qradmin.filter.TerminalFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
@@ -11,16 +10,16 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import ru.qrhandshake.qrpos.domain.OrderTemplate_;
+import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.Terminal;
 import ru.qrhandshake.qrpos.domain.Terminal_;
-import ru.qrhandshake.qrpos.domain.User;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.Set;
 
 @Service
 public class TerminalService extends GenericEntityService<Terminal> {
@@ -69,5 +68,9 @@ public class TerminalService extends GenericEntityService<Terminal> {
     @Override
     protected GenericRepository<Terminal> getRepository() {
         return terminalRepository;
+    }
+
+    public Set<Terminal> findByMerchant(Merchant merchant) {
+        return terminalRepository.findByMerchant(merchant);
     }
 }
