@@ -2,10 +2,13 @@ package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qr.qradmin.model.Filter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import java.util.LinkedList;
@@ -14,6 +17,8 @@ import java.util.Map;
 import java.util.Optional;
 
 public abstract class GenericDtoService<E, EDto> {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     protected ConversionService conversionService;
@@ -49,16 +54,19 @@ public abstract class GenericDtoService<E, EDto> {
 
 
     public Response create(EDto dto) {
+        logger.trace("Create : {} by {}",dto, SecurityUtils.getCurrentUser());
         E e = conversionService.convert(dto, getEClass());
         return new ElementResponse(conversionService.convert(getEntityService().create(e), getEDtoClass()));
     }
 
     public Response update(Long id, EDto dto) {
+        logger.trace("Update : {} by {}",dto, SecurityUtils.getCurrentUser());
         E e = conversionService.convert(dto, getEClass());
         return new ElementResponse(conversionService.convert(getEntityService().update(id, e), getEDtoClass()));
     }
 
     public Response delete(Long id) {
+        logger.trace("Delete : {} by {}",id, SecurityUtils.getCurrentUser());
         getEntityService().delete(id);
         return Response.SUCCESSFUL;
     }

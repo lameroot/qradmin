@@ -1,11 +1,6 @@
 package com.qr.qradmin.dto.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import ru.qrhandshake.qrpos.domain.IntegrationSupport;
-
-import javax.persistence.Column;
-import java.util.Date;
-import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TerminalDto {
@@ -53,5 +48,16 @@ public class TerminalDto {
 
     public void setAuthPassword(String authPassword) {
         this.authPassword = authPassword;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TerminalDto{");
+        sb.append("id=").append(id);
+        sb.append(", merchantName='").append(merchantName).append('\'');
+        sb.append(", merchantId=").append(merchantId);
+        sb.append(", authName='").append(authName).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

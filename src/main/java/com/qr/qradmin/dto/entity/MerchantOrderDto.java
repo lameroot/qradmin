@@ -142,4 +142,26 @@ public class MerchantOrderDto {
     public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("MerchantOrderDto{");
+        sb.append("orderId='").append(orderId).append('\'');
+        sb.append(", createdDate=").append(createdDate);
+        sb.append(", paymentDate=").append(paymentDate);
+        sb.append(", amount=").append(amount);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", deviceId='").append(deviceId).append('\'');
+        sb.append(", merchantId=").append(merchantId);
+        sb.append(", terminalId=").append(terminalId);
+        sb.append(", clientId=").append(clientId);
+        sb.append(", orderStatus=").append(orderStatus);
+        sb.append(", sessionId='").append(sessionId).append('\'');
+        sb.append(", paymentSecureType=").append(paymentSecureType);
+        sb.append(", paymentWay=").append(paymentWay);
+        sb.append(", paymentType=").append(paymentType);
+        sb.append(", integrationSupport=").append(integrationSupport);
+        sb.append('}');
+        return sb.toString();
+    }
 }

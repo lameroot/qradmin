@@ -1,5 +1,6 @@
 package com.qr.qradmin.config;
 
+import com.qr.qradmin.filter.SessionListener;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -8,12 +9,21 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 
 public class AdminWebApplicationInitializer extends AbstractDispatcherServletInitializer {
 
     static {
         ApplicationConfig.setSystemVariableConfigLocation();
+    }
+
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.addListener(new SessionListener());
     }
 
     @Override

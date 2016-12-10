@@ -1,15 +1,9 @@
 package com.qr.qradmin.dto.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import ru.qrhandshake.qrpos.domain.EnumGrantedAuthority;
 import ru.qrhandshake.qrpos.domain.IntegrationSupport;
-import ru.qrhandshake.qrpos.domain.Terminal;
-import ru.qrhandshake.qrpos.domain.User;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -85,5 +79,17 @@ public class MerchantDto {
 
     public void setCreateBinding(boolean createBinding) {
         this.createBinding = createBinding;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("MerchantDto{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", createdDate=").append(createdDate);
+        sb.append(", integrationSupport=").append(integrationSupport);
+        sb.append('}');
+        return sb.toString();
     }
 }

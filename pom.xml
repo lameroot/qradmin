@@ -6,7 +6,7 @@
 
     <groupId>com.qr</groupId>
     <artifactId>qradmin</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.8-SNAPSHOT</version>
 
     <properties>
         <web.context>/qradmin</web.context>
@@ -26,6 +26,7 @@
         <jetty.version>8.1.14.v20131031</jetty.version>
         <logback.version>1.1.7</logback.version>
         <jcl.slf4j.version>1.7.12</jcl.slf4j.version>
+        <qrpos.version>1.8-SNAPSHOT</qrpos.version>
     </properties>
     <packaging>war</packaging>
 
@@ -34,7 +35,7 @@
         <dependency>
             <groupId>ru.qrhandshake</groupId>
             <artifactId>qrpos-commons</artifactId>
-            <version>1.6-SNAPSHOT</version>
+            <version>${qrpos.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->

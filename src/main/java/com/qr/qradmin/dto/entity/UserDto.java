@@ -99,4 +99,20 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("UserDto{");
+        sb.append("id=").append(id);
+        sb.append(", merchantId=").append(merchantId);
+        sb.append(", merchantName='").append(merchantName).append('\'');
+        sb.append(", userName='").append(userName).append('\'');
+        sb.append(", createdDate=").append(createdDate);
+        sb.append(", isEnabled=").append(isEnabled);
+        sb.append(", isExpired=").append(isExpired);
+        sb.append(", isLocked=").append(isLocked);
+        sb.append(", roles=").append(roles);
+        sb.append('}');
+        return sb.toString();
+    }
 }

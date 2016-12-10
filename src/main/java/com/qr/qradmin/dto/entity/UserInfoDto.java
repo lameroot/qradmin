@@ -48,4 +48,15 @@ public class UserInfoDto {
     public void setMerchantId(long merchantId) {
         this.merchantId = merchantId;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("UserInfoDto{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", roles=").append(roles);
+        sb.append(", merchantId=").append(merchantId);
+        sb.append('}');
+        return sb.toString();
+    }
 }

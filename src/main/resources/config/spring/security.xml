@@ -11,7 +11,7 @@
             secured-annotations="enabled"/>
 
     <security:http auto-config="true">
-        <security:anonymous enabled="true"/>
+        <security:anonymous enabled="false"/>
         <security:intercept-url pattern="/**"/>
         <security:csrf disabled="true"/>
         <security:logout
@@ -21,21 +21,25 @@
                 success-handler-ref="logoutSuccessHandler"
         />
         <security:custom-filter ref="authFilter" before="PRE_AUTH_FILTER"/>
-        <security:remember-me services-ref="rememberMeServices"/>
+        <!--<security:custom-filter ref="customUsernamePasswordAuthenticationFilter" before="FORM_LOGIN_FILTER" />-->
+        <!--<security:remember-me services-ref="rememberMeServices"/>-->
+        <security:session-management invalid-session-url="/index.html" />
     </security:http>
 
     <bean id="authFilter" class="com.qr.qradmin.security.AuthFilter">
         <constructor-arg name="defaultFilterProcessesUrl" value="/api/security/login"/>
         <constructor-arg name="objectMapper" ref="objectMapper"/>
         <property name="authenticationManager" ref="authenticationManager"/>
-        <property name="rememberMeServices" ref="rememberMeServices"/>
+        <!--<property name="rememberMeServices" ref="rememberMeServices"/>-->
         <property name="authenticationSuccessHandler" ref="authenticationSuccessHandler"/>
         <property name="authenticationFailureHandler" ref="authenticationFailedHandler"/>
     </bean>
     <bean id="authenticationSuccessHandler" class="com.qr.qradmin.security.AuthenticationSuccessHandler"/>
     <bean id="authenticationFailedHandler" class="com.qr.qradmin.security.AuthenticationFailedHandler"/>
     <bean id="logoutSuccessHandler" class="com.qr.qradmin.security.LogoutSuccessHandler"/>
+    <!--<bean id="customUsernamePasswordAuthenticationFilter" class="com.qr.qradmin.security.CustomUsernamePasswordAuthenticationFilter" />-->
 
+    <!--
     <bean id="rememberMeAuthenticationProvider"
           class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
         <constructor-arg name="key" value="${security.rememberMe.key}"/>
@@ -51,10 +55,11 @@
           class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    -->
 
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider ref="daoAuthenticationProvider"/>
-        <security:authentication-provider ref="rememberMeAuthenticationProvider"/>
+        <!--<security:authentication-provider ref="rememberMeAuthenticationProvider"/>-->
     </security:authentication-manager>
 
     <bean id="daoAuthenticationProvider"

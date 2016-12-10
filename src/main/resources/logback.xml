@@ -13,7 +13,7 @@
     </root>
     <logger name="org.springframework.web" level="info" />
     <logger name="org.springframework.context" level="debug" />
-    <logger name="com.qr.qradmin" level="debug" />
+    <logger name="com.qr.qradmin" level="trace" />
 
 
 </configuration>
