@@ -2,8 +2,10 @@ package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.UserDto;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import ru.qrhandshake.qrpos.domain.User;
 
+@Component
 public class UserToDtoConverter implements Converter<User, UserDto> {
 
     @Override

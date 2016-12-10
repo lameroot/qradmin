@@ -3,12 +3,11 @@ package com.qr.qradmin.converter;
 import com.qr.qradmin.dto.entity.UserInfoDto;
 import com.qr.qradmin.model.UserInfo;
 import org.springframework.core.convert.converter.Converter;
-import ru.qrhandshake.qrpos.domain.EnumGrantedAuthority;
+import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class UserInfoToDtoConverter implements Converter<UserInfo, UserInfoDto> {
 
     @Override

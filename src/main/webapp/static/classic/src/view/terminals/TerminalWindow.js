@@ -35,7 +35,7 @@ Ext.define('PayAdmin.view.terminals.TerminalWindow', {
             {
                 xtype: 'textfield',
                 bind: {
-                    value: '{terminal.password}'
+                    value: '{terminal.authPassword}'
                 },
                 fieldLabel: 'Пароль'
             },

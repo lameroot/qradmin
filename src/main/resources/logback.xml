@@ -11,7 +11,7 @@
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
-    <logger name="org.springframework.web" level="debug" />
+    <logger name="org.springframework.web" level="info" />
     <logger name="org.springframework.context" level="debug" />
     <logger name="com.qr.qradmin" level="debug" />
 

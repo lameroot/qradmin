@@ -19,7 +19,7 @@ public class UserInfoService {
     @Resource
     private UserService userService;
     @Resource
-    private ru.qrhandshake.qrpos.service.TerminalService terminalService;
+    private TerminalService terminalService;
 
     @Transactional(readOnly = true)
     public UserInfo getCurrentUserInfo() {

@@ -92,14 +92,14 @@ public abstract class GenericController<E, EDto> {
 
     private void checkForSupportedOperations(CrudOperation operation) {
         if (!supportedOperations.containsKey(operation)) {
-            throw new GeneralException(ErrorCode.UNSUPPORTED_OPERATION);
+            throw new GeneralException(ErrorCode.UNSUPPORTED_OPERATION, getClass());
         }
         if (!supportedOperations.get(operation).isEmpty() &&
                 Collections.disjoint(
                         supportedOperations.get(operation),
                         SecurityUtils.getCurrentUser().getAuthorities())
                 ) {
-            throw new GeneralException(ErrorCode.ACCESS_DENIED);
+            throw new GeneralException(ErrorCode.ACCESS_DENIED, getClass());
         }
     }
 }

@@ -63,7 +63,4 @@
         <property name="passwordEncoder" ref="passwordEncoder"/>
     </bean>
 
-    <!--<bean id="userService" class="com.qr.qradmin.service.entity.UserService"/>-->
-
-    <bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
 </beans>

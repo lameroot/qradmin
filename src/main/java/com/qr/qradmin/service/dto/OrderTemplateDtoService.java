@@ -6,12 +6,12 @@ import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.service.entity.OrderTemplateService;
+import com.qr.qradmin.service.entity.TerminalService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import ru.qrhandshake.qrpos.domain.OrderTemplate;
 import ru.qrhandshake.qrpos.domain.Terminal;
 import ru.qrhandshake.qrpos.domain.User;
-import ru.qrhandshake.qrpos.service.TerminalService;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;

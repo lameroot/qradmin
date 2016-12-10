@@ -23,8 +23,8 @@ public class OrderTemplateController extends GenericController<OrderTemplate, Or
     public void init() {
         supportedOperations.put(CrudOperation.GET_ONE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
         supportedOperations.put(CrudOperation.GET_SEVERAL, Collections.emptyList());        //TODO сделать отдельный метод для получения своих записей
-        supportedOperations.put(CrudOperation.CREATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
-        supportedOperations.put(CrudOperation.UPDATE, Collections.singletonList(EnumGrantedAuthority.ADMIN));
+        supportedOperations.put(CrudOperation.CREATE, Collections.emptyList());
+        supportedOperations.put(CrudOperation.UPDATE, Collections.emptyList());
     }
 
     @Resource

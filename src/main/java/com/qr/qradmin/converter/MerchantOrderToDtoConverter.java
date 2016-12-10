@@ -2,11 +2,13 @@ package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.MerchantOrderDto;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import ru.qrhandshake.qrpos.domain.Client;
 import ru.qrhandshake.qrpos.domain.MerchantOrder;
 
 import java.util.Optional;
 
+@Component
 public class MerchantOrderToDtoConverter implements Converter<MerchantOrder, MerchantOrderDto> {
 
     @Override

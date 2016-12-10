@@ -1,12 +1,13 @@
 package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.MerchantDto;
+import com.qr.qradmin.service.entity.TerminalService;
 import com.qr.qradmin.service.entity.UserService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.Terminal;
 import ru.qrhandshake.qrpos.domain.User;
-import ru.qrhandshake.qrpos.service.TerminalService;
 
 import javax.annotation.Resource;
 import java.util.Collections;
@@ -14,12 +15,14 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Component
 public class MerchantToDtoConverter implements Converter<Merchant, MerchantDto> {
 
     @Resource
-    private TerminalService terminalService;
-    @Resource
     private UserService userService;
+    @Resource
+    private TerminalService terminalService;
+
 
     @Override
     public MerchantDto convert(Merchant merchant) {

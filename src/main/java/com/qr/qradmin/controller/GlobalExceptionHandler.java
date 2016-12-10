@@ -87,7 +87,9 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Response handleGeneralException(GeneralException ex) {
-        logger.error("General exception", ex);
+        if ( ex.getErrorCode() != ErrorCode.ACCESS_DENIED ) {
+            logger.error(ex.toString(), ex);
+        }
         return errorsService.generateErrorResponse(ex.getErrorCode(), ex.getArgs());
     }
 }

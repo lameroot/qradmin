@@ -41,7 +41,8 @@ public abstract class GenericDtoService<E, EDto> {
         Page<E> entityPage = getEntityService().get(buildFilter(filter), pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
-            dtos.add(conversionService.convert(e, getEDtoClass()));
+            EDto eDto = conversionService.convert(e, getEDtoClass());
+            if ( null != eDto ) dtos.add(eDto);
         }
         return new PageResponse(dtos, entityPage.getTotalElements());
     }
