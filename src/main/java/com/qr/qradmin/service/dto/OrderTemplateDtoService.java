@@ -15,10 +15,7 @@ import ru.qrhandshake.qrpos.domain.User;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,10 +33,15 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
             Set<Terminal> terminals = terminalService.findByMerchant(user.getMerchant());
-            List<Long> merchantTerminalIds = terminals.stream()
-                    .map(Terminal::getId)
-                    .collect(Collectors.toList());
-            entityFilter.setTerminalIds(merchantTerminalIds);
+            if ( terminals.isEmpty() ) {
+                entityFilter.setTerminalIds(Arrays.asList(null));
+            }
+            else {
+                List<Long> merchantTerminalIds = terminals.stream()
+                        .map(Terminal::getId)
+                        .collect(Collectors.toList());
+                entityFilter.setTerminalIds(merchantTerminalIds);
+            }
         }
 
         if (CollectionUtils.isEmpty(filter)) {

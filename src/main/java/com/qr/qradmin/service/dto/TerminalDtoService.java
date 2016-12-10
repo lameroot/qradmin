@@ -14,6 +14,7 @@ import ru.qrhandshake.qrpos.domain.User;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,11 +35,16 @@ public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto>
             User user = SecurityUtils.getCurrentUser();
             logger.trace("Current user: [{}], authorities: [{}]",user.getUsername(), user.getAuthorities());
             Set<Terminal> terminals = terminalService.findByMerchant(user.getMerchant());
-            List<Long> merchantTerminalIds = terminals.stream()
-                    .map(Terminal::getId)
-                    .collect(Collectors.toList());
-            logger.trace("Terminals: {}", merchantTerminalIds);
-            entityFilter.setTerminalIds(merchantTerminalIds);
+            if ( terminals.isEmpty() ) {
+                entityFilter.setTerminalIds(Arrays.asList(null));
+            }
+            else {
+                List<Long> merchantTerminalIds = terminals.stream()
+                        .map(Terminal::getId)
+                        .collect(Collectors.toList());
+                logger.trace("Terminals: {}", merchantTerminalIds);
+                entityFilter.setTerminalIds(merchantTerminalIds);
+            }
         }
         return entityFilter;
     }

@@ -40,9 +40,6 @@ public class TerminalService extends GenericEntityService<Terminal> {
                 if (!CollectionUtils.isEmpty(filter.getTerminalIds())) {
                     predicate.getExpressions().add(root.get(Terminal_.id).in(filter.getTerminalIds()));
                 }
-                else {
-                    predicate.getExpressions().add(root.get(Terminal_.id).isNull());
-                }
 
                 return predicate;
             }
