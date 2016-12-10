@@ -34,7 +34,7 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
             User user = SecurityUtils.getCurrentUser();
             Set<Terminal> terminals = terminalService.findByMerchant(user.getMerchant());
             if ( terminals.isEmpty() ) {
-                entityFilter.setTerminalIds(Arrays.asList(null));
+                entityFilter.setTerminalIds(nullList);
             }
             else {
                 List<Long> merchantTerminalIds = terminals.stream()

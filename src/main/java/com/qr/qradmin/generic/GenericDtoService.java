@@ -11,14 +11,15 @@ import org.springframework.data.domain.Sort;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public abstract class GenericDtoService<E, EDto> {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    protected List nullList = new ArrayList(){{
+        add(null);
+    }};
 
     @Resource
     protected ConversionService conversionService;
