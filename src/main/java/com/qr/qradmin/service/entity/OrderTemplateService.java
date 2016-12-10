@@ -42,6 +42,9 @@ public class OrderTemplateService extends GenericEntityService<OrderTemplate> {
                 if (!CollectionUtils.isEmpty(filter.getTerminalIds())) {
                     predicate.getExpressions().add(root.get(OrderTemplate_.terminal).in(filter.getTerminalIds()));
                 }
+                else {
+                    predicate.getExpressions().add(root.get(OrderTemplate_.terminal).isNull());
+                }
 
                 if (filter.getName() != null) {
                     predicate.getExpressions().add(cb.equal(root.get(OrderTemplate_.name), filter.getName()));

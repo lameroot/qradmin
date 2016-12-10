@@ -23,7 +23,7 @@
         <security:custom-filter ref="authFilter" before="PRE_AUTH_FILTER"/>
         <!--<security:custom-filter ref="customUsernamePasswordAuthenticationFilter" before="FORM_LOGIN_FILTER" />-->
         <!--<security:remember-me services-ref="rememberMeServices"/>-->
-        <security:session-management invalid-session-url="/index.html" />
+        <!--<security:session-management invalid-session-url="/index.html" />-->
     </security:http>
 
     <bean id="authFilter" class="com.qr.qradmin.security.AuthFilter">
