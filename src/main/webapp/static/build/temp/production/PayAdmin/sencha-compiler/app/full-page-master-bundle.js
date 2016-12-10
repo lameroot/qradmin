@@ -1,2 +1,2 @@
 // @tag full-page
-// @require E:\WORKSPACES\home\java\qradmin\src\main\webapp\static\app.js
+// @require /Users/lameroot/Workspace/qr-admin-github/src/main/webapp/static/app.js

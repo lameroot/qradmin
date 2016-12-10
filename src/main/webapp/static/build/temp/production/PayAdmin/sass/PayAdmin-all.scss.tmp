@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'PayAdmin' );
-$image-search-path: 'E:/WORKSPACES/home/java/qradmin/src/main/webapp/static/build/production/PayAdmin/modern/resources';
+$image-search-path: '/Users/lameroot/Workspace/qr-admin-github/src/main/webapp/static/build/production/PayAdmin/modern/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractmanager: dynamic(true);;
