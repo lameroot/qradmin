@@ -6,4 +6,6 @@ import ru.qrhandshake.qrpos.domain.Merchant;
 
 @Repository
 public interface MerchantRepository extends GenericRepository<Merchant> {
+
+    Merchant findByName(String name);
 }

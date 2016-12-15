@@ -17,7 +17,7 @@ public abstract class GenericEntityService<E> {
 
     public E get(Long id) {
         E e = getRepository().findOne(id);
-        if (e == null) throw new GeneralException(ErrorCode.ELEMENT_NOT_FOUND, id);
+        if (e == null) throw new GeneralException(ErrorCode.ELEMENT_NOT_FOUND, id, getClass());
         return e;
     }
 

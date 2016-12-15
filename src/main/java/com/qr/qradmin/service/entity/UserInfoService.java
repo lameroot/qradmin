@@ -10,6 +10,7 @@ import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,6 +18,8 @@ public class UserInfoService {
 
     @Resource
     private UserService userService;
+    @Resource
+    private TerminalService terminalService;
 
     @Transactional(readOnly = true)
     public UserInfo getCurrentUserInfo() {
@@ -25,14 +28,14 @@ public class UserInfoService {
 
         currentUser = userService.get(currentUser.getId());
         Hibernate.initialize(currentUser.getMerchant());
-        Hibernate.initialize(currentUser.getMerchant().getTerminals());
+        Set<Terminal> terminals = terminalService.findByMerchant(currentUser.getMerchant());
 
         UserInfo userInfo = new UserInfo();
         userInfo.setId(currentUser.getId());
         userInfo.setRoles(new LinkedList<>(currentUser.getAuthorities()));
         userInfo.setName(currentUser.getUsername());
         userInfo.setMerchantId(currentUser.getMerchant().getId());
-        userInfo.setTerminalIds(currentUser.getMerchant().getTerminals().stream().map(Terminal::getId).collect(Collectors.toList()));
+        userInfo.setTerminalIds(terminals.stream().map(Terminal::getId).collect(Collectors.toList()));
         return userInfo;
     }
 }

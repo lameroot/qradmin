@@ -25,6 +25,12 @@ public class GeneralException extends RuntimeException {
     }
 
     @Override
+    public String getMessage() {
+        return "errorCode=" + errorCode +
+                ", args=" + Arrays.toString(args);
+    }
+
+    @Override
     public String toString() {
         return "GeneralException{" +
                 "errorCode=" + errorCode +

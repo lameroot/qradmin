@@ -3,10 +3,12 @@ package com.qr.qradmin.converter;
 import com.qr.qradmin.dto.entity.OrderTemplateDto;
 import com.qr.qradmin.service.entity.TerminalService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import ru.qrhandshake.qrpos.domain.OrderTemplate;
 
 import javax.annotation.Resource;
 
+@Component
 public class OrderTemplateToEntityConverter implements Converter<OrderTemplateDto, OrderTemplate> {
 
     @Resource

@@ -1,24 +1,18 @@
 package com.qr.qradmin.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qr.qradmin.converter.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.convert.ConversionService;
-import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import ru.qrhandshake.qrpos.repository.UserRepository;
-import ru.qrhandshake.qrpos.service.SecurityService;
-import ru.qrhandshake.qrpos.service.UserService;
-
-import javax.annotation.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 @Configuration
 //@EnableAspectJAutoProxy
-@ComponentScan(value = {"com.qr.qradmin.converter","com.qr.qradmin.service","com.qr.qradmin.validator"})
+@ComponentScan(value = {"com.qr.qradmin.service","com.qr.qradmin.validator"})
 @PropertySource(ignoreResourceNotFound = true,
         value = {
                 "classpath:config/properties/application.properties",
@@ -48,6 +42,11 @@ public class ApplicationConfig {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new StandardPasswordEncoder();
     }
 
     public final static void setSystemVariableConfigLocation() {

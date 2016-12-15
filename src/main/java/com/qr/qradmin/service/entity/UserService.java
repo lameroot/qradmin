@@ -12,15 +12,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.Merchant;
 import ru.qrhandshake.qrpos.domain.User;
-import ru.qrhandshake.qrpos.service.SecurityService;
-import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService extends GenericEntityService<User> implements UserDetailsService {
@@ -75,5 +73,9 @@ public class UserService extends GenericEntityService<User> implements UserDetai
         }
         source.setUsername(null);
         return super.update(id, source);
+    }
+
+    public Set<User> findByMerchant(Merchant merchant) {
+        return userRepository.findByMerchant(merchant);
     }
 }

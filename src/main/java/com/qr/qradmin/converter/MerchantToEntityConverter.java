@@ -1,17 +1,11 @@
 package com.qr.qradmin.converter;
 
 import com.qr.qradmin.dto.entity.MerchantDto;
-import com.qr.qradmin.dto.entity.UserDto;
 import org.springframework.core.convert.converter.Converter;
-import ru.qrhandshake.qrpos.domain.IntegrationSupport;
+import org.springframework.stereotype.Component;
 import ru.qrhandshake.qrpos.domain.Merchant;
-import ru.qrhandshake.qrpos.domain.Terminal;
-import ru.qrhandshake.qrpos.domain.User;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
-
+@Component
 public class MerchantToEntityConverter implements Converter<MerchantDto, Merchant> {
 
     @Override

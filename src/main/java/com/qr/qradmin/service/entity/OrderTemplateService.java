@@ -30,6 +30,7 @@ public class OrderTemplateService extends GenericEntityService<OrderTemplate> {
             public Predicate toPredicate(Root<OrderTemplate> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 OrderTemplateFilter filter = (OrderTemplateFilter) f;
                 Predicate predicate = buildPredicate(root, cb, filter);
+                predicate.getExpressions().add(cb.isNotNull(root.get(OrderTemplate_.terminal)));
 
                 if (filter.getAmountFrom() != null) {
                     predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get(OrderTemplate_.amount), filter.getAmountFrom()));

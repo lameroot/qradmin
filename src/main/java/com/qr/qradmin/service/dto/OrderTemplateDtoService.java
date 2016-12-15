@@ -6,6 +6,7 @@ import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.service.entity.OrderTemplateService;
+import com.qr.qradmin.service.entity.TerminalService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import ru.qrhandshake.qrpos.domain.OrderTemplate;
@@ -14,9 +15,7 @@ import ru.qrhandshake.qrpos.domain.User;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +23,8 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
 
     @Resource
     private OrderTemplateService orderTemplateService;
+    @Resource
+    private TerminalService terminalService;
 
 
     @Override
@@ -31,10 +32,16 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
         OrderTemplateFilter entityFilter = new OrderTemplateFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
-            List<Long> merchantTerminalIds = user.getMerchant().getTerminals().stream()
-                    .map(Terminal::getId)
-                    .collect(Collectors.toList());
-            entityFilter.setTerminalIds(merchantTerminalIds);
+            Set<Terminal> terminals = terminalService.findByMerchant(user.getMerchant());
+            if ( terminals.isEmpty() ) {
+                entityFilter.setTerminalIds(nullList);
+            }
+            else {
+                List<Long> merchantTerminalIds = terminals.stream()
+                        .map(Terminal::getId)
+                        .collect(Collectors.toList());
+                entityFilter.setTerminalIds(merchantTerminalIds);
+            }
         }
 
         if (CollectionUtils.isEmpty(filter)) {
