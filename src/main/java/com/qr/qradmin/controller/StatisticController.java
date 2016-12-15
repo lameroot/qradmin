@@ -14,7 +14,7 @@ import ru.qrhandshake.qrpos.domain.Statistic;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping("/api/stats")
+@RequestMapping("/api/statistics")
 public class StatisticController extends GenericController<Statistic,StatisticDto> {
 
     @Resource
