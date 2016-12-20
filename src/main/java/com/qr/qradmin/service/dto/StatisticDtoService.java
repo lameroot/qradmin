@@ -1,10 +1,9 @@
 package com.qr.qradmin.service.dto;
 
-import com.qr.qradmin.dto.entity.StatisticDto;
+import com.qr.qradmin.dto.entity.StatisticJsonDto;
 import com.qr.qradmin.filter.StatisticFilter;
-import com.qr.qradmin.generic.EntityFilter;
-import com.qr.qradmin.generic.GenericDtoService;
-import com.qr.qradmin.generic.GenericEntityService;
+import com.qr.qradmin.generic.*;
+import com.qr.qradmin.model.Filter;
 import com.qr.qradmin.service.entity.StatisticAdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,19 +13,17 @@ import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 @Service
-public class StatisticDtoService extends GenericDtoService<Statistic, StatisticDto> {
+public class StatisticDtoService {
 
     private Logger logger = LoggerFactory.getLogger(StatisticDtoService.class);
 
     @Resource
     private StatisticAdminService statisticAdminService;
 
-    @Override
+
     protected EntityFilter buildFilter(Map<String, String> filter) {
         StatisticFilter statisticFilter = new StatisticFilter();
         try {
@@ -45,18 +42,20 @@ public class StatisticDtoService extends GenericDtoService<Statistic, StatisticD
         return statisticFilter;
     }
 
-    @Override
-    protected Class<Statistic> getEClass() {
-        return Statistic.class;
-    }
+    public ElementResponse<StatisticJsonDto> get(PageableFilterDto filterDto) {
+        Map<String, String> filter = Optional.ofNullable(filterDto.getFilter()).map(Filter::getFilters).orElse(null);
+        StatisticFilter statisticFilter = (StatisticFilter)buildFilter(filter);
 
-    @Override
-    protected Class<StatisticDto> getEDtoClass() {
-        return StatisticDto.class;
-    }
+        StatisticJsonDto statisticJsonDto = new StatisticJsonDto();
+        for (StatisticFilter.Slot slot : statisticFilter.getTimeSlot().getSlots(statisticFilter.getBefore())) {
+            for (Long orderTemplateId : statisticFilter.getOrderTemplateIds()) {
+                Long value = statisticAdminService.sumByPeriod(Statistic.StatisticType.TEMPLATE_AMOUNT_PAID, slot.getStartTime(), slot.getEndTime(), statisticFilter.getMerchantId(), orderTemplateId);
+                String orderTemplateName = String.valueOf(orderTemplateId);//todo: name
+                statisticJsonDto.addDataForOrderTemplate(slot.getName(), orderTemplateName, value);
+            }
+        }
 
-    @Override
-    protected GenericEntityService<Statistic> getEntityService() {
-        return statisticAdminService;
+        ElementResponse<StatisticJsonDto> elementResponse = new ElementResponse<>(statisticJsonDto);
+        return elementResponse;
     }
 }

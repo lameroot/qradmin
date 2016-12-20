@@ -12,11 +12,12 @@ import java.util.*;
 public class StatisticJsonDto {
 
     @JsonIgnore
-//    private Multimap<String, Object> dataList = MultimapBuilder.SortedSetMultimapBuilder.treeKeys().linkedListValues().build();
-    private Map<String, Map<String,Object>> dataList = new HashMap<>();
+    private Map<String, Map<String,Object>> dataList = new LinkedHashMap<>();
 
 
-    private Set<String> fields = new HashSet<>();
+    private Set<String> fields = new HashSet(){{
+        add("name");
+    }};
     private List<Map<String,Object>> data = new ArrayList<>();
 
 
@@ -29,10 +30,6 @@ public class StatisticJsonDto {
     }
 
     public StatisticJsonDto addDataForOrderTemplate(String slotName, String orderTemplateName, Long value) {
-//        dataList.put(slotName, slotName);
-//        dataList.put(orderTemplateName, value);
-
-        fields.add("name");
         fields.add(orderTemplateName);
 
         Map<String, Object> map = new HashMap<>();
@@ -40,13 +37,11 @@ public class StatisticJsonDto {
         map.put(orderTemplateName, value);
 
 
-
         Map map0 = dataList.get(slotName);
         if ( null == map0 ) map0 = new HashMap<>();
         map0.putAll(map);
         dataList.put(slotName, map0);
 
-        //data.add(map);
         return this;
     }
 
@@ -64,30 +59,12 @@ public class StatisticJsonDto {
         Calendar now = Calendar.getInstance();
         List<StatisticFilter.Slot> slots = StatisticFilter.TimeSlot.WEEK.getSlots(now);
         for (StatisticFilter.Slot slot : slots) {
-            //System.out.println(slot);
+            System.out.println(slot);
             statisticJsonDto.addDataForOrderTemplate(slot.getName(),"t1", 10L);
             statisticJsonDto.addDataForOrderTemplate(slot.getName(),"t2", 20L);
             statisticJsonDto.addDataForOrderTemplate(slot.getName(),"t3", 30L);
 
-//            statisticJsonDto.dataList.put(slot.getName(),12);
-//            statisticJsonDto.dataList.put(slot.getName(),13);
-//            statisticJsonDto.dataList.put(slot.getName(),14);
-//            statisticJsonDto.dataList.put(slot.getName(),15);
-//            statisticJsonDto.dataList.put(slot.getName(),16);
-//            statisticJsonDto.dataList.put(slot.getName(),17);
-//            statisticJsonDto.dataList.put(slot.getName(),18);
-
         }
-
-//        statisticJsonDto.fields = statisticJsonDto.dataList.keySet();
-//        for (Map.Entry<String, Collection<Object>> entry : statisticJsonDto.dataList.asMap().entrySet()) {
-//            Map<String, Object> map = new LinkedHashMap<>();
-//            map.put("name",entry.getKey());
-//            map.put("t1",entry.getValue().toArray()[0]);
-//            map.put("t2",entry.getValue().toArray()[1]);
-//            statisticJsonDto.data.add(map);
-//        }
-
 
         statisticJsonDto.buildData();
         ObjectMapper objectMapper = new ObjectMapper();

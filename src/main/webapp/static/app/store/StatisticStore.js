@@ -1,4 +1,4 @@
-Ext.define('PayAdmin.store.OrderTemplateStore', {
+Ext.define('PayAdmin.store.StatisticStore', {
     extend: 'Ext.data.Store',
     model: 'PayAdmin.model.Statistic',
     alias: 'store.statistic',

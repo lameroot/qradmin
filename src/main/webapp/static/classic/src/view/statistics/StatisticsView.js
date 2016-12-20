@@ -3,11 +3,20 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
     xtype: 'statisticsView',
 
     requires: [
-        'PayAdmin.view.statistics.StatisticsViewController'
+        'PayAdmin.view.statistics.StatisticsViewController',
+        'PayAdmin.store.StatisticStore',
     ],
     controller: 'statisticsView',
     layout: 'border',
     viewModel: {data:{filter: {}}},
+
+    tbar: [
+        '->',
+        {
+            text: 'Refresh',
+            handler: 'onRefresh'
+        }
+    ],
     items: [
         {
             xtype: 'panel',
@@ -82,12 +91,16 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
 
                 {
                     xtype: 'cartesian',
-                    reference: 'chart',
+                    id: 'chart',
                     width: '100%',
                     height: 500,
                     legend: {
                         docked: 'right'
                     },
+                    store: {
+                        type: 'statistic'
+                    },
+                    /*
                     store: {
                         fields: ['month', 'data1', 'data2', 'data3', 'data4', 'other'],
                         data: [
@@ -105,146 +118,23 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                             { month: 'Dec', data1: 15, data2: 31, data3: 47, data4: 4, other: 3 }
                         ]
                     },
+                    */
                     insetPadding: 40,
-                    sprites: [{
-                        type: 'text',
-                        text: 'Line Charts - Marked Lines',
-                        fontSize: 22,
-                        width: 100,
-                        height: 30,
-                        x: 40, // the sprite x position
-                        y: 20  // the sprite y position
-                    }, {
-                        type: 'text',
-                        text: 'Data: Browser Stats 2012',
-                        fontSize: 10,
-                        x: 12,
-                        y: 470
-                    }, {
-                        type: 'text',
-                        text: 'Source: http://www.w3schools.com/',
-                        fontSize: 10,
-                        x: 12,
-                        y: 485
-                    }],
+
                     axes: [{
                         type: 'numeric',
-                        fields: ['data1', 'data2', 'data3', 'data4' ],
+                        //fields: ['data1', 'data2', 'data3', 'data4'],
                         position: 'left',
                         grid: true,
-                        minimum: 0,
-                        renderer: 'onAxisLabelRender'
+                        minimum: 0
                     }, {
                         type: 'category',
-                        fields: 'month',
+                        fields: 'name',
                         position: 'bottom',
-                        grid: true,
-                        label: {
-                            rotate: {
-                                degrees: -45
-                            }
-                        }
+                        grid: true
                     }],
-                    series: [{
-                        type: 'line',
-                        title: 'IE',
-                        xField: 'month',
-                        yField: 'data1',
-                        marker: {
-                            type: 'square',
-                            fx: {
-                                duration: 200,
-                                easing: 'backOut'
-                            }
-                        },
-                        highlightCfg: {
-                            scaling: 2
-                        },
-                        tooltip: {
-                            trackMouse: true,
-                            renderer: 'onSeriesTooltipRender'
-                        }
-                    }, {
-                        type: 'line',
-                        title: 'Firefox',
-                        xField: 'month',
-                        yField: 'data2',
-                        marker: {
-                            type: 'triangle',
-                            fx: {
-                                duration: 200,
-                                easing: 'backOut'
-                            }
-                        },
-                        highlightCfg: {
-                            scaling: 2
-                        },
-                        tooltip: {
-                            trackMouse: true,
-                            renderer: 'onSeriesTooltipRender'
-                        }
-                    },
-                        {
-                        type: 'line',
-                        title: 'Chrome',
-                        xField: 'month',
-                        yField: 'data3',
-                        marker: {
-                            type: 'arrow',
-                            fx: {
-                                duration: 200,
-                                easing: 'backOut'
-                            }
-                        },
-                        highlightCfg: {
-                            scaling: 2
-                        },
-                        tooltip: {
-                            trackMouse: true,
-                            renderer: 'onSeriesTooltipRender'
-                        }
-                    },
-                        {
-                        type: 'line',
-                        title: 'Safari1',
-                        xField: 'month',
-                        yField: 'data4',
-                        marker: {
-                            type: 'cross',
-                            fx: {
-                                duration: 200,
-                                easing: 'backOut'
-                            }
-                        },
-                        highlightCfg: {
-                            scaling: 2
-                        },
-                        tooltip: {
-                            trackMouse: true,
-                            renderer: 'onSeriesTooltipRender'
-                        }
-                    },
+                    series: [
 
-                        {
-                            type: 'line',
-                            title: 'Other',
-                            xField: 'month',
-                            yField: 'other',
-                            marker: {
-                                type: 'cross',
-                                fx: {
-                                    duration: 200,
-                                    easing: 'backOut'
-                                }
-                            },
-                            highlightCfg: {
-                                scaling: 2
-                            },
-                            tooltip: {
-                                trackMouse: true,
-                                renderer: 'onSeriesTooltipRender'
-                            }
-                        }
                     ]
                 }
             ]
