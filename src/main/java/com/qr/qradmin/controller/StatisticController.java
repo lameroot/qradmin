@@ -26,35 +26,30 @@ public class StatisticController  {
 
     @RequestMapping
     @ResponseBody
-    public Response get() {
-        List<Map<String,String>> data = new ArrayList<>();
-        Map<String,String> map1 = new LinkedHashMap<>();
-        map1.put("name","Jn");
-        map1.put("1","10");
-        map1.put("2","20");
-        map1.put("3","30");
+    public ElementResponse get() {
+        List<Map<String,Object>> data = new ArrayList<>();
+        Map<String,Object> map1 = new LinkedHashMap<>();
+        map1.put("month","Jn");
+        map1.put("data1",1);
+        map1.put("data2",2);
+        map1.put("data3",3);
 
-        Map<String,String> map2 = new LinkedHashMap<>();
-        map2.put("name","Dec");
-        map2.put("1","10");
-        map2.put("2","20");
-        map2.put("3","30");
+        Map<String,Object> map2 = new LinkedHashMap<>();
+        map2.put("month","Dec");
+        map2.put("data1",7);
+        map2.put("data2",6);
+        map2.put("data3",5);
 
-        Map<String,String> map3 = new LinkedHashMap<>();
-        map3.put("name","Feb");
-        map3.put("1","10");
-        map3.put("2","20");
-        map3.put("3","30");
+        Map<String,Object> map3 = new LinkedHashMap<>();
+        map3.put("month","Feb");
+        map3.put("data1",9);
+        map3.put("data2",1);
+        map3.put("data3",3);
 
         data.add(map1);
         data.add(map2);
         data.add(map3);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-
-
-        ElementResponse elementResponse = new ElementResponse(data);
-        return elementResponse;
+        return new ElementResponse<>(data);
     }
 }
