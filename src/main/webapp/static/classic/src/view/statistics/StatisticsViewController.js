@@ -26,6 +26,9 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
             }
         ]);
         var store = chart.getStore();
+        store.getProxy().setExtraParam('a1','s1');
+        store.getProxy().setExtraParam('a2','s2');
+        store.getProxy().setExtraParam('a3', {q1:'r1',q2:'r2'});
         store.load();
     }
 });

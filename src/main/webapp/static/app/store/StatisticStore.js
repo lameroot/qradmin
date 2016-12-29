@@ -8,6 +8,10 @@ Ext.define('PayAdmin.store.StatisticStore', {
     remoteFilter: true,
     proxy: {
         type: 'rest',
+        paramsAsJson: true,
+        actionMethods:  {
+            read: 'POST'
+        },
         url: 'api/statistics',
         reader: {
             type: 'json',

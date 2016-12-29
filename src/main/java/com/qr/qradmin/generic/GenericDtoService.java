@@ -8,6 +8,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
@@ -34,10 +35,12 @@ public abstract class GenericDtoService<E, EDto> {
 
     protected abstract GenericEntityService<E> getEntityService();
 
+    @Transactional
     public ElementResponse<EDto> get(Long id) {
         return new ElementResponse(conversionService.convert(getEntityService().get(id), getEDtoClass()));
     }
 
+    @Transactional
     public PageResponse get(PageableFilterDto filterDto) {
         Sort sort = Optional
                 .ofNullable(filterDto.getSort())
@@ -53,19 +56,21 @@ public abstract class GenericDtoService<E, EDto> {
         return new PageResponse(dtos, entityPage.getTotalElements());
     }
 
-
+    @Transactional
     public Response create(EDto dto) {
         logger.trace("Create : {} by {}",dto, SecurityUtils.getCurrentUser());
         E e = conversionService.convert(dto, getEClass());
         return new ElementResponse(conversionService.convert(getEntityService().create(e), getEDtoClass()));
     }
 
+    @Transactional
     public Response update(Long id, EDto dto) {
         logger.trace("Update : {} by {}",dto, SecurityUtils.getCurrentUser());
         E e = conversionService.convert(dto, getEClass());
         return new ElementResponse(conversionService.convert(getEntityService().update(id, e), getEDtoClass()));
     }
 
+    @Transactional
     public Response delete(Long id) {
         logger.trace("Delete : {} by {}",id, SecurityUtils.getCurrentUser());
         getEntityService().delete(id);

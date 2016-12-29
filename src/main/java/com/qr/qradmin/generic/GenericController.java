@@ -36,7 +36,6 @@ public abstract class GenericController<E, EDto> {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    @Transactional
     public Response get(@PathVariable Long id) {
         checkForSupportedOperations(CrudOperation.GET_ONE);
         return getDtoService().get(id);
@@ -44,7 +43,6 @@ public abstract class GenericController<E, EDto> {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    @Transactional
     public Response get(PageableFilterDto pageableFilter, BindingResult result) throws BindException {
         checkForSupportedOperations(CrudOperation.GET_SEVERAL);
         genericPageableFilterDtoValidator.validate(pageableFilter, result);
@@ -57,7 +55,6 @@ public abstract class GenericController<E, EDto> {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    @Transactional
     public Response create(@RequestBody EDto dto, BindingResult result) {
         checkForSupportedOperations(CrudOperation.CREATE);
         getEntityValidator().validate(dto, result);
@@ -69,7 +66,6 @@ public abstract class GenericController<E, EDto> {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    @Transactional
     public Response update(@PathVariable Long id, @RequestBody EDto dto, BindingResult result) {
         checkForSupportedOperations(CrudOperation.UPDATE);
         getEntityValidator().validate(dto, result);
@@ -81,7 +77,6 @@ public abstract class GenericController<E, EDto> {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    @Transactional
     public Response delete(@PathVariable Long id, BindingResult result) {
         checkForSupportedOperations(CrudOperation.DELETE);
         if (result.hasErrors()) {
