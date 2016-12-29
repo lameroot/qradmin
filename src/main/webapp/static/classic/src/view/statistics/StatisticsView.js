@@ -25,7 +25,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     axes: [
                         {
                             type: 'numeric',
-                            fields: ['data1'],
                             position: 'left',
                             grid: true,
                             minimum: 0
@@ -35,13 +34,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                             fields: 'month',
                             position: 'bottom',
                             grid: true
-                        }
-                    ],
-                    series: [
-                        {
-                            type: 'line',
-                            xField: 'month',
-                            yField: 'data1'
                         }
                     ]
                 },
