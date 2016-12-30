@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.TerminalDto;
+import com.qr.qradmin.dto.filter.TerminalFilterDto;
 import com.qr.qradmin.filter.TerminalFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -20,7 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto> {
+public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto, TerminalFilterDto> {
 
     private final static Logger logger = LoggerFactory.getLogger(TerminalDtoService.class);
 
@@ -28,7 +29,7 @@ public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto>
     private TerminalService terminalService;
 
     @Override
-    protected EntityFilter buildFilter(Map<String, String> filter) {
+    protected EntityFilter buildFilter(TerminalFilterDto filter) {
         TerminalFilter entityFilter = new TerminalFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();

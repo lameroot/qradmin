@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.OrderTemplateDto;
+import com.qr.qradmin.dto.filter.OrderTemplateFilterDto;
 import com.qr.qradmin.filter.OrderTemplateFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -19,7 +20,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, OrderTemplateDto> {
+public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, OrderTemplateDto, OrderTemplateFilterDto> {
 
     @Resource
     private OrderTemplateService orderTemplateService;
@@ -28,7 +29,7 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
 
 
     @Override
-    protected EntityFilter buildFilter(Map<String, String> filter) {
+    protected EntityFilter buildFilter(OrderTemplateFilterDto filter) {
         OrderTemplateFilter entityFilter = new OrderTemplateFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
@@ -44,12 +45,8 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
             }
         }
 
-        if (CollectionUtils.isEmpty(filter)) {
-            return entityFilter;
-        }
-        entityFilter.setAmountFrom(Optional.ofNullable(filter.get("amountFrom")).map(Long::valueOf).orElse(null));
-        entityFilter.setAmountTo(Optional.ofNullable(filter.get("amountTo")).map(Long::valueOf).orElse(null));
-        entityFilter.setName(Optional.ofNullable(filter.get("name")).orElse(null));
+        entityFilter.setAmountFrom(filter.getAmountFrom());
+        entityFilter.setAmountTo(filter.getAmountTo());
         return entityFilter;
     }
 

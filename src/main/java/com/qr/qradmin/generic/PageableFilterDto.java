@@ -8,11 +8,11 @@ import org.springframework.data.domain.Sort;
  * Created by Smirnov_Y on 25.08.2015.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PageableFilterDto {
+public class PageableFilterDto<EFilterDto> {
     private Integer page;
     private Integer limit;
     private Sort sort;
-    private Filter filter;
+    private EFilterDto filter;
 
     public Integer getPage() {
         return page;
@@ -38,11 +38,11 @@ public class PageableFilterDto {
         this.sort = sort;
     }
 
-    public Filter getFilter() {
+    public EFilterDto getFilter() {
         return filter;
     }
 
-    public void setFilter(Filter filter) {
+    public void setFilter(EFilterDto filter) {
         this.filter = filter;
     }
 }

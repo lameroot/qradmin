@@ -18,16 +18,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class GenericController<E, EDto> {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+public abstract class GenericController<E, EDto, EFilterDto> {
     protected final Map<CrudOperation, List<EnumGrantedAuthority>> supportedOperations = new HashMap<>();
 
     protected abstract Validator getEntityValidator();
 
     protected abstract Validator getFilterValidator();
 
-    protected abstract GenericDtoService<E, EDto> getDtoService();
+    protected abstract GenericDtoService<E, EDto, EFilterDto> getDtoService();
 
     @Resource
     private ErrorService errorService;
@@ -41,9 +39,9 @@ public abstract class GenericController<E, EDto> {
         return getDtoService().get(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST, value = "/list")
     @ResponseBody
-    public Response get(PageableFilterDto pageableFilter, BindingResult result) throws BindException {
+    public Response get(@RequestBody PageableFilterDto<EFilterDto> pageableFilter, BindingResult result) throws BindException {
         checkForSupportedOperations(CrudOperation.GET_SEVERAL);
         genericPageableFilterDtoValidator.validate(pageableFilter, result);
         getFilterValidator().validate(pageableFilter, result);

@@ -14,9 +14,12 @@ Ext.define('PayAdmin.store.MerchantStore', {
     proxy: {
         type: 'rest',
         url: 'api/merchant',
-        extraParams: {
-            size: 10,
-            filter: {}
+        paramsAsJson: true,
+        actionMethods:  {
+            read: 'POST'
+        },
+        api: {
+            read: 'api/merchant/list'
         },
         reader: {
             type: 'json',

@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.UserDto;
+import com.qr.qradmin.dto.filter.UserFilterDto;
 import com.qr.qradmin.filter.UserFilter;
 import com.qr.qradmin.generic.ElementResponse;
 import com.qr.qradmin.generic.EntityFilter;
@@ -15,7 +16,7 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 @Service
-public class UserDtoService extends GenericDtoService<User, UserDto> {
+public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterDto> {
 
     @Resource
     private UserService userService;
@@ -25,7 +26,7 @@ public class UserDtoService extends GenericDtoService<User, UserDto> {
     }
 
     @Override
-    protected EntityFilter buildFilter(Map<String, String> filter) {
+    protected EntityFilter buildFilter(UserFilterDto filter) {
         UserFilter entityFilter = new UserFilter();
         return entityFilter;
     }

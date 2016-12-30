@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.MerchantOrderDto;
+import com.qr.qradmin.dto.filter.MerchantOrderFilterDto;
 import com.qr.qradmin.filter.MerchantOrderFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -17,27 +18,23 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, MerchantOrderDto> {
+public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, MerchantOrderDto, MerchantOrderFilterDto> {
 
     @Resource
     private MerchantOrderService merchantOrderService;
 
     @Override
-    protected EntityFilter buildFilter(Map<String, String> filter) {
+    protected EntityFilter buildFilter(MerchantOrderFilterDto filter) {
         MerchantOrderFilter entityFilter = new MerchantOrderFilter();
 
         if (!SecurityUtils.isCurrentUserAdmin()) {
             User user = SecurityUtils.getCurrentUser();
             entityFilter.setMerchantId(user.getMerchant().getId());
         }
-
-        if (CollectionUtils.isEmpty(filter)) {
-            return entityFilter;
-        }
-        entityFilter.setId(Optional.ofNullable(filter.get("id")).map(Long::valueOf).orElse(null));
-        entityFilter.setOrderId(filter.get("orderId"));
-        entityFilter.setExternalId(filter.get("externalId"));
-        entityFilter.setExternalOrderStatus(filter.get("externalOrderStatus"));
+        entityFilter.setId(filter.getId());
+        entityFilter.setOrderId(filter.getOrderId());
+        entityFilter.setExternalId(filter.getExternalId());
+        entityFilter.setExternalOrderStatus(filter.getExternalOrderStatus());
 
 //        entityFilter.setCreatedDateFrom(filter.get("id"));
 //        entityFilter.setCreatedDateTo(filter.get("id"));
@@ -45,14 +42,14 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
 //        entityFilter.setPaymentDateFrom(filter.get("id"));
 //        entityFilter.setPaymentDateTo(filter.get("id"));
 
-        entityFilter.setAmountFrom(Optional.ofNullable(filter.get("amountFrom")).map(Long::valueOf).orElse(null));
-        entityFilter.setAmountTo(Optional.ofNullable(filter.get("amountTo")).map(Long::valueOf).orElse(null));
+        entityFilter.setAmountFrom(filter.getAmountFrom());
+        entityFilter.setAmountTo(filter.getAmountTo());
 
-        entityFilter.setDeviceId(filter.get("deviceId"));
+        entityFilter.setDeviceId(filter.getDeviceId());
 //        entityFilter.setMerchantId(filter.get("id"));
 //        entityFilter.setTerminalId(filter.get("id"));
 //        entityFilter.setClientId(filter.get("id"));
-        entityFilter.setSessionId(filter.get("sessionId"));
+        entityFilter.setSessionId(filter.getSessionId());
 
 //        filter.setIntegrationSupports(filterDto.getIntegrationSupports());
 //        filter.setOrderStatuses(filterDto.getOrderStatuses());

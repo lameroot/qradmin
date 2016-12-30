@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.dto;
 
 import com.qr.qradmin.dto.entity.MerchantDto;
+import com.qr.qradmin.dto.filter.MerchantFilterDto;
 import com.qr.qradmin.filter.MerchantFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -14,14 +15,14 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 @Service
-public class MerchantDtoService extends GenericDtoService<Merchant, MerchantDto> {
+public class MerchantDtoService extends GenericDtoService<Merchant, MerchantDto, MerchantFilterDto> {
 
     @Resource
     @Qualifier("qradmin")
     private MerchantService merchantService;
 
     @Override
-    protected EntityFilter buildFilter(Map<String, String> filter) {
+    protected EntityFilter buildFilter(MerchantFilterDto filter) {
         MerchantFilter entityFilter = new MerchantFilter();
         return entityFilter;
     }

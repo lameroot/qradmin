@@ -14,9 +14,12 @@ Ext.define('PayAdmin.store.TerminalStore', {
     proxy: {
         type: 'rest',
         url: 'api/terminal',
-        extraParams: {
-            size: 10,
-            filter: {}
+        paramsAsJson: true,
+        actionMethods:  {
+            read: 'POST'
+        },
+        api: {
+            read: 'api/terminal/list'
         },
         reader: {
             type: 'json',

@@ -11,7 +11,7 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplatesViewController', {
 	onFilterButtonClick: function () {
 		var ordersStore = this.getView().down('#orderTemplatesGrid').getStore();
 		var filter = this.getView().getViewModel().get('filter');
-        ordersStore.getProxy().setExtraParam('filter', Ext.JSON.encode(filter));
+        ordersStore.getProxy().setExtraParam('filter', filter);
         ordersStore.load();
 	},
 

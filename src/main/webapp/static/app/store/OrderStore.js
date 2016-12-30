@@ -9,6 +9,13 @@ Ext.define('PayAdmin.store.OrderStore', {
     proxy: {
         type: 'rest',
         url: 'api/order',
+        paramsAsJson: true,
+        actionMethods:  {
+            read: 'POST'
+        },
+        api: {
+            read: 'api/order/list'
+        },
         reader: {
             type: 'json',
             rootProperty: 'data',
