@@ -45,6 +45,10 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
             }
         }
 
+        if (filter == null) {
+            return entityFilter;
+        }
+
         entityFilter.setAmountFrom(filter.getAmountFrom());
         entityFilter.setAmountTo(filter.getAmountTo());
         return entityFilter;

@@ -31,6 +31,11 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
             User user = SecurityUtils.getCurrentUser();
             entityFilter.setMerchantId(user.getMerchant().getId());
         }
+
+        if (filter == null) {
+            return entityFilter;
+        }
+
         entityFilter.setId(filter.getId());
         entityFilter.setOrderId(filter.getOrderId());
         entityFilter.setExternalId(filter.getExternalId());

@@ -46,6 +46,10 @@ public class TerminalDtoService extends GenericDtoService<Terminal, TerminalDto,
                 entityFilter.setTerminalIds(merchantTerminalIds);
             }
         }
+        if (filter == null) {
+            return entityFilter;
+        }
+
         return entityFilter;
     }
 
