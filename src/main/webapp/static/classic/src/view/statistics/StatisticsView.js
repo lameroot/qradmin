@@ -14,6 +14,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
             xtype: 'panel',
             id: 'statisticsPanel',
             region: 'center',
+            title: 'Статистика',
             items: [
                 {
                     xtype: 'cartesian',

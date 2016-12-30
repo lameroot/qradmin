@@ -1,12 +1,14 @@
 package com.qr.qradmin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qr.qradmin.dto.filter.StatisticFilterDto;
 import com.qr.qradmin.generic.ElementResponse;
 import com.qr.qradmin.generic.Response;
 import com.qr.qradmin.service.dto.StatisticDtoService;
 import com.qr.qradmin.validator.entity.StatisticDtoValidator;
 import com.qr.qradmin.validator.filter.StatisticFilterDtoValidator;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,7 +28,9 @@ public class StatisticController  {
 
     @RequestMapping
     @ResponseBody
-    public ElementResponse get() {
+    public ElementResponse get(@RequestBody StatisticFilterDto filter) {
+        System.out.println(filter);
+
         List<Map<String,Object>> data = new ArrayList<>();
         Map<String,Object> map1 = new LinkedHashMap<>();
         map1.put("month","Jn");

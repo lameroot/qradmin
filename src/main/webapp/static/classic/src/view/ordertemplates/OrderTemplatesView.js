@@ -39,22 +39,6 @@ Ext.define('PayAdmin.view.ordertemplates.OrderTemplatesView', {
 							bind: '{filter.amountTo}'
 						}
 					]
-				},
-				{
-					xtype: 'fieldset',
-					title: 'parameters',
-					items: [
-						{
-							xtype: 'textfield',
-							fieldLabel: 'name',
-							bind: '{filter.name}'
-						},
-						{
-							xtype: 'textfield',
-							fieldLabel: 'terminal ID',
-							bind: '{filter.terminalId}'
-						}
-					]
 				}
 			],
 			buttons: [

@@ -3,9 +3,6 @@ Ext.define('PayAdmin.store.StatisticStore', {
     model: 'PayAdmin.model.Statistic',
     alias: 'store.statistic',
     storeId: 'statistic',
-    autoLoad: true,
-    remoteSort: true,
-    remoteFilter: true,
     proxy: {
         type: 'rest',
         paramsAsJson: true,

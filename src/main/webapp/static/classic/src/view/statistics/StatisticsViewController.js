@@ -8,6 +8,10 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
 
     onRefreshButtonClick: function () {
         var chart = this.getView().down('#chart');
+
+        // series, которые будем добавлять (их тип и количество)
+        // берем основываясь на том, что выбрал пользователь в браузере
+        // например, если он выбрал "показать графики на трех маршутах", то мы добавляем три серии
         chart.setSeries([
             {
                 type: 'line',
@@ -26,9 +30,14 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
             }
         ]);
         var store = chart.getStore();
-        store.getProxy().setExtraParam('a1','s1');
-        store.getProxy().setExtraParam('a2','s2');
-        store.getProxy().setExtraParam('a3', {q1:'r1',q2:'r2'});
+
+        // здесь проставляем параметры по которым ищем,
+        // например,
+        // тип интервала (по дням, по часам и т.п.)
+        // номера маршрутов
+        // все это попадет в StatisticFilterDto вв контроллере
+        store.getProxy().setExtraParam('param1', 'qwe');
+        store.getProxy().setExtraParam('param2', 'asd');
         store.load();
     }
 });
