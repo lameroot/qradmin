@@ -27,6 +27,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
             items: [
                 {
                     xtype: 'combobox',
+                    editable: false,
                     fieldLabel: 'Группировка',
                     store: {
                         type: 'statisticGrouping'
@@ -38,6 +39,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 },
                 {
                     xtype: 'combobox',
+                    editable: false,
                     fieldLabel: 'Показатель',
                     store: {
                         type: 'statisticIndicatorType'
@@ -49,11 +51,11 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 },
                 {
                     xtype: 'combobox',
+                    editable: false,
                     fieldLabel: 'Расчет по',
                     store: {
                         type: 'statisticCalculationType'
                     },
-                    bind: '{filter.calculationType}',
                     queryMode: 'local',
                     displayField: 'display',
                     valueField: 'value',
