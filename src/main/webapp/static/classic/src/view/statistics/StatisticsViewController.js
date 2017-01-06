@@ -6,7 +6,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
     requires: [
     ],
 
-    onRefreshButtonClick: function () {
+    onCalculateButtonClick: function () {
         var chart = this.getView().down('#chart');
 
         // series, которые будем добавлять (их тип и количество)
