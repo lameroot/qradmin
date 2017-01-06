@@ -22,54 +22,9 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 type: 'vbox',
                 align: 'stretch'
             },
-            minWidth: 295,
+            // minWidth: 295,
+            width: 320,
             items: [
-                {
-                    xtype: 'fieldset',
-                    title: 'Расчет',
-                    items: [
-                        {
-                            xtype: 'combobox',
-                            fieldLabel: 'Расчет по',
-                            store: {
-                                type: 'statisticCalculationType'
-                            },
-                            bind: '{filter.calculationType}',
-                            queryMode: 'local',
-                            displayField: 'display',
-                            valueField: 'value'
-                        },
-                        {
-                            xtype: 'multiselector',
-                            title: 'Терминалы',
-                            fieldName: 'authName',
-                            emptyText: 'Терминалы не выбраны. Расчет по всем терминалам.',
-                            border: true,
-                            search: {
-                                field: 'authName',
-                                store: {
-                                    type: 'terminal'
-                                }
-                            }
-                        }
-                    ]
-                },
-                {
-                    xtype: 'fieldset',
-                    title: 'Период',
-                    items: [
-                        {
-                            xtype: 'datefield',
-                            fieldLabel: 'с',
-                            bind: '{filter.dateFrom}'
-                        },
-                        {
-                            xtype: 'datefield',
-                            fieldLabel: 'по',
-                            bind: '{filter.dateTo}'
-                        }
-                    ]
-                },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'Группировка',
@@ -91,6 +46,68 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     queryMode: 'local',
                     displayField: 'display',
                     valueField: 'value'
+                },
+                {
+                    xtype: 'combobox',
+                    fieldLabel: 'Расчет по',
+                    store: {
+                        type: 'statisticCalculationType'
+                    },
+                    bind: '{filter.calculationType}',
+                    queryMode: 'local',
+                    displayField: 'display',
+                    valueField: 'value',
+                    listeners: {
+                        select: 'onCalculationTypeSelected'
+                    }
+                },
+                {
+                    xtype: 'multiselector',
+                    id: 'statistics_terminalsSelector',
+                    hidden: true,
+                    title: 'Терминалы',
+                    bind: '{filter.terminalIds}',
+                    fieldName: 'authName',
+                    emptyText: 'Терминалы не выбраны. Расчет по всем терминалам.',
+                    border: true,
+                    search: {
+                        field: 'authName',
+                        store: {
+                            type: 'terminal'
+                        }
+                    }
+                },
+                {
+                    xtype: 'multiselector',
+                    id: 'statistics_orderTemplatesSelector',
+                    hidden: true,
+                    title: 'Шаблоны',
+                    bind: '{filter.orderTemplateIds}',
+                    fieldName: 'name',
+                    emptyText: 'Шаблоны не выбраны. Расчет по всем шаблонам.',
+                    border: true,
+                    search: {
+                        field: 'name',
+                        store: {
+                            type: 'orderTemplate'
+                        }
+                    }
+                },
+                {
+                    xtype: 'fieldset',
+                    title: 'Период',
+                    items: [
+                        {
+                            xtype: 'datefield',
+                            fieldLabel: 'с',
+                            bind: '{filter.dateFrom}'
+                        },
+                        {
+                            xtype: 'datefield',
+                            fieldLabel: 'по',
+                            bind: '{filter.dateTo}'
+                        }
+                    ]
                 }
             ],
             buttons: [
@@ -110,7 +127,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
             items: [
                 {
                     xtype: 'cartesian',
-                    id: 'chart',
+                    id: 'statistics_chart',
                     height: 500,
                     store: {
                         type: 'statistic'

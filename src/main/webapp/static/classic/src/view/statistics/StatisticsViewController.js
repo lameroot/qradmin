@@ -7,7 +7,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
     ],
 
     onCalculateButtonClick: function () {
-        var chart = this.getView().down('#chart');
+        var chart = this.getView().down('#statistics_chart');
 
         // series, которые будем добавлять (их тип и количество)
         // берем основываясь на том, что выбрал пользователь в браузере
@@ -39,5 +39,16 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         store.getProxy().setExtraParam('param1', 'qwe');
         store.getProxy().setExtraParam('param2', 'asd');
         store.load();
+    },
+
+    onCalculationTypeSelected: function (combobox, record) {
+        this.getView().down('#statistics_terminalsSelector').setHidden(true);
+        this.getView().down('#statistics_orderTemplatesSelector').setHidden(true);
+
+        if (record.data.value == 'BY_TERMINALS') {
+            this.getView().down('#statistics_terminalsSelector').setHidden(false);
+        } else if (record.data.value == 'BY_TEMPLATES') {
+            this.getView().down('#statistics_orderTemplatesSelector').setHidden(false);
+        }
     }
 });
