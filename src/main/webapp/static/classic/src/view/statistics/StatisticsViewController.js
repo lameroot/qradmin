@@ -37,7 +37,10 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         store.getProxy().setExtraParam('selectedTerminals', selectedTerminals);
 
         var filter = this.getView().getViewModel().get('filter');
-        store.getProxy().setExtraParam('filter', filter);
+        store.getProxy().setExtraParam('dateFrom', filter.dateFrom);
+        store.getProxy().setExtraParam('dateTo', filter.dateTo);
+        store.getProxy().setExtraParam('grouping', filter.grouping);
+        store.getProxy().setExtraParam('indicatorType', filter.indicatorType);
 
         store.load();
     },
