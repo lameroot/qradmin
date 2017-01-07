@@ -3,12 +3,12 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
 
     alias: 'controller.statisticsView',
 
-    onCalculateButtonClick: function () {
-        var chart = this.getView().down('#statistics_chart');
+    requires: [
+        'PayAdmin.util.ModelUtils'
+    ],
 
-        // series, которые будем добавлять (их тип и количество)
-        // берем основываясь на том, что выбрал пользователь в браузере
-        // например, если он выбрал "показать графики на трех маршутах", то мы добавляем три серии
+    onCalculateButtonClick: function () {
+        var chart = this.getView().down('#chart');
         chart.setSeries([
             {
                 type: 'line',
@@ -28,13 +28,17 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         ]);
         var store = chart.getStore();
 
-        // здесь проставляем параметры по которым ищем,
-        // например,
-        // тип интервала (по дням, по часам и т.п.)
-        // номера маршрутов
-        // все это попадет в StatisticFilterDto вв контроллере
-        store.getProxy().setExtraParam('param1', 'qwe');
-        store.getProxy().setExtraParam('param2', 'asd');
+        var selectedOrderTemplatesStore = this.getView().down('#orderTemplatesSelector').getStore();
+        var selectedOrderTemplates = ModelUtils.extractItemsIdsFromStore(selectedOrderTemplatesStore);
+        store.getProxy().setExtraParam('orderTemplates', selectedOrderTemplates);
+
+        var selectedTerminalsStore = this.getView().down('#terminalsSelector').getStore();
+        var selectedTerminals = ModelUtils.extractItemsIdsFromStore(selectedTerminalsStore);
+        store.getProxy().setExtraParam('selectedTerminals', selectedTerminals);
+
+        var filter = this.getView().getViewModel().get('filter');
+        store.getProxy().setExtraParam('filter', filter);
+
         store.load();
     },
 

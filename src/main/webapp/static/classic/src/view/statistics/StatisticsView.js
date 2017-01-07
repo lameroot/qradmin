@@ -68,7 +68,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     id: 'terminalsSelector',
                     hidden: true,
                     title: 'Терминалы',
-                    bind: '{filter.terminalIds}',
                     fieldName: 'authName',
                     emptyText: 'Терминалы не выбраны. Расчет по всем терминалам.',
                     border: true,
@@ -84,7 +83,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     id: 'orderTemplatesSelector',
                     hidden: true,
                     title: 'Шаблоны',
-                    bind: '{filter.orderTemplateIds}',
                     fieldName: 'name',
                     emptyText: 'Шаблоны не выбраны. Расчет по всем шаблонам.',
                     border: true,
@@ -129,7 +127,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
             items: [
                 {
                     xtype: 'cartesian',
-                    id: 'statistics_chart',
+                    id: 'chart',
                     height: 500,
                     store: {
                         type: 'statistic'
