@@ -3,9 +3,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
 
     alias: 'controller.statisticsView',
 
-    requires: [
-    ],
-
     onCalculateButtonClick: function () {
         var chart = this.getView().down('#statistics_chart');
 
@@ -42,13 +39,16 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
     },
 
     onCalculationTypeSelected: function (combobox, record) {
-        this.getView().down('#statistics_terminalsSelector').setHidden(true);
-        this.getView().down('#statistics_orderTemplatesSelector').setHidden(true);
+        var terminalsSelector = this.getView().down('#terminalsSelector');
+        var orderTemplatesSelector = this.getView().down('#orderTemplatesSelector');
+
+        terminalsSelector.setHidden(true);
+        orderTemplatesSelector.setHidden(true);
 
         if (record.data.value == 'BY_TERMINALS') {
-            this.getView().down('#statistics_terminalsSelector').setHidden(false);
+            terminalsSelector.setHidden(false);
         } else if (record.data.value == 'BY_TEMPLATES') {
-            this.getView().down('#statistics_orderTemplatesSelector').setHidden(false);
+            orderTemplatesSelector.setHidden(false);
         }
     }
 });

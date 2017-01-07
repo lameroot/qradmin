@@ -65,7 +65,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 },
                 {
                     xtype: 'multiselector',
-                    id: 'statistics_terminalsSelector',
+                    id: 'terminalsSelector',
                     hidden: true,
                     title: 'Терминалы',
                     bind: '{filter.terminalIds}',
@@ -81,7 +81,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 },
                 {
                     xtype: 'multiselector',
-                    id: 'statistics_orderTemplatesSelector',
+                    id: 'orderTemplatesSelector',
                     hidden: true,
                     title: 'Шаблоны',
                     bind: '{filter.orderTemplateIds}',
