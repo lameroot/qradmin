@@ -7,42 +7,51 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         'PayAdmin.util.ModelUtils'
     ],
 
+    init: function () {
+        debugger
+        this.getView().down('#chart').getStore().addListener(
+            {
+                load: this.onChartStoreLoaded(this.getView().down('#chart'))
+            }
+        );
+    },
+
     onCalculateButtonClick: function () {
         var chart = this.getView().down('#chart');
-        chart.setSeries([
-            {
-                type: 'line',
-                xField: 'month',
-                yField: 'data1'
-            },
-            {
-                type: 'line',
-                xField: 'month',
-                yField: 'data2'
-            },
-            {
-                type: 'line',
-                xField: 'month',
-                yField: 'data3'
-            }
-        ]);
-        var store = chart.getStore();
-
-        var selectedOrderTemplatesStore = this.getView().down('#orderTemplatesSelector').getStore();
-        var selectedOrderTemplates = ModelUtils.extractItemsIdsFromStore(selectedOrderTemplatesStore);
-        store.getProxy().setExtraParam('orderTemplates', selectedOrderTemplates);
+        var filter = this.getView().getViewModel().get('filter');
 
         var selectedTerminalsStore = this.getView().down('#terminalsSelector').getStore();
-        var selectedTerminals = ModelUtils.extractItemsIdsFromStore(selectedTerminalsStore);
-        store.getProxy().setExtraParam('selectedTerminals', selectedTerminals);
+        filter.selectedTerminalsIds = ModelUtils.extractItemsIdsFromStore(selectedTerminalsStore);
 
-        var filter = this.getView().getViewModel().get('filter');
-        store.getProxy().setExtraParam('dateFrom', filter.dateFrom);
-        store.getProxy().setExtraParam('dateTo', filter.dateTo);
-        store.getProxy().setExtraParam('grouping', filter.grouping);
-        store.getProxy().setExtraParam('indicatorType', filter.indicatorType);
+        var selectedOrderTemplatesStore = this.getView().down('#orderTemplatesSelector').getStore();
+        filter.selectedOrderTemplatesIds = ModelUtils.extractItemsIdsFromStore(selectedOrderTemplatesStore);
 
-        store.load();
+        var chartStore = chart.getStore();
+        chartStore.getProxy().setExtraParam('filter', filter);
+        chartStore.load();
+    },
+
+    onChartStoreLoaded: function (chart) {
+        return function (store, records, successful) {
+            chart.setSeries([
+                {
+                    type: 'line',
+                    xField: 'month',
+                    yField: 'data1'
+                },
+                {
+                    type: 'line',
+                    xField: 'month',
+                    yField: 'data2'
+                },
+                {
+                    type: 'line',
+                    xField: 'month',
+                    yField: 'data3'
+                }
+            ]);
+        };
+
     },
 
     onCalculationTypeSelected: function (combobox, record) {

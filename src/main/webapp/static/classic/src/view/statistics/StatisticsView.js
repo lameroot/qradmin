@@ -51,11 +51,13 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 },
                 {
                     xtype: 'combobox',
+                    id: 'calculationTypeSelector',
                     editable: false,
                     fieldLabel: 'Расчет по',
                     store: {
                         type: 'statisticCalculationType'
                     },
+                    bind: '{filter.calculationType}',
                     queryMode: 'local',
                     displayField: 'display',
                     valueField: 'value',
