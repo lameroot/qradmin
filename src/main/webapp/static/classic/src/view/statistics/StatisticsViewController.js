@@ -7,15 +7,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         'PayAdmin.util.ModelUtils'
     ],
 
-    init: function () {
-        debugger
-        this.getView().down('#chart').getStore().addListener(
-            {
-                load: this.onChartStoreLoaded(this.getView().down('#chart'))
-            }
-        );
-    },
-
     onCalculateButtonClick: function () {
         var chart = this.getView().down('#chart');
         var filter = this.getView().getViewModel().get('filter');
@@ -26,45 +17,49 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         var selectedOrderTemplatesStore = this.getView().down('#orderTemplatesSelector').getStore();
         filter.selectedOrderTemplatesIds = ModelUtils.extractItemsIdsFromStore(selectedOrderTemplatesStore);
 
-        var chartStore = chart.getStore();
-        chartStore.getProxy().setExtraParam('filter', filter);
-        chartStore.load();
-    },
-
-    onChartStoreLoaded: function (chart) {
-        return function (store, records, successful) {
-            chart.setSeries([
-                {
-                    type: 'line',
-                    xField: 'month',
-                    yField: 'data1'
-                },
-                {
-                    type: 'line',
-                    xField: 'month',
-                    yField: 'data2'
-                },
-                {
-                    type: 'line',
-                    xField: 'month',
-                    yField: 'data3'
-                }
-            ]);
-        };
-
+        chart.setSeries([
+            {
+                type: 'line',
+                xField: 'name',
+                yField: 'data1'
+            },
+            {
+                type: 'line',
+                xField: 'name',
+                yField: 'data2'
+            }
+        ]);
+        chart.getStore().setFields(['name', 'data1', 'data2']);
+        chart.getStore().setData(
+            [{
+                'name': 1,
+                'data1': 10,
+                'data2': 12
+            }, {
+                'name': 2,
+                'data1': 7,
+                'data2': 8
+            }]
+        );
     },
 
     onCalculationTypeSelected: function (combobox, record) {
         var terminalsSelector = this.getView().down('#terminalsSelector');
         var orderTemplatesSelector = this.getView().down('#orderTemplatesSelector');
+        var separatelyForTerminalsCheckbox = this.getView().down('#separatelyForTerminalsCheckbox');
+        var separatelyForOrderTemplatesCheckbox = this.getView().down('#separatelyForOrderTemplatesCheckbox');
 
         terminalsSelector.setHidden(true);
         orderTemplatesSelector.setHidden(true);
+        separatelyForTerminalsCheckbox.setHidden(true);
+        separatelyForOrderTemplatesCheckbox.setHidden(true);
 
         if (record.data.value == 'BY_TERMINALS') {
             terminalsSelector.setHidden(false);
+            separatelyForTerminalsCheckbox.setHidden(false);
         } else if (record.data.value == 'BY_TEMPLATES') {
             orderTemplatesSelector.setHidden(false);
+            separatelyForOrderTemplatesCheckbox.setHidden(false);
         }
     }
 });

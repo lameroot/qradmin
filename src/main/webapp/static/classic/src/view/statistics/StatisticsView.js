@@ -8,7 +8,11 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
     ],
     controller: 'statisticsView',
     layout: 'border',
-    viewModel: {data:{filter: {}}},
+    viewModel: {
+        data: {
+            filter: {}
+        }
+    },
     items: [
         {
             bodyPadding: 5,
@@ -22,7 +26,6 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                 type: 'vbox',
                 align: 'stretch'
             },
-            // minWidth: 295,
             width: 320,
             items: [
                 {
@@ -66,6 +69,13 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     }
                 },
                 {
+                    xtype: 'checkboxfield',
+                    id: 'separatelyForTerminalsCheckbox',
+                    hidden: true,
+                    boxLabel: 'Отдельно для каждого терминала',
+                    value: '{filter.separatelyForTerminals}'
+                },
+                {
                     xtype: 'multiselector',
                     id: 'terminalsSelector',
                     hidden: true,
@@ -79,6 +89,13 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                             type: 'terminal'
                         }
                     }
+                },
+                {
+                    xtype: 'checkboxfield',
+                    id: 'separatelyForOrderTemplatesCheckbox',
+                    hidden: true,
+                    boxLabel: 'Отдельно для каждого шаблона',
+                    value: '{filter.separatelyForOrderTemplates}'
                 },
                 {
                     xtype: 'multiselector',
@@ -131,9 +148,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     xtype: 'cartesian',
                     id: 'chart',
                     height: 500,
-                    store: {
-                        type: 'statistic'
-                    },
+                    store: {},
                     axes: [
                         {
                             type: 'numeric',
