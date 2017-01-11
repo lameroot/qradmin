@@ -57,14 +57,14 @@ public abstract class GenericDtoService<E, EDto, EFilterDto> {
     }
 
     @Transactional
-    public Response create(EDto dto) {
+    public ElementResponse<EDto> create(EDto dto) {
         logger.trace("Create : {} by {}",dto, SecurityUtils.getCurrentUser());
         E e = conversionService.convert(dto, getEClass());
         return new ElementResponse<>(conversionService.convert(getEntityService().create(e), getEDtoClass()));
     }
 
     @Transactional
-    public Response update(Long id, EDto dto) {
+    public ElementResponse<EDto> update(Long id, EDto dto) {
         logger.trace("Update : {} by {}",dto, SecurityUtils.getCurrentUser());
         E e = conversionService.convert(dto, getEClass());
         return new ElementResponse<>(conversionService.convert(getEntityService().update(id, e), getEDtoClass()));

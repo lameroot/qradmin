@@ -34,26 +34,26 @@ public abstract class GenericController<E, EDto, EFilterDto> {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Response get(@PathVariable Long id) {
+    public ElementResponse<EDto> get(@PathVariable Long id) {
         checkForSupportedOperations(CrudOperation.GET_ONE);
         return getDtoService().get(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/list")
     @ResponseBody
-    public Response get(@RequestBody PageableFilterDto<EFilterDto> pageableFilter, BindingResult result) throws BindException {
+    public PageResponse<EDto> get(@RequestBody PageableFilterDto<EFilterDto> pageableFilter, BindingResult result) throws BindException {
         checkForSupportedOperations(CrudOperation.GET_SEVERAL);
         genericPageableFilterDtoValidator.validate(pageableFilter, result);
         getFilterValidator().validate(pageableFilter, result);
         if (result.hasErrors()) {
-            return errorService.generateErrorResponse(result);
+            return errorService.generateErrorPageResponse(result);
         }
         return getDtoService().get(pageableFilter);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public Response create(@RequestBody EDto dto, BindingResult result) {
+    public ElementResponse<EDto> create(@RequestBody EDto dto, BindingResult result) {
         checkForSupportedOperations(CrudOperation.CREATE);
         getEntityValidator().validate(dto, result);
         if (result.hasErrors()) {
@@ -64,7 +64,7 @@ public abstract class GenericController<E, EDto, EFilterDto> {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public Response update(@PathVariable Long id, @RequestBody EDto dto, BindingResult result) {
+    public ElementResponse<EDto> update(@PathVariable Long id, @RequestBody EDto dto, BindingResult result) {
         checkForSupportedOperations(CrudOperation.UPDATE);
         getEntityValidator().validate(dto, result);
         if (result.hasErrors()) {
@@ -101,7 +101,9 @@ public abstract class GenericController<E, EDto, EFilterDto> {
         StringBuilder sb = new StringBuilder();
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         if ( stackTraceElements != null && stackTraceElements.length > 3 ) {
-            sb.append(stackTraceElements[3] + "->" + stackTraceElements[2]);
+            sb.append(stackTraceElements[3])
+                    .append("->")
+                    .append(stackTraceElements[2]);
         }
         return sb.toString();
     }

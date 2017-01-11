@@ -17,30 +17,35 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         var selectedOrderTemplatesStore = this.getView().down('#orderTemplatesSelector').getStore();
         filter.selectedOrderTemplatesIds = ModelUtils.extractItemsIdsFromStore(selectedOrderTemplatesStore);
 
-        chart.setSeries([
-            {
-                type: 'line',
-                xField: 'name',
-                yField: 'data1'
-            },
-            {
-                type: 'line',
-                xField: 'name',
-                yField: 'data2'
-            }
-        ]);
-        chart.getStore().setFields(['name', 'data1', 'data2']);
-        chart.getStore().setData(
-            [{
-                'name': 1,
-                'data1': 10,
-                'data2': 12
-            }, {
-                'name': 2,
-                'data1': 7,
-                'data2': 8
-            }]
-        );
+        var statisticStore = Ext.create('PayAdmin.store.StatisticStore', {});
+        statisticStore.addListener({
+            load: this.getStatisticStoreLoadedListener(this.getView())
+        });
+        statisticStore.load();
+    },
+
+    getStatisticStoreLoadedListener: function (view) {
+        return function (store, records) {
+            var chart = view.down('#chart');
+            debugger
+            var chartSeries = [];
+            Ext.each(Object.keys(records[0].data.y), function (yField) {
+                chartSeries.push({
+                    type: 'line',
+                    xField: 'x',
+                    yField: yField
+                });
+            });
+            chart.setSeries(chartSeries);
+
+            var chartStoreData = [];
+            Ext.each(records, function (record) {
+                var point = record.data.y;
+                point.x = record.data.x;
+                chartStoreData.push(point);
+            });
+            chart.getStore().setData(chartStoreData);
+        }
     },
 
     onCalculationTypeSelected: function (combobox, record) {
