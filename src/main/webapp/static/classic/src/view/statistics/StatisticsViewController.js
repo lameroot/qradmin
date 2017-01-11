@@ -28,10 +28,13 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
     getStatisticStoreLoadedListener: function (view) {
         return function (store, records) {
             var chart = view.down('#chart');
+            var filter = view.getViewModel().get('filter');
+
             var chartSeries = [];
             Ext.each(Object.keys(records[0].data.y), function (yField) {
                 chartSeries.push({
                     type: 'line',
+                    title: yField,
                     xField: 'x',
                     yField: yField
                 });

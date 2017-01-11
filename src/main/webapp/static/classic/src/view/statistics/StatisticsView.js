@@ -73,7 +73,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     id: 'separatelyForTerminalsCheckbox',
                     hidden: true,
                     boxLabel: 'Отдельно для каждого терминала',
-                    value: '{filter.separatelyForTerminals}'
+                    bind: '{filter.separatelyForTerminals}'
                 },
                 {
                     xtype: 'multiselector',
@@ -95,7 +95,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     id: 'separatelyForOrderTemplatesCheckbox',
                     hidden: true,
                     boxLabel: 'Отдельно для каждого шаблона',
-                    value: '{filter.separatelyForOrderTemplates}'
+                    bind: '{filter.separatelyForOrderTemplates}'
                 },
                 {
                     xtype: 'multiselector',
@@ -148,6 +148,9 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                     xtype: 'cartesian',
                     id: 'chart',
                     height: 500,
+                    legend: {
+                        docked: 'right'
+                    },
                     store: {},
                     axes: [
                         {
