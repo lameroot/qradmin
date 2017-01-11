@@ -21,7 +21,7 @@ public class StatisticController  {
     public PageResponse<StatisticsPointDto> get(@RequestBody StatisticFilterDto filter) {
 
         StatisticsPointDto point1 = new StatisticsPointDto();
-        point1.setX("1");
+        point1.setX("Jan");
         point1.setY(ImmutableMap.of(
                 1L, 7L,
                 3L, 9L,
@@ -29,7 +29,7 @@ public class StatisticController  {
         ));
 
         StatisticsPointDto point2 = new StatisticsPointDto();
-        point2.setX("2");
+        point2.setX("Feb");
         point2.setY(ImmutableMap.of(
                 1L, 4L,
                 3L, 2L,
@@ -37,7 +37,7 @@ public class StatisticController  {
         ));
 
         StatisticsPointDto point3 = new StatisticsPointDto();
-        point3.setX("3");
+        point3.setX("Mar");
         point3.setY(ImmutableMap.of(
                 1L, 8L,
                 3L, 3L,

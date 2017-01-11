@@ -158,7 +158,7 @@ Ext.define('PayAdmin.view.statistics.StatisticsView', {
                         },
                         {
                             type: 'category',
-                            fields: 'month',
+                            fields: 'x',
                             position: 'bottom',
                             grid: true
                         }
