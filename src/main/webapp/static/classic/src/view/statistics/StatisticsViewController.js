@@ -17,7 +17,8 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
         var selectedOrderTemplatesStore = this.getView().down('#orderTemplatesSelector').getStore();
         filter.selectedOrderTemplatesIds = ModelUtils.extractItemsIdsFromStore(selectedOrderTemplatesStore);
 
-        var statisticStore = Ext.create('PayAdmin.store.StatisticStore', {});
+        var statisticStore = Ext.create('PayAdmin.store.StatisticStore');
+        statisticStore.getProxy().setExtraParam('filter', filter);
         statisticStore.addListener({
             load: this.getStatisticStoreLoadedListener(this.getView())
         });
