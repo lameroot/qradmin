@@ -6,6 +6,7 @@ import com.qr.qradmin.dto.entity.StatisticPointDto;
 import com.qr.qradmin.dto.filter.StatisticFilterDto;
 import com.qr.qradmin.generic.PageResponse;
 import com.qr.qradmin.generic.PageableFilterDto;
+import com.qr.qradmin.service.ErrorService;
 import com.qr.qradmin.validator.filter.StatisticFilterDtoValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,11 +23,16 @@ public class StatisticsController {
 
     @Resource
     private StatisticFilterDtoValidator statisticFilterDtoValidator;
+    @Resource
+    private ErrorService errorService;
 
     @RequestMapping
     @ResponseBody
     public PageResponse<StatisticPointDto> get(@RequestBody PageableFilterDto<StatisticFilterDto> pageableFilter, BindingResult result) {
         statisticFilterDtoValidator.validate(pageableFilter, result);
+        if (result.hasErrors()) {
+            return errorService.generateErrorPageResponse(result);
+        }
 
         StatisticPointDto point1 = new StatisticPointDto();
         point1.setX("Jan");

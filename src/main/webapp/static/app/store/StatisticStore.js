@@ -6,6 +6,8 @@ Ext.define('PayAdmin.store.StatisticStore', {
     proxy: {
         type: 'rest',
         paramsAsJson: true,
+        pageParam: '',
+        limitParam: '',
         actionMethods:  {
             read: 'POST'
         },
