@@ -30,18 +30,18 @@ public class ErrorService {
         return response;
     }
 
-    public ElementResponse generateErrorResponse(BindingResult result) {
+    public <EDto> ElementResponse<EDto> generateErrorResponse(BindingResult result) {
         ObjectError error = result.getAllErrors().get(0);
-        ElementResponse response = new ElementResponse<>(null);
+        ElementResponse<EDto> response = new ElementResponse<>(null);
         response.setSuccessful(false);
         response.setCode(error.getCode());
         response.setMessage(error.getDefaultMessage());
         return response;
     }
 
-    public PageResponse generateErrorPageResponse(BindingResult result) {
+    public <EDto> PageResponse<EDto> generateErrorPageResponse(BindingResult result) {
         ObjectError error = result.getAllErrors().get(0);
-        PageResponse response = new PageResponse<>(Collections.emptyList(), 0);
+        PageResponse<EDto> response = new PageResponse<>(Collections.emptyList(), 0);
         response.setSuccessful(false);
         response.setCode(error.getCode());
         response.setMessage(error.getDefaultMessage());
