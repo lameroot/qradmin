@@ -97,6 +97,7 @@ public abstract class GenericController<E, EDto, EFilterDto> {
         }
     }
 
+    //TODO переместить в утилитный метод
     private String getChainMethods() {
         StringBuilder sb = new StringBuilder();
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();

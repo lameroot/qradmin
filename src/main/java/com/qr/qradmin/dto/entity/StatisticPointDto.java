@@ -8,7 +8,7 @@ import java.util.Map;
  * ключ - id группы (например, терминала или шаблона)
  * значение - значение, которое нужно отобразить
  */
-public class StatisticsPointDto {
+public class StatisticPointDto {
     private String x;
     private Map<Long, Long> y;
 
