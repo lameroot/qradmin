@@ -1,6 +1,8 @@
 package com.qr.qradmin.service;
 
 import com.qr.qradmin.enums.ErrorCode;
+import com.qr.qradmin.generic.ElementResponse;
+import com.qr.qradmin.generic.PageResponse;
 import com.qr.qradmin.generic.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
+import java.util.Collections;
 import java.util.Formatter;
 
 @Service
@@ -27,9 +30,18 @@ public class ErrorService {
         return response;
     }
 
-    public Response generateErrorResponse(BindingResult result) {
+    public <EDto> ElementResponse<EDto> generateErrorResponse(BindingResult result) {
         ObjectError error = result.getAllErrors().get(0);
-        Response response = new Response();
+        ElementResponse<EDto> response = new ElementResponse<>(null);
+        response.setSuccessful(false);
+        response.setCode(error.getCode());
+        response.setMessage(error.getDefaultMessage());
+        return response;
+    }
+
+    public <EDto> PageResponse<EDto> generateErrorPageResponse(BindingResult result) {
+        ObjectError error = result.getAllErrors().get(0);
+        PageResponse<EDto> response = new PageResponse<>(Collections.emptyList(), 0);
         response.setSuccessful(false);
         response.setCode(error.getCode());
         response.setMessage(error.getDefaultMessage());

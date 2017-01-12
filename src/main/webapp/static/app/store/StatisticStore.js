@@ -1,11 +1,13 @@
 Ext.define('PayAdmin.store.StatisticStore', {
     extend: 'Ext.data.Store',
-    model: 'PayAdmin.model.Statistic',
+    model: 'PayAdmin.model.StatisticsPoint',
     alias: 'store.statistic',
     storeId: 'statistic',
     proxy: {
         type: 'rest',
         paramsAsJson: true,
+        pageParam: '',
+        limitParam: '',
         actionMethods:  {
             read: 'POST'
         },
