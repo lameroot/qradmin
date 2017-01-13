@@ -1,7 +1,6 @@
 package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.qr.qradmin.model.Filter;
 import org.springframework.data.domain.Sort;
 
 /**

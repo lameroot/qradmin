@@ -1,7 +1,6 @@
 package com.qr.qradmin.generic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qr.qradmin.model.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
@@ -12,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
 
 public abstract class GenericDtoService<E, EDto, EFilterDto> {
 

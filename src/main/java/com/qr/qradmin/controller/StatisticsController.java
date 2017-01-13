@@ -37,6 +37,6 @@ public class StatisticsController {
             return errorService.generateErrorPageResponse(result);
         }
 
-        return statisticDtoService.buildStatisticPage(pageableFilter.getFilter());
+        return statisticDtoService.get(pageableFilter.getFilter());
     }
 }
