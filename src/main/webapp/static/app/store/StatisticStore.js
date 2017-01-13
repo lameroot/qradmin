@@ -8,6 +8,7 @@ Ext.define('PayAdmin.store.StatisticStore', {
         paramsAsJson: true,
         pageParam: '',
         limitParam: '',
+        startParam: '',
         actionMethods:  {
             read: 'POST'
         },

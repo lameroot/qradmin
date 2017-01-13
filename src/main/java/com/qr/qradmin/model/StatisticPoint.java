@@ -1,7 +1,8 @@
-package com.qr.qradmin.dto.entity;
+package com.qr.qradmin.model;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * x - название промежутка времени (скорее всего в таком же виде будет отображаться на графике)
@@ -9,7 +10,7 @@ import java.util.Map;
  * ключ - id группы (например, терминала или шаблона)
  * значение - значение, которое нужно отобразить
  */
-public class StatisticPointDto {
+public class StatisticPoint {
     private String x;
     private Map<Long, Long> y = new HashMap<>();
 
