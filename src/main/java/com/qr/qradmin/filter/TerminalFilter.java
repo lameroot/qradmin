@@ -1,13 +1,11 @@
 package com.qr.qradmin.filter;
 
-import com.qr.qradmin.generic.EntityFilter;
-
 import java.util.List;
 
 /**
  * Created by Smirnov_Y on 28.11.2014.
  */
-public class TerminalFilter extends EntityFilter {
+public class TerminalFilter {
     private List<Long> terminalIds;
 
     public List<Long> getTerminalIds() {

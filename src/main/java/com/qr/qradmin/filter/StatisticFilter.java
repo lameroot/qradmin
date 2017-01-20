@@ -1,14 +1,12 @@
 package com.qr.qradmin.filter;
 
-import com.qr.qradmin.generic.EntityFilter;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class StatisticFilter extends EntityFilter {
+public class StatisticFilter {
 
     private TimeSlot timeSlot;
     private Calendar before;

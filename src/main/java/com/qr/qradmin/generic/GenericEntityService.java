@@ -50,7 +50,7 @@ public abstract class GenericEntityService<E, EFilter> {
         return e;
     }
 
-    protected Predicate buildPredicate(Root root, CriteriaBuilder cb, EntityFilter filter) {
+    protected Predicate buildPredicate(Root root, CriteriaBuilder cb, EFilter filter) {
         Predicate predicate = cb.conjunction();
         return predicate;
     }

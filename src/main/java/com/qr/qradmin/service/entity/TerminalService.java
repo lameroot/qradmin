@@ -22,7 +22,7 @@ import javax.persistence.criteria.Root;
 import java.util.Set;
 
 @Service
-public class TerminalService extends GenericEntityService<Terminal> {
+public class TerminalService extends GenericEntityService<Terminal, TerminalFilter> {
 
     @Resource
     private TerminalRepository terminalRepository;
@@ -30,11 +30,10 @@ public class TerminalService extends GenericEntityService<Terminal> {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    protected Specification<Terminal> buildSpecification(final EntityFilter f) {
+    protected Specification<Terminal> buildSpecification(final TerminalFilter filter) {
         final Specification<Terminal> specification = new Specification<Terminal>() {
             @Override
             public Predicate toPredicate(Root<Terminal> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                TerminalFilter filter = (TerminalFilter) f;
                 Predicate predicate = buildPredicate(root, cb, filter);
 
                 if (!CollectionUtils.isEmpty(filter.getTerminalIds())) {

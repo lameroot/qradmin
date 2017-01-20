@@ -1,6 +1,6 @@
 package com.qr.qradmin.config;
 
-import com.qr.qradmin.filter.SessionListener;
+import com.qr.qradmin.utils.SessionListener;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -23,7 +23,6 @@ public class AdminWebApplicationInitializer extends AbstractDispatcherServletIni
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-        servletContext.addListener(new SessionListener());
     }
 
     @Override

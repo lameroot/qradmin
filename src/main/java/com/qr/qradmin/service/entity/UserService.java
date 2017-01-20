@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.UserRepository;
+import com.qr.qradmin.filter.UserFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
@@ -21,7 +22,7 @@ import javax.persistence.criteria.Root;
 import java.util.Set;
 
 @Service
-public class UserService extends GenericEntityService<User> implements UserDetailsService {
+public class UserService extends GenericEntityService<User, UserFilter> implements UserDetailsService {
 
     @Resource
     private UserRepository userRepository;
@@ -29,7 +30,7 @@ public class UserService extends GenericEntityService<User> implements UserDetai
     private PasswordEncoder passwordEncoder;
 
     @Override
-    protected Specification<User> buildSpecification(final EntityFilter filter) {
+    protected Specification<User> buildSpecification(final UserFilter filter) {
         final Specification<User> specification = new Specification<User>() {
             @Override
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {

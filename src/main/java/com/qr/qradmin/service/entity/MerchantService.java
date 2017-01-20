@@ -1,6 +1,7 @@
 package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.MerchantRepository;
+import com.qr.qradmin.filter.MerchantFilter;
 import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
@@ -17,13 +18,13 @@ import javax.persistence.criteria.Root;
 
 @Service
 @Qualifier("qradmin")
-public class MerchantService extends GenericEntityService<Merchant> {
+public class MerchantService extends GenericEntityService<Merchant, MerchantFilter> {
 
     @Resource
     private MerchantRepository merchantRepository;
 
     @Override
-    protected Specification<Merchant> buildSpecification(final EntityFilter filter) {
+    protected Specification<Merchant> buildSpecification(final MerchantFilter filter) {
         final Specification<Merchant> specification = new Specification<Merchant>() {
             @Override
             public Predicate toPredicate(Root<Merchant> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {

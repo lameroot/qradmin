@@ -18,17 +18,16 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Service
-public class OrderTemplateService extends GenericEntityService<OrderTemplate> {
+public class OrderTemplateService extends GenericEntityService<OrderTemplate, OrderTemplateFilter> {
 
     @Resource
     private OrderTemplateRepository orderTemplateRepository;
 
     @Override
-    protected Specification<OrderTemplate> buildSpecification(final EntityFilter f) {
+    protected Specification<OrderTemplate> buildSpecification(final OrderTemplateFilter filter) {
         final Specification<OrderTemplate> specification = new Specification<OrderTemplate>() {
             @Override
             public Predicate toPredicate(Root<OrderTemplate> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                OrderTemplateFilter filter = (OrderTemplateFilter) f;
                 Predicate predicate = buildPredicate(root, cb, filter);
                 predicate.getExpressions().add(cb.isNotNull(root.get(OrderTemplate_.terminal)));
 

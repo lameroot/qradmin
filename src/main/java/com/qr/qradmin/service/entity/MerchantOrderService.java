@@ -2,7 +2,6 @@ package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.MerchantOrderRepository;
 import com.qr.qradmin.filter.MerchantOrderFilter;
-import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
 import org.springframework.data.jpa.domain.Specification;
@@ -17,17 +16,16 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Service
-public class MerchantOrderService extends GenericEntityService<MerchantOrder> {
+public class MerchantOrderService extends GenericEntityService<MerchantOrder, MerchantOrderFilter> {
 
     @Resource
     private MerchantOrderRepository merchantOrderRepository;
 
     @Override
-    protected Specification<MerchantOrder> buildSpecification(final EntityFilter f) {
+    protected Specification<MerchantOrder> buildSpecification(final MerchantOrderFilter filter) {
         final Specification<MerchantOrder> specification = new Specification<MerchantOrder>() {
             @Override
             public Predicate toPredicate(Root<MerchantOrder> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                MerchantOrderFilter filter = (MerchantOrderFilter) f;
                 Predicate predicate = buildPredicate(root, cb, filter);
 
                 if (filter.getId() != null) {
