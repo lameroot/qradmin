@@ -1,7 +1,6 @@
 package com.qr.qradmin.validator.filter;
 
 import com.qr.qradmin.dto.filter.MerchantFilterDto;
-import com.qr.qradmin.dto.filter.UserFilterDto;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

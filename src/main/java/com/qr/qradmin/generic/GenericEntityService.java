@@ -13,7 +13,7 @@ import javax.persistence.criteria.Root;
 /**
  * Created by Smirnov_Y on 18.06.2015.
  */
-public abstract class GenericEntityService<E> {
+public abstract class GenericEntityService<E, EFilter> {
 
     public E get(Long id) {
         E e = getRepository().findOne(id);
@@ -21,7 +21,7 @@ public abstract class GenericEntityService<E> {
         return e;
     }
 
-    public Page<E> get(EntityFilter filter, PageRequest pageRequest) {
+    public Page<E> get(EFilter filter, PageRequest pageRequest) {
         return getRepository().findAll(buildSpecification(filter), pageRequest);
     }
 
@@ -45,7 +45,7 @@ public abstract class GenericEntityService<E> {
         throw new UnsupportedOperationException();
     }
 
-    protected abstract Specification<E> buildSpecification(EntityFilter filter);
+    protected abstract Specification<E> buildSpecification(EFilter filter);
 
     protected abstract GenericRepository<E> getRepository();
 

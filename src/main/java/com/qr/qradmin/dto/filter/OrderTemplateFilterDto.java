@@ -2,8 +2,6 @@ package com.qr.qradmin.dto.filter;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.Date;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderTemplateFilterDto {
     private Long terminal_id;

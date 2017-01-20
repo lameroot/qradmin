@@ -3,33 +3,19 @@ package com.qr.qradmin.service.dto;
 import com.qr.qradmin.dto.entity.UserDto;
 import com.qr.qradmin.dto.filter.UserFilterDto;
 import com.qr.qradmin.filter.UserFilter;
-import com.qr.qradmin.generic.ElementResponse;
-import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericDtoService;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.service.entity.UserService;
 import org.springframework.stereotype.Service;
 import ru.qrhandshake.qrpos.domain.User;
-import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
-import java.util.Map;
 
 @Service
-public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterDto> {
+public class UserDtoService extends GenericDtoService<User, UserFilter, UserDto, UserFilterDto> {
 
     @Resource
     private UserService userService;
-
-    public ElementResponse<UserDto> getCurrentUser() {
-        return new ElementResponse<>(conversionService.convert(SecurityUtils.getCurrentUser(), UserDto.class));
-    }
-
-    @Override
-    protected EntityFilter buildFilter(UserFilterDto filter) {
-        UserFilter entityFilter = new UserFilter();
-        return entityFilter;
-    }
 
     @Override
     protected Class<User> getEClass() {
@@ -42,7 +28,12 @@ public class UserDtoService extends GenericDtoService<User, UserDto, UserFilterD
     }
 
     @Override
-    protected GenericEntityService<User> getEntityService() {
+    protected Class<UserFilter> getEFilterClass() {
+        return UserFilter.class;
+    }
+
+    @Override
+    protected GenericEntityService<User, UserFilter> getEntityService() {
         return userService;
     }
 }

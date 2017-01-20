@@ -1,7 +1,5 @@
 package com.qr.qradmin.controller;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.qr.qradmin.dto.entity.StatisticPointDto;
 import com.qr.qradmin.dto.filter.StatisticFilterDto;
 import com.qr.qradmin.generic.PageResponse;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Controller
 @RequestMapping("/api/statistics")

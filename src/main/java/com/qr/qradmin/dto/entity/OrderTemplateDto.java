@@ -1,13 +1,6 @@
 package com.qr.qradmin.dto.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import ru.qrhandshake.qrpos.domain.*;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderTemplateDto {

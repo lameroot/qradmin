@@ -3,7 +3,6 @@ package com.qr.qradmin.service.entity;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.qr.qradmin.dao.StatisticAdminRepository;
-import com.qr.qradmin.dto.entity.StatisticPointDto;
 import com.qr.qradmin.filter.StatisticFilter;
 import com.qr.qradmin.model.StatisticPoint;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,7 @@
 package com.qr.qradmin.filter;
 
 import com.qr.qradmin.generic.EntityFilter;
-import ru.qrhandshake.qrpos.domain.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**

@@ -2,9 +2,6 @@ package com.qr.qradmin.generic;
 
 import com.qr.qradmin.enums.ErrorCode;
 import com.qr.qradmin.service.ErrorService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;

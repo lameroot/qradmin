@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class GenericDtoService<E, EDto, EFilterDto> {
+public abstract class GenericDtoService<E, EFilter, EDto, EFilterDto> {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -29,13 +29,13 @@ public abstract class GenericDtoService<E, EDto, EFilterDto> {
     @Resource
     protected ObjectMapper objectMapper;
 
-    protected abstract EntityFilter buildFilter(EFilterDto filter);//TODO переделать на конвертер!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     protected abstract Class<E> getEClass();
 
     protected abstract Class<EDto> getEDtoClass();
 
-    protected abstract GenericEntityService<E> getEntityService();
+    protected abstract Class<EFilter> getEFilterClass();
+
+    protected abstract GenericEntityService<E, EFilter> getEntityService();
 
     @Transactional
     public ElementResponse<EDto> get(Long id) {
@@ -48,7 +48,7 @@ public abstract class GenericDtoService<E, EDto, EFilterDto> {
                 .ofNullable(pagebleFilterDto.getSort())
                 .orElse(new Sort(Sort.Direction.DESC, "id"));
         PageRequest pageRequest = new PageRequest(pagebleFilterDto.getPage() - 1, pagebleFilterDto.getLimit(), sort);
-        EntityFilter filter = buildFilter(pagebleFilterDto.getFilter());
+        EFilter filter = conversionService.convert(pagebleFilterDto.getFilter(), getEFilterClass());
         Page<E> entityPage = getEntityService().get(filter, pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {
