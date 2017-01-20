@@ -2,7 +2,6 @@ package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.MerchantRepository;
 import com.qr.qradmin.filter.MerchantFilter;
-import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
 import org.springframework.beans.factory.annotation.Qualifier;

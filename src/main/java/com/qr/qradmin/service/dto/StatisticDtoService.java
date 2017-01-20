@@ -6,8 +6,6 @@ import com.qr.qradmin.filter.StatisticFilter;
 import com.qr.qradmin.generic.PageResponse;
 import com.qr.qradmin.model.StatisticPoint;
 import com.qr.qradmin.service.entity.StatisticAdminService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 

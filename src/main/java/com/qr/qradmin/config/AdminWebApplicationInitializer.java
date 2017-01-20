@@ -11,13 +11,7 @@ import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-
 public class AdminWebApplicationInitializer extends AbstractDispatcherServletInitializer {
-
-    static {
-        ApplicationConfig.setSystemVariableConfigLocation();
-    }
-
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
@@ -53,6 +47,5 @@ public class AdminWebApplicationInitializer extends AbstractDispatcherServletIni
         DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy("springSecurityFilterChain");
         return new Filter[] {characterEncodingFilter, openEntityManagerInViewFilter, delegatingFilterProxy};
     }
-
 }
 

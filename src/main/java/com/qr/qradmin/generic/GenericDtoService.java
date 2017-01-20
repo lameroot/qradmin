@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;

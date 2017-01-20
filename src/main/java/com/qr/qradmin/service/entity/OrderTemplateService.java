@@ -2,7 +2,6 @@ package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.OrderTemplateRepository;
 import com.qr.qradmin.filter.OrderTemplateFilter;
-import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
 import org.springframework.data.jpa.domain.Specification;

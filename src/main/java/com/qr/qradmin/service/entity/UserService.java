@@ -2,7 +2,6 @@ package com.qr.qradmin.service.entity;
 
 import com.qr.qradmin.dao.UserRepository;
 import com.qr.qradmin.filter.UserFilter;
-import com.qr.qradmin.generic.EntityFilter;
 import com.qr.qradmin.generic.GenericEntityService;
 import com.qr.qradmin.generic.GenericRepository;
 import org.apache.commons.lang3.StringUtils;
