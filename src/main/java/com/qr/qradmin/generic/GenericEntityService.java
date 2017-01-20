@@ -10,9 +10,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-/**
- * Created by Smirnov_Y on 18.06.2015.
- */
 public abstract class GenericEntityService<E, EFilter> {
 
     public E get(Long id) {

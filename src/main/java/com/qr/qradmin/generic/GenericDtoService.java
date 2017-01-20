@@ -20,10 +20,6 @@ public abstract class GenericDtoService<E, EFilter, EDto, EFilterDto> {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    protected List nullList = new ArrayList(){{
-        add(null);
-    }};
-
     @Resource
     protected ConversionService conversionService;
     @Resource
@@ -31,9 +27,9 @@ public abstract class GenericDtoService<E, EFilter, EDto, EFilterDto> {
 
     protected abstract Class<E> getEClass();
 
-    protected abstract Class<EDto> getEDtoClass();
-
     protected abstract Class<EFilter> getEFilterClass();
+
+    protected abstract Class<EDto> getEDtoClass();
 
     protected abstract GenericEntityService<E, EFilter> getEntityService();
 
@@ -43,12 +39,12 @@ public abstract class GenericDtoService<E, EFilter, EDto, EFilterDto> {
     }
 
     @Transactional
-    public PageResponse<EDto> get(PageableFilterDto<EFilterDto> pagebleFilterDto) {
+    public PageResponse<EDto> get(PageableFilterDto<EFilterDto> pageableFilterDto) {
         Sort sort = Optional
-                .ofNullable(pagebleFilterDto.getSort())
+                .ofNullable(pageableFilterDto.getSort())
                 .orElse(new Sort(Sort.Direction.DESC, "id"));
-        PageRequest pageRequest = new PageRequest(pagebleFilterDto.getPage() - 1, pagebleFilterDto.getLimit(), sort);
-        EFilter filter = conversionService.convert(pagebleFilterDto.getFilter(), getEFilterClass());
+        PageRequest pageRequest = new PageRequest(pageableFilterDto.getPage() - 1, pageableFilterDto.getLimit(), sort);
+        EFilter filter = conversionService.convert(pageableFilterDto.getFilter(), getEFilterClass());
         Page<E> entityPage = getEntityService().get(filter, pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {

@@ -2,6 +2,7 @@ package com.qr.qradmin.controller;
 
 import com.qr.qradmin.dto.entity.UserDto;
 import com.qr.qradmin.dto.filter.UserFilterDto;
+import com.qr.qradmin.filter.UserFilter;
 import com.qr.qradmin.generic.CrudOperation;
 import com.qr.qradmin.generic.GenericController;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -20,7 +21,7 @@ import java.util.Collections;
 
 @Controller
 @RequestMapping("/api/user")
-public class UserController extends GenericController<User, UserDto, UserFilterDto> {
+public class UserController extends GenericController<User, UserFilter, UserDto, UserFilterDto> {
 
     @PostConstruct
     public void init() {
@@ -48,7 +49,7 @@ public class UserController extends GenericController<User, UserDto, UserFilterD
     }
 
     @Override
-    protected GenericDtoService<User, UserDto, UserFilterDto> getDtoService() {
+    protected GenericDtoService<User, UserFilter, UserDto, UserFilterDto> getDtoService() {
         return userDtoService;
     }
 }

@@ -15,14 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class GenericController<E, EDto, EFilterDto> {
+public abstract class GenericController<E, EFilter, EDto, EFilterDto> {
     protected final Map<CrudOperation, List<EnumGrantedAuthority>> supportedOperations = new HashMap<>();
 
     protected abstract Validator getEntityValidator();
 
     protected abstract Validator getFilterValidator();
 
-    protected abstract GenericDtoService<E, EDto, EFilterDto> getDtoService();
+    protected abstract GenericDtoService<E, EFilter, EDto, EFilterDto> getDtoService();
 
     @Resource
     private ErrorService errorService;

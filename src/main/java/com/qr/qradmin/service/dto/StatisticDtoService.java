@@ -18,19 +18,13 @@ import java.util.stream.Collectors;
 @Service
 public class StatisticDtoService {
 
-    private Logger logger = LoggerFactory.getLogger(StatisticDtoService.class);
-
     @Resource
     private StatisticAdminService statisticAdminService;
     @Resource
     private ConversionService conversionService;
 
-    private StatisticFilter buildFilter(StatisticFilterDto filterDto) {
-        return new StatisticFilter();
-    }
-
     public PageResponse<StatisticPointDto> get(StatisticFilterDto filterDto) {
-        StatisticFilter filter = buildFilter(filterDto);
+        StatisticFilter filter = conversionService.convert(filterDto, StatisticFilter.class);
         List<StatisticPoint> points = statisticAdminService.get(filter);
         List<StatisticPointDto> pointDtos = points.stream()
                 .map(point -> conversionService.convert(point, StatisticPointDto.class))

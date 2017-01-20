@@ -2,6 +2,7 @@ package com.qr.qradmin.controller;
 
 import com.qr.qradmin.dto.entity.MerchantDto;
 import com.qr.qradmin.dto.filter.MerchantFilterDto;
+import com.qr.qradmin.filter.MerchantFilter;
 import com.qr.qradmin.generic.CrudOperation;
 import com.qr.qradmin.generic.GenericController;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -20,7 +21,7 @@ import java.util.Collections;
 
 @Controller
 @RequestMapping("/api/merchant")
-public class MerchantController extends GenericController<Merchant, MerchantDto, MerchantFilterDto> {
+public class MerchantController extends GenericController<Merchant, MerchantFilter, MerchantDto, MerchantFilterDto> {
 
     @PostConstruct
     public void init() {
@@ -48,7 +49,7 @@ public class MerchantController extends GenericController<Merchant, MerchantDto,
     }
 
     @Override
-    protected GenericDtoService<Merchant, MerchantDto, MerchantFilterDto> getDtoService() {
+    protected GenericDtoService<Merchant, MerchantFilter, MerchantDto, MerchantFilterDto> getDtoService() {
         return merchantDtoService;
     }
 }

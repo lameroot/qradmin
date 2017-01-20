@@ -2,6 +2,7 @@ package com.qr.qradmin.controller;
 
 import com.qr.qradmin.dto.entity.TerminalDto;
 import com.qr.qradmin.dto.filter.TerminalFilterDto;
+import com.qr.qradmin.filter.TerminalFilter;
 import com.qr.qradmin.generic.CrudOperation;
 import com.qr.qradmin.generic.GenericController;
 import com.qr.qradmin.generic.GenericDtoService;
@@ -20,7 +21,7 @@ import java.util.Collections;
 
 @Controller
 @RequestMapping("/api/terminal")
-public class TerminalController extends GenericController<Terminal, TerminalDto, TerminalFilterDto> {
+public class TerminalController extends GenericController<Terminal, TerminalFilter, TerminalDto, TerminalFilterDto> {
 
     @PostConstruct
     public void init() {
@@ -48,7 +49,7 @@ public class TerminalController extends GenericController<Terminal, TerminalDto,
     }
 
     @Override
-    protected GenericDtoService<Terminal, TerminalDto, TerminalFilterDto> getDtoService() {
+    protected GenericDtoService<Terminal, TerminalFilter, TerminalDto, TerminalFilterDto> getDtoService() {
         return terminalDtoService;
     }
 }
