@@ -30,6 +30,8 @@ public abstract class GenericDtoService<E, EFilter, EDto, EFilterDto> {
 
     protected abstract Class<EDto> getEDtoClass();
 
+    protected abstract Class<EFilterDto> getEFilterDtoClass();
+
     protected abstract GenericEntityService<E, EFilter> getEntityService();
 
     @Transactional
@@ -38,12 +40,13 @@ public abstract class GenericDtoService<E, EFilter, EDto, EFilterDto> {
     }
 
     @Transactional
-    public PageResponse<EDto> get(PageableFilterDto<EFilterDto> pageableFilterDto) {
+    public PageResponse<EDto> get(PageableFilterDto<EFilterDto> pageableFilterDto) throws IllegalAccessException, InstantiationException {
         Sort sort = Optional
                 .ofNullable(pageableFilterDto.getSort())
                 .orElse(new Sort(Sort.Direction.DESC, "id"));
         PageRequest pageRequest = new PageRequest(pageableFilterDto.getPage() - 1, pageableFilterDto.getLimit(), sort);
-        EFilter filter = conversionService.convert(pageableFilterDto.getFilter(), getEFilterClass());
+        EFilterDto filterDto = Optional.ofNullable(pageableFilterDto.getFilter()).orElse(getEFilterDtoClass().newInstance());
+        EFilter filter = conversionService.convert(filterDto, getEFilterClass());
         Page<E> entityPage = getEntityService().get(filter, pageRequest);
         List<EDto> dtos = new LinkedList<>();
         for (E e : entityPage) {

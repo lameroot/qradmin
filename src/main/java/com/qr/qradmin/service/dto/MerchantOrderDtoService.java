@@ -28,6 +28,11 @@ public class MerchantOrderDtoService extends GenericDtoService<MerchantOrder, Me
     }
 
     @Override
+    protected Class<MerchantOrderFilterDto> getEFilterDtoClass() {
+        return MerchantOrderFilterDto.class;
+    }
+
+    @Override
     protected Class<MerchantOrderFilter> getEFilterClass() {
         return MerchantOrderFilter.class;
     }

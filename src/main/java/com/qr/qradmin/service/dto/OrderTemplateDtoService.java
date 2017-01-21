@@ -28,6 +28,11 @@ public class OrderTemplateDtoService extends GenericDtoService<OrderTemplate, Or
     }
 
     @Override
+    protected Class<OrderTemplateFilterDto> getEFilterDtoClass() {
+        return OrderTemplateFilterDto.class;
+    }
+
+    @Override
     protected Class<OrderTemplateFilter> getEFilterClass() {
         return OrderTemplateFilter.class;
     }

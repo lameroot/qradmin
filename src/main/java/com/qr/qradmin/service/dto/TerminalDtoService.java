@@ -28,6 +28,11 @@ public class TerminalDtoService extends GenericDtoService<Terminal, TerminalFilt
     }
 
     @Override
+    protected Class<TerminalFilterDto> getEFilterDtoClass() {
+        return TerminalFilterDto.class;
+    }
+
+    @Override
     protected Class<TerminalFilter> getEFilterClass() {
         return TerminalFilter.class;
     }

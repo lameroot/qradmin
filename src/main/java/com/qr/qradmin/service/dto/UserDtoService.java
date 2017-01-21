@@ -28,6 +28,11 @@ public class UserDtoService extends GenericDtoService<User, UserFilter, UserDto,
     }
 
     @Override
+    protected Class<UserFilterDto> getEFilterDtoClass() {
+        return UserFilterDto.class;
+    }
+
+    @Override
     protected Class<UserFilter> getEFilterClass() {
         return UserFilter.class;
     }
