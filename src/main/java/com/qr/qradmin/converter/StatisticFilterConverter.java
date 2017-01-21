@@ -10,7 +10,6 @@ public class StatisticFilterConverter implements Converter<StatisticFilterDto, S
 
     @Override
     public StatisticFilter convert(StatisticFilterDto filterDto) {
-        if (filterDto == null) return null;
         StatisticFilter filter = new StatisticFilter();
         return filter;
     }

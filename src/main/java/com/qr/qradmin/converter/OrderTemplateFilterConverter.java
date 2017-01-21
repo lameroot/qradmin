@@ -22,7 +22,6 @@ public class OrderTemplateFilterConverter implements Converter<OrderTemplateFilt
     private TerminalService terminalService;
     @Override
     public OrderTemplateFilter convert(OrderTemplateFilterDto filterDto) {
-        if (filterDto == null) return null;
         OrderTemplateFilter filter = new OrderTemplateFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();

@@ -16,13 +16,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
-public class TermoinalFilterConverter implements Converter<TerminalFilterDto, TerminalFilter> {
+public class TerminalFilterConverter implements Converter<TerminalFilterDto, TerminalFilter> {
 
     @Resource
     private TerminalService terminalService;
     @Override
     public TerminalFilter convert(TerminalFilterDto filterDto) {
-        if (filterDto == null) return null;
         TerminalFilter filter = new TerminalFilter();
         if (!SecurityUtils.isCurrentUserAdmin()) {          //TODO сделать отдельный метод для получения своих записей
             User user = SecurityUtils.getCurrentUser();
@@ -37,7 +36,6 @@ public class TermoinalFilterConverter implements Converter<TerminalFilterDto, Te
                 filter.setTerminalIds(merchantTerminalIds);
             }
         }
-
         return filter;
     }
 }

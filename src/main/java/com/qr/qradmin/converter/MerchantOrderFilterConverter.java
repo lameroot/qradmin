@@ -12,7 +12,6 @@ public class MerchantOrderFilterConverter implements Converter<MerchantOrderFilt
 
     @Override
     public MerchantOrderFilter convert(MerchantOrderFilterDto filterDto) {
-        if (filterDto == null) return null;
         MerchantOrderFilter filter = new MerchantOrderFilter();
 
         if (!SecurityUtils.isCurrentUserAdmin()) {
@@ -20,35 +19,21 @@ public class MerchantOrderFilterConverter implements Converter<MerchantOrderFilt
             filter.setMerchantId(user.getMerchant().getId());
         }
 
-        if (filter == null) {
+        if (filterDto == null) {
             return filter;
         }
 
-        filter.setId(filter.getId());
-        filter.setOrderId(filter.getOrderId());
-        filter.setExternalId(filter.getExternalId());
-        filter.setExternalOrderStatus(filter.getExternalOrderStatus());
+        filter.setId(filterDto.getId());
+        filter.setOrderId(filterDto.getOrderId());
+        filter.setExternalId(filterDto.getExternalId());
+        filter.setExternalOrderStatus(filterDto.getExternalOrderStatus());
 
-//        filter.setCreatedDateFrom(filter.get("id"));
-//        filter.setCreatedDateTo(filter.get("id"));
+        filter.setAmountFrom(filterDto.getAmountFrom());
+        filter.setAmountTo(filterDto.getAmountTo());
 
-//        filter.setPaymentDateFrom(filter.get("id"));
-//        filter.setPaymentDateTo(filter.get("id"));
+        filter.setDeviceId(filterDto.getDeviceId());
+        filter.setSessionId(filterDto.getSessionId());
 
-        filter.setAmountFrom(filter.getAmountFrom());
-        filter.setAmountTo(filter.getAmountTo());
-
-        filter.setDeviceId(filter.getDeviceId());
-//        filter.setMerchantId(filter.get("id"));
-//        filter.setTerminalId(filter.get("id"));
-//        filter.setClientId(filter.get("id"));
-        filter.setSessionId(filter.getSessionId());
-
-//        filter.setIntegrationSupports(filterDto.getIntegrationSupports());
-//        filter.setOrderStatuses(filterDto.getOrderStatuses());
-//        filter.setPaymentSecureTypes(filterDto.getPaymentSecureTypes());
-//        filter.setPaymentWays(filterDto.getPaymentWays());
-//        filter.setPaymentTypes(filterDto.getPaymentTypes());
         return filter;
     }
 }

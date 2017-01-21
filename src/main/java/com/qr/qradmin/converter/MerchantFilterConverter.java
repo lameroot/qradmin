@@ -10,7 +10,6 @@ public class MerchantFilterConverter implements Converter<MerchantFilterDto, Mer
 
     @Override
     public MerchantFilter convert(MerchantFilterDto filterDto) {
-        if (filterDto == null) return null;
         MerchantFilter filter = new MerchantFilter();
         return filter;
     }
