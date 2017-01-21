@@ -8,7 +8,7 @@ Ext.define('PayAdmin.view.merchants.MerchantWindowController', {
         var merchant = this.getView().getViewModel().get('merchant');
         merchant.save({
             success: function (record) {
-                ths.getView().getViewModel().set('orderTemplate', record);
+                ths.getView().getViewModel().set('merchant', record);
                 Ext.Msg.alert('Успешно', 'Продавец сохранен');
             },
             failure: function (record) {
