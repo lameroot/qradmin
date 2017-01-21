@@ -38,7 +38,7 @@ public abstract class GenericController<E, EFilter, EDto, EFilterDto> {
 
     @RequestMapping(method = RequestMethod.POST, value = "/list")
     @ResponseBody
-    public PageResponse<EDto> get(@RequestBody PageableFilterDto<EFilterDto> pageableFilter, BindingResult result) throws BindException {
+    public PageResponse<EDto> get(@RequestBody PageableFilterDto<EFilterDto> pageableFilter, BindingResult result) throws BindException, InstantiationException, IllegalAccessException {
         checkForSupportedOperations(CrudOperation.GET_SEVERAL);
         genericPageableFilterDtoValidator.validate(pageableFilter, result);
         getFilterValidator().validate(pageableFilter, result);
