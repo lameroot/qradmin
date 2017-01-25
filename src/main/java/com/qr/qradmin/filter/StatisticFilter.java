@@ -1,5 +1,10 @@
 package com.qr.qradmin.filter;
 
+import com.qr.qradmin.enums.statistics.CalculationType;
+import com.qr.qradmin.enums.statistics.Grouping;
+import com.qr.qradmin.enums.statistics.IndicatorType;
+import com.qr.qradmin.enums.statistics.TimeSlot;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,114 +13,140 @@ import java.util.List;
 
 public class StatisticFilter {
 
-    private TimeSlot timeSlot;
-    private Calendar before;
-    private List<Long> orderTemplateIds;
-    private Long merchantId;
+    private Grouping grouping;
+    private IndicatorType indicatorType;
+    private CalculationType calculationType;
+    private Date dateFrom;
+    private Date dateTo;
+    private Long[] selectedOrderTemplatesIds;
+    private Long[] selectedTerminalsIds;
+    private boolean separatelyForTerminals;
+    private boolean separatelyForOrderTemplates;
 
-    public TimeSlot getTimeSlot() {
-        return timeSlot;
+    public Grouping getGrouping() {
+        return grouping;
     }
 
-    public void setTimeSlot(TimeSlot timeSlot) {
-        this.timeSlot = timeSlot;
+    public void setGrouping(Grouping grouping) {
+        this.grouping = grouping;
     }
 
-    public Calendar getBefore() {
-        return before;
+    public IndicatorType getIndicatorType() {
+        return indicatorType;
     }
 
-    public void setBefore(Calendar before) {
-        this.before = before;
+    public void setIndicatorType(IndicatorType indicatorType) {
+        this.indicatorType = indicatorType;
     }
 
-    public List<Long> getOrderTemplateIds() {
-        return orderTemplateIds;
+    public CalculationType getCalculationType() {
+        return calculationType;
     }
 
-    public void setOrderTemplateIds(List<Long> orderTemplateIds) {
-        this.orderTemplateIds = orderTemplateIds;
+    public void setCalculationType(CalculationType calculationType) {
+        this.calculationType = calculationType;
     }
 
-    public Long getMerchantId() {
-        return merchantId;
+    public Date getDateFrom() {
+        return dateFrom;
     }
 
-    public void setMerchantId(Long merchantId) {
-        this.merchantId = merchantId;
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
     }
 
-    public static enum TimeSlot {
-        HOUR(12,5, new SimpleDateFormat("mm")),
-        DAY(24,60, new SimpleDateFormat("HH")),
-        WEEK(7,1440, new SimpleDateFormat("EE")),
-        MONTH(30,1440, new SimpleDateFormat("dd")),
-        YEAR(12,43800, new SimpleDateFormat("MMM"));
+    public Date getDateTo() {
+        return dateTo;
+    }
 
-        private final int countSlots;
-        private final int countMinutes;
-        private final SimpleDateFormat dateFormat;
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
 
-        TimeSlot(int countSlots, int countMinutes, SimpleDateFormat dateFormat) {
-            this.countSlots = countSlots;
-            this.countMinutes = countMinutes;
-            this.dateFormat = dateFormat;
+    public Long[] getSelectedOrderTemplatesIds() {
+        return selectedOrderTemplatesIds;
+    }
 
-        }
+    public void setSelectedOrderTemplatesIds(Long[] selectedOrderTemplatesIds) {
+        this.selectedOrderTemplatesIds = selectedOrderTemplatesIds;
+    }
 
-        public List<Slot> getSlots(Calendar b) {
-            Calendar before = Calendar.getInstance();
-            before.setTime(b.getTime());
-            int tmp = countSlots;
-            List<Slot> slots = new ArrayList<>();
-            while (tmp-- > 0) {
-                Slot slot = new Slot();
-                slot.endTime = before.getTime();
-                before.add(Calendar.MINUTE,-countMinutes);
-                slot.startTime = before.getTime();
-                slot.name = dateFormat.format(slot.startTime);
-                slots.add(slot);
+    public Long[] getSelectedTerminalsIds() {
+        return selectedTerminalsIds;
+    }
 
+    public void setSelectedTerminalsIds(Long[] selectedTerminalsIds) {
+        this.selectedTerminalsIds = selectedTerminalsIds;
+    }
+
+    public boolean isSeparatelyForTerminals() {
+        return separatelyForTerminals;
+    }
+
+    public void setSeparatelyForTerminals(boolean separatelyForTerminals) {
+        this.separatelyForTerminals = separatelyForTerminals;
+    }
+
+    public boolean isSeparatelyForOrderTemplates() {
+        return separatelyForOrderTemplates;
+    }
+
+    public void setSeparatelyForOrderTemplates(boolean separatelyForOrderTemplates) {
+        this.separatelyForOrderTemplates = separatelyForOrderTemplates;
+    }
+
+    public List<com.qr.qradmin.enums.statistics.TimeSlot> getTimeSlots() {
+        Calendar start = Calendar.getInstance();
+        start.setTime(dateFrom);
+        long diff = dateTo.getTime() - dateFrom.getTime();
+
+        List<com.qr.qradmin.enums.statistics.TimeSlot> timeSlots = new ArrayList<>();
+        do {
+            com.qr.qradmin.enums.statistics.TimeSlot timeSlot = new com.qr.qradmin.enums.statistics.TimeSlot();
+            timeSlot.setStartTime(start.getTime());
+            String name = "";
+            switch (grouping) {
+                case DAY: {
+                    name = start.get(Calendar.DAY_OF_MONTH) + " " + new SimpleDateFormat("MMM").format(start.getTime());
+                    start.add(Calendar.DAY_OF_YEAR,1);
+                    break;
+                }
+                case WEEK: {
+                    name = start.get(Calendar.DAY_OF_MONTH) + " " + new SimpleDateFormat("MMM").format(start.getTime());
+                    start.add(Calendar.WEEK_OF_YEAR,1);
+                    name += " - " + start.get(Calendar.DAY_OF_MONTH) + " " + new SimpleDateFormat("MMM").format(start.getTime());
+                    break;
+                }
+                case MONTH: {
+                    name = new SimpleDateFormat("MMM").format(start.getTime()) + " - ";
+                    start.add(Calendar.MONTH,1);
+                    name += new SimpleDateFormat("MMM").format(start.getTime());
+                    break;
+                }
             }
-            return slots;
-        }
+            timeSlot.setName(name);
+            timeSlot.setEndTime(start.getTime());
+            timeSlots.add(timeSlot);
+        } while (start.getTime().before(dateTo));
 
-
+        return timeSlots;
     }
 
-    public static class Slot {
-        Date startTime;
-        Date endTime;
-        String name;
 
-        public Date getStartTime() {
-            return startTime;
-        }
-
-        public Date getEndTime() {
-            return endTime;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        @Override
-        public String toString() {
-            final StringBuilder sb = new StringBuilder("Slot{");
-            sb.append("startTime=").append(startTime);
-            sb.append(", endTime=").append(endTime);
-            sb.append(", name='").append(name).append('\'');
-            sb.append('}');
-            return sb.toString();
-        }
-    }
 
     public static void main(String[] args) {
-        Calendar now = Calendar.getInstance();
-        List<Slot> slots = TimeSlot.DAY.getSlots(now);
-        for (Slot slot : slots) {
-            System.out.println(slot);
+        StatisticFilter statisticFilter = new StatisticFilter();
+        statisticFilter.setGrouping(Grouping.WEEK);
+        Calendar dateFrom = Calendar.getInstance();
+        dateFrom.add(Calendar.MONTH,-2);
+        Calendar dateTo = Calendar.getInstance();
+
+        statisticFilter.setDateFrom(dateFrom.getTime());
+        statisticFilter.setDateTo(dateTo.getTime());
+
+        List<TimeSlot> timeSlots = statisticFilter.getTimeSlots();
+        for (TimeSlot timeSlot : timeSlots) {
+            System.out.println(timeSlot.getName() + " = " + timeSlot.getStartTime() + " - " + timeSlot.getEndTime());
         }
 
 

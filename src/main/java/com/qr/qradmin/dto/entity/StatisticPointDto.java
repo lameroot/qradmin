@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class StatisticPointDto {
     private String x;
-    private Map<Long, Long> y = new HashMap<>();
+    private Map<String, Long> y = new HashMap<>();
 
     public String getX() {
         return x;
@@ -21,11 +21,11 @@ public class StatisticPointDto {
         this.x = x;
     }
 
-    public Map<Long, Long> getY() {
+    public Map<String, Long> getY() {
         return y;
     }
 
-    public void setY(Map<Long, Long> y) {
+    public void setY(Map<String, Long> y) {
         this.y = y;
     }
 }
