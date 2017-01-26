@@ -1,10 +1,13 @@
 package com.qr.qradmin.service.entity;
 
+import com.qr.qradmin.dao.OrderTemplateRepository;
 import com.qr.qradmin.dao.StatisticAdminRepository;
+import com.qr.qradmin.enums.statistics.CalculationType;
 import com.qr.qradmin.enums.statistics.TimeSlot;
 import com.qr.qradmin.filter.StatisticFilter;
 import com.qr.qradmin.model.StatisticPoint;
 import org.springframework.stereotype.Service;
+import ru.qrhandshake.qrpos.domain.OrderTemplate;
 import ru.qrhandshake.qrpos.domain.Statistic;
 import ru.qrhandshake.qrpos.util.SecurityUtils;
 
@@ -16,6 +19,8 @@ public class StatisticAdminService  {
 
     @Resource
     private StatisticAdminRepository statisticAdminRepository;
+    @Resource
+    private OrderTemplateRepository orderTemplateRepository;
 
     public Long sumByPeriod(Statistic.StatisticType type, Date startTime, Date endTime, Long merchantId, Long... orderTemplateIds ) {
         return Long.valueOf(new Random().nextInt(1000 - 1 + 1) + 1);
@@ -29,15 +34,15 @@ public class StatisticAdminService  {
         Statistic.StatisticType statisticType = null;
         switch (filter.getIndicatorType()) {
             case SUCCESSFUL_PAYMENTS: {
-                statisticType = Statistic.StatisticType.TEMPLATE_COUNT_PAID;
+                statisticType = Statistic.StatisticType.COUNT_PAID;
                 break;
             }
             case UNSUCCESSFUL_PAYMENTS: {
-                statisticType = Statistic.StatisticType.TEMPLATE_COUNT_DECLINED;
+                statisticType = Statistic.StatisticType.COUNT_DECLINED;
                 break;
             }
             case MONEY: {
-                statisticType = Statistic.StatisticType.TEMPLATE_AMOUNT_PAID;
+                statisticType = Statistic.StatisticType.AMOUNT_PAID;
                 break;
             }
             default: {
@@ -50,15 +55,22 @@ public class StatisticAdminService  {
             StatisticPoint statisticPoint = new StatisticPoint();
             statisticPoint.setX(timeSlot.getName());
             Map<String, Long> sums = new HashMap<>();
-            if ( filter.isSeparatelyForOrderTemplates() ) {
-                for (Long orderTemplateId : filter.getSelectedOrderTemplatesIds()) {
-                    Long sumByOrderTemplate = sumByPeriod(statisticType, timeSlot.getStartTime(), timeSlot.getEndTime(), merchantId, orderTemplateId);
-                    sums.put(String.valueOf(orderTemplateId), sumByOrderTemplate);//todo: name of template (from request)
+            if (filter.getCalculationType().equals(CalculationType.BY_TEMPLATES) || filter.getCalculationType().equals(CalculationType.BY_TEMPLATES_GROUP)) {
+                //by templates
+                if (filter.isSeparatelyForOrderTemplates()) {
+                    for (Long orderTemplateId : filter.getSelectedOrderTemplatesIds()) {
+                        OrderTemplate orderTemplate = orderTemplateRepository.findOne(orderTemplateId);
+                        if (null == orderTemplate) continue;
+                        Long sumByOrderTemplate = sumByPeriod(statisticType, timeSlot.getStartTime(), timeSlot.getEndTime(), merchantId, orderTemplateId);
+                        sums.put(orderTemplate.getName() + "[" + orderTemplateId + "]", sumByOrderTemplate);
+                    }
+                } else {
+                    Long sumByOrderTemplate = sumByPeriod(statisticType, timeSlot.getStartTime(), timeSlot.getEndTime(), merchantId, filter.getSelectedOrderTemplatesIds());
+                    sums.put("Group from " + filter.getSelectedOrderTemplatesIds().length, sumByOrderTemplate);
                 }
             }
-            else {
-                Long sumByOrderTemplate = sumByPeriod(statisticType, timeSlot.getStartTime(), timeSlot.getEndTime(), merchantId, filter.getSelectedOrderTemplatesIds());
-                sums.put("Group from " + filter.getSelectedOrderTemplatesIds().length, sumByOrderTemplate);
+            else if ( filter.getCalculationType().equals(CalculationType.BY_TERMINALS) || filter.getCalculationType().equals(CalculationType.BY_TERMINALS_GROUP) ) {
+                //by terminals
             }
             statisticPoint.setY(sums);
             statisticPoints.add(statisticPoint);

@@ -35,7 +35,26 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
                     type: 'line',
                     title: yField,
                     xField: 'x',
-                    yField: yField
+                    yField: yField,
+                    marker: {
+                        radius: 4,
+                        lineWidth: 2
+                    },
+                    highlight: {
+                        fillStyle: '#000',
+                        radius: 5,
+                        lineWidth: 2,
+                        strokeStyle: '#fff'
+                    },
+                    tooltip: {
+                        trackMouse: true,
+                        showDelay: 0,
+                        dismissDelay: 0,
+                        hideDelay: 0,
+                        renderer: function(tooltip, record, item) {
+                            tooltip.setHtml(record.get('x') + ' : ' + record.get(yField) );
+                        }
+                    }
                 });
             });
             chart.setSeries(chartSeries);
@@ -68,5 +87,9 @@ Ext.define('PayAdmin.view.statistics.StatisticsViewController', {
             orderTemplatesSelector.setHidden(false);
             separatelyForOrderTemplatesCheckbox.setHidden(false);
         }
-    }
+    },
+
+    onSeriesTooltipRender: function (tooltip, record, item) {
+        tooltip.setHtml(record.get('month') + ': ' + record.get('data1') + '%');
+    },
 });
